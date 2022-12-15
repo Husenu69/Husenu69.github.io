@@ -26,14 +26,14 @@ body{
 	border-bottom: 2px solid rgb(16, 15, 15);
 	background: whitesmoke;
 	padding: 10px;
-	font-size: 6vw;
+	font-size: 3vw;
 	outline: none;
 }
 .addTask button{
 	margin: 0 10px;
 	background: rgb(240, 233, 233);
 	color: rgb(13, 13, 13);
-	font-size: 6vw;
+	font-size: 3vw;
 	text-transform: uppercase;
 	padding: 10px;
 	border: none;
@@ -46,7 +46,7 @@ body{
 	padding: 20px;
 }
 h3{
-	font-size: 3vw;
+	font-size: 2vw;
 	text-transform: uppercase;
 	text-align: center;
 	color: rgb(248, 243, 243);
@@ -60,7 +60,7 @@ ol li{
 	padding: 18px;
 	margin: 5px 0;
 	background: #fff374;
-	font-size: 6vw;
+	font-size: 3vw;
 	counter-increment: my-counter;
 }
 ol.Completed li{
