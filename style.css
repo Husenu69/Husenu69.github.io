@@ -7,6 +7,12 @@ body {
 	width: 100vw;
 	height: 100vh;
 	background-image: linear-gradient(#4267b2,#898F9C);
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(#4267b2,#898F9C);
+	background: #4e699d;
+	background: #4e699d;
+	background: #4e699d;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
@@ -39,8 +45,7 @@ label {
 	text-align: center;
 	background: #eef0fa;
 	backface-visibility: hidden;
-	border-radius:0 20px 0 20px ;
-	
+	border-radius:0 20px 0 20px ;	
 }
 .flip-card .back {
 	transform: rotateX(180deg);
@@ -83,7 +88,6 @@ label:hover :checked + .flip-card {
 	color: #4267b2;
 	margin: 12px 0 12px 0;
 }
-
 .front b {
 	font-size: 14px;
 	color:#424752;
