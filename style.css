@@ -7,10 +7,17 @@ body {
 	width: 100vw;
 	height: 100vh;
 	background-image: linear-gradient(#4267b2,#898F9C);
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(#4267b2,#898F9C);
+	background: #4e699d;
+	background: #4e699d;
+	background: #4e699d;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 label {
+	box-shadow: 2px 2px 4px rgba(0, 0,0,0.3);
 	box-shadow: 2px 2px 4px rgba(0, 0,0,0.3);
 	display: block;
 	position: absolute;
@@ -18,6 +25,10 @@ label {
 	left: 50%;
 	width: 280px;
 	height: 550px;
+	height: 550px;
+	height: 350px;
+	height: 350px;
+	height: 350px;
 	perspective: 1000px;
 	transform-style: preserve-3d;
 	transform: translate(-50%,-50%);
@@ -38,6 +49,10 @@ label {
 	height: 100%;
 	text-align: center;
 	background: #eef0fa;
+	background: #eef0fa;
+	background: #fff;
+	background: #fff;
+	background: #fff;
 	backface-visibility: hidden;
 	border-radius:0 20px 0 20px ;
 	
@@ -81,6 +96,10 @@ label:hover :checked + .flip-card {
 .front h2 {
 	font-size: 18px;
 	color: #4267b2;
+	color: #4267b2;
+	color: 4e699d;
+	color: 4e699d;
+	color: 4e699d;
 	margin: 12px 0 12px 0;
 }
 
