@@ -1,3 +1,14 @@
+.wrapper {
+	display: flex;
+	flex-flow: row wrap;
+	text-align: center;
+}
+.wrapper > * {
+	padding: 10px;
+	margin: 10px;
+	flex:1 100% ;
+	border-radius: 10px;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -8,13 +19,8 @@ body {
 	height: 100vh;
 	background-image: linear-gradient(#4267b2,#898F9C);
 	width: 100vw;
-	height: 100vh;
-	background-image: linear-gradient(#4267b2,#898F9C);
-	background: #4e699d;
-	background: #4e699d;
-	background: #4e699d;
+	height: 100vh;	
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
 label {
 	box-shadow: 2px 2px 4px rgba(0, 0,0,0.3);
@@ -80,7 +86,7 @@ label:hover :checked + .flip-card {
 }
 .front h1 {
 	font-size: 30px;
-	color: #499bef;
+	color: #0c0c0d;
 	margin:0
 }
 .front h2 {
