@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
     --primary: #FFE468;
-    --secondary: #8CC641;
+    --secondary: hsl(86, 83%, 37%);
     --light: #F2F2F2;
     --dark: #272630;
 }
@@ -100,11 +100,14 @@
 .bg-hero {
     background: url(../img/hero.jpg) top right no-repeat;
     background-size: contain;
+
+    
 }
 
 @media (max-width: 991.98px) {
     .bg-hero {
         background-size: cover;
+        
     }
 }
 
