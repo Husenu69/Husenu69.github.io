@@ -286,6 +286,7 @@
 }
 
 .bg-call-to-action {
+    
     background: url(../img/call-to-action.jpg) top right no-repeat;
     background-size: contain;
 }
