@@ -349,3 +349,14 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
+    window.onload = function() {
+      var slides = document.querySelectorAll('.slide');
+      var index = 0;
+      setInterval(function() {
+        slides[index].style.animation = 'none';
+        setTimeout(function() {
+          slides[index].style.animation = '';
+          index = (index + 1) % slides.length;
+        }, 100); // Adjust the time to match the animation duration
+      }, 5000); // Adjust the time to match the animation duration
+    };
