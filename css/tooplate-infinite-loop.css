@@ -564,6 +564,17 @@ figure.effect-honey:hover h2 i {
   padding-top: 100px;
 }
 
+#gallery {
+  background-color: white;
+  /* background-image: url(../img/infinite-loop-03.jpg); */
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 980px;
+  position: relative;
+  padding-bottom: 50px;
+  padding-top: 100px;
+}
+
 .contact-item {
   margin-left: 20px;
   margin-bottom: 50px;
@@ -738,3 +749,5 @@ p {
     margin: 0;
   }
 }
+
+  
