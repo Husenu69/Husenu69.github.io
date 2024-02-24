@@ -305,7 +305,12 @@ blockquote {
   .slide {
     animation: slideAnimation 5s infinite; /* Adjust time as needed */
   }
-
+  .button6{
+    background-color: yellow;
+    border: none;
+    position: absolute;
+    transform: translate(-50,-50);
+  }
 
 
 
