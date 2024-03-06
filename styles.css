@@ -1,5 +1,5 @@
 .horizontal-menu {
-    background-color: #0335cc; /* Background color of the menu */
+    background-color: #092474; /* Background color of the menu */
   }
   
   .horizontal-menu ul {
@@ -28,24 +28,14 @@
     background-color: #555; /* Change background color on hover */
   }
 
-  /* footer section*/
-
-.footere_section {
-
-    background-color: #0a0f43;
-  
+  .containerul{
+    border: 10px solid #4161ee;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .footere_section p {
-    margin: 0;
-    padding: 25px 0;
-    color: $white;
-    text-align: center;
-    border-top: .8px solid $white;
+  .sectiune{
+    border: 20px solid #4161ee;
+    height: 90vh;
   }
-  
-  .footere_section a {
-    color: inherit;
-  }
-  
-  /* end footer section*/
