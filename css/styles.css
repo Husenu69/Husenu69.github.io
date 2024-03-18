@@ -1,0 +1,41 @@
+.horizontal-menu {
+    background-color: #092474; /* Background color of the menu */
+  }
+  
+  .horizontal-menu ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox to arrange items horizontally */
+  }
+  
+  .horizontal-menu li {
+    margin-right: 20px; /* Spacing between menu items */
+  }
+  
+  .horizontal-menu li:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+  }
+  
+  .horizontal-menu a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Padding around links */
+    display: block; /* Make links block-level elements */
+  }
+  
+  .horizontal-menu a:hover {
+    background-color: #555; /* Change background color on hover */
+  }
+
+  .containerul{
+    border: 10px solid #4161ee;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sectiune{
+    border: 20px solid #4161ee;
+    height: 90vh;
+  }
