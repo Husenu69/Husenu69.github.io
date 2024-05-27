@@ -4,9 +4,37 @@
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .navbar {
+        display: flex;
+        align-items: center;
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+    }
+    .navbar .logo-text {
+        font-size: 24px;
+        font-weight: bold;
+    }
+</style>
 </head>
 
-<body>  
+<body> 
+  <div class="navbar">
+    <a href="/">
+      <img src="/howdens.PNG" alt="Logo" style="height: 40px;">
+  </a>
+</div>
+  
   
   <a href="/kitchens.html">
   <button style="--clr:#39FF14"><span>Exterior decorating</span><i></i></button>
