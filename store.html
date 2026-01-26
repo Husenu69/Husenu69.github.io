@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Store - Eddie Door Ltd</title>
+  <meta name="description" content="Browse our premium selection of doors. Free installation included with every purchase." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --grey: #64748b;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 70px;
+    }
+
+    /* Sticky Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(2, 6, 23, 0.98);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 9999;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      animation: slideDown 0.5s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      background: linear-gradient(135deg, #fff, #cbd5f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .navbar-menu a {
+      color: #cbd5f5;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .navbar-menu a:hover {
+      background: rgba(37, 99, 235, 0.2);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .navbar-menu a.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .navbar-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(2, 6, 23, 0.98);
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .navbar-menu.active {
+        max-height: 300px;
+      }
+
+      .navbar-menu a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 0;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
+
+    /* Store Header */
+    .store-header {
+      background: linear-gradient(135deg, #020617, #0f172a);
+      color: white;
+      padding: 6rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .store-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #cbd5f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .store-header p {
+      font-size: 1.3rem;
+      color: #cbd5f5;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .free-installation-banner {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* Products Section */
+    .products-container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(37, 99, 235, 0.1));
+    }
+
+    .product-info {
+      padding: 2rem;
+    }
+
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .product-description {
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .free-install-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .product-features {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .product-features li {
+      padding: 0.5rem 0;
+      color: var(--grey);
+      position: relative;
+      padding-left: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .product-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .contact-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    footer {
+      background: #020617;
+      color: #cbd5f5;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 6rem;
+    }
+
+    footer p { color: #cbd5f5; }
+
+    @media (max-width: 768px) {
+      body {
+        padding-top: 60px;
+      }
+
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+
+      .store-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .store-header p {
+        font-size: 1.1rem;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sticky Navigation Bar -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">Eddie Door Ltd</a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="navbar-menu" id="navbarMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="store.html" class="active">My Store</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Store Header -->
+<div class="store-header">
+  <h1>Our Premium Door Collection</h1>
+  <p>Quality doors with professional installation included</p>
+</div>
+
+<!-- Free Installation Banner -->
+<div class="free-installation-banner">
+  🎉 FREE PROFESSIONAL INSTALLATION WITH EVERY PURCHASE! 🎉
+</div>
+
+<!-- Products Section -->
+<div class="products-container">
+  <div class="products-grid">
+    
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-image">🚪</div>
+      <div class="product-info">
+        <h3 class="product-title">Premium Composite Door</h3>
+        <p class="product-description">High-security composite door with advanced insulation and elegant finish.</p>
+        <div class="free-install-badge">✓ Free Installation Included</div>
+        <div class="product-price">£850</div>
+        <ul class="product-features">
+          <li>Multi-point locking system</li>
+          <li>A+ energy rating</li>
+          <li>Weather-resistant finish</li>
+          <li>10-year guarantee</li>
+        </ul>
+        <a href="https://wa.me/447775877746?text=I'm interested in the Premium Composite Door" class="contact-btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-image">🚪</div>
+      <div class="product-info">
+        <h3 class="product-title">Classic Internal Door</h3>
+        <p class="product-description">Elegant internal door perfect for any room in your home.</p>
+        <div class="free-install-badge">✓ Free Installation Included</div>
+        <div class="product-price">£295</div>
+        <ul class="product-features">
+          <li>Premium hardwood finish</li>
+          <li>Pre-hung option available</li>
+          <li>Multiple style options</li>
+          <li>5-year guarantee</li>
+        </ul>
+        <a href="https://wa.me/447775877746?text=I'm interested in the Classic Internal Door" class="contact-btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-image">🚪</div>
+      <div class="product-info">
+        <h3 class="product-title">Fire Safety Door</h3>
+        <p class="product-description">Certified fire door for maximum safety and compliance.</p>
+        <div class="free-install-badge">✓ Free Installation Included</div>
+        <div class="product-price">£650</div>
+        <ul class="product-features">
+          <li>30/60 minute fire rating</li>
+          <li>Certified to BS standards</li>
+          <li>Smoke seal included</li>
+          <li>10-year guarantee</li>
+        </ul>
+        <a href="https://wa.me/447775877746?text=I'm interested in the Fire Safety Door" class="contact-btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <div class="product-image">🚪</div>
+      <div class="product-info">
+        <h3 class="product-title">Luxury External Door</h3>
+        <p class="product-description">Statement entrance door with premium glazing and hardware.</p>
+        <div class="free-install-badge">✓ Free Installation Included</div>
+        <div class="product-price">£1,250</div>
+        <ul class="product-features">
+          <li>Designer glass panels</li>
+          <li>Premium hardware included</li>
+          <li>Superior insulation</li>
+          <li>10-year guarantee</li>
+        </ul>
+        <a href="https://wa.me/447775877746?text=I'm interested in the Luxury External Door" class="contact-btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product-card">
+      <div class="product-image">🚪</div>
+      <div class="product-info">
+        <h3 class="product-title">Security Steel Door</h3>
+        <p class="product-description">Maximum security door with reinforced steel construction.</p>
+        <div class="free-install-badge">✓ Free Installation Included</div>
+        <div class="product-price">£1,100</div>
+        <ul class="product-features">
+          <li>Reinforced steel core</li>
+          <li>Advanced locking mechanism</li>
+          <li>Impact resistant</li>
+          <li>10-year guarantee</li>
+        </ul>
+        <a href="https://wa.me/447775877746?text=I'm interested in the Security Steel Door" class="contact-btn">Order Now</a>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product-card">
+      <div class="product-image">🚪</div>
+      <div class="product-info">
+        <h3 class="product-title">Sliding Patio Door</h3>
+        <p class="product-description">Modern sliding door system for seamless indoor-outdoor living.</p>
+        <div class="free-install-badge">✓ Free Installation Included</div>
+        <div class="product-price">£1,450</div>
+        <ul class="product-features">
+          <li>Triple-glazed panels</li>
+          <li>Smooth sliding mechanism</li>
+          <li>Energy efficient</li>
+          <li>10-year guarantee</li>
+        </ul>
+        <a href="https://wa.me/447775877746?text=I'm interested in the Sliding Patio Door" class="contact-btn">Order Now</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p style="font-size: 1.1rem; margin-bottom: 0.5rem;"><strong>Eddie Door Ltd</strong></p>
+  <p>© 2026 Eddie Door Ltd. Precision over speed.</p>
+  <p style="margin-top: 1rem; font-size: 0.9rem;">All prices include FREE professional installation · 10-Year Guarantee on all products</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('navbarMenu');
+    const toggle = document.querySelector('.menu-toggle');
+    menu.classList.toggle('active');
+    toggle.classList.toggle('active');
+  }
+
+  console.log('Eddie Door Store - Loaded Successfully ✓');
+</script>
+
+</body>
+</html>
