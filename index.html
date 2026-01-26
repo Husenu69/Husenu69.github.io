@@ -1,120 +1,580 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProApex People</title>
-<style>
-/* Reset și font */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eddie Door Ltd - Premium Installation Services</title>
+  <meta name="description" content="High-precision door and window installation across the UK. Premium workmanship, written standards, and a 10-year guarantee." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --grey: #64748b;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+    }
 
-/* Header */
-header {
-  background-color: #0d6efd;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-header h1 {
-  margin: 0;
-  font-size: 2em;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* Galerie Acordeon */
-.accordion-gallery {
-  display: flex;
-  max-width: 900px;
-  margin: 40px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+    /* Hero Header with Animated Background */
+    header {
+      position: relative;
+      background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      padding: 8rem 1.5rem 6rem;
+      text-align: center;
+      overflow: hidden;
+    }
 
-.accordion-gallery div {
-  flex: 1;
-  background-size: cover;
-  background-position: center;
-  transition: flex 0.5s ease;
-  cursor: pointer;
-  position: relative;
-}
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
 
-.accordion-gallery div span {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  color: white;
-  font-weight: bold;
-  background: rgba(0,0,0,0.4);
-  padding: 5px 10px;
-  border-radius: 5px;
-}
+    /* Floating particles background */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
 
-/* Hover desktop */
-.accordion-gallery div:hover {
-  flex: 3;
-}
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 20s infinite;
+    }
 
-/* Mobile tap */
-@media (max-width: 768px) {
-  .accordion-gallery {
-    flex-direction: column;
-  }
-  .accordion-gallery div {
-    flex: none;
-    height: 200px;
-  }
-  .accordion-gallery div.active {
-    height: 400px;
-  }
-}
+    .particle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 60px; height: 60px; left: 30%; animation-delay: 2s; }
+    .particle:nth-child(3) { width: 100px; height: 100px; left: 50%; animation-delay: 4s; }
+    .particle:nth-child(4) { width: 70px; height: 70px; left: 70%; animation-delay: 6s; }
+    .particle:nth-child(5) { width: 90px; height: 90px; left: 85%; animation-delay: 8s; }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #0d6efd;
-  color: white;
-  margin-top: 40px;
-}
-</style>
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    header > * { position: relative; z-index: 2; }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #cbd5f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 720px;
+      margin: auto;
+      color: #cbd5f5;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: -3rem auto 0;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,.1);
+      text-align: center;
+      transform: translateY(0);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(37, 99, 235, 0.2);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--grey);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    section { padding: 5rem 1.5rem; max-width: 1100px; margin: auto; }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    p { color: var(--grey); margin-bottom: 1rem; }
+
+    /* Service Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,.06);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    ul { list-style: none; }
+    ul li {
+      padding: 0.6rem 0;
+      color: var(--grey);
+      position: relative;
+      padding-left: 1.8rem;
+    }
+    
+    ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* CTA Section */
+    .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .highlight > * { position: relative; z-index: 2; }
+
+    .highlight h2 {
+      margin-bottom: 1rem;
+      color: white;
+      font-size: 2.5rem;
+    }
+
+    .highlight p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 1rem;
+      background: white;
+      color: var(--accent);
+      padding: 1rem 2.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .cta:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Process Timeline */
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .timeline-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+    }
+
+    .timeline-content {
+      flex: 1;
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    /* Contact Section */
+    #contact {
+      background: white;
+      padding: 3rem;
+      border-radius: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.3rem;
+    }
+
+    footer {
+      background: #020617;
+      color: #cbd5f5;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 4rem;
+    }
+
+    footer p { color: #cbd5f5; }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      header p { font-size: 1.1rem; }
+      .stat-number { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      .timeline-item { flex-direction: column; }
+    }
+
+    /* Scroll Animation */
+    .scroll-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .scroll-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>ProApex People</h1>
-  <p>Galeria noastră cu oameni importanți</p>
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  <h1>Eddie Door Ltd</h1>
+  <p>High-precision door and window installation across the UK. Built on discipline, accuracy, and workmanship that lasts a lifetime.</p>
 </header>
 
-<!-- Galerie Acordeon -->
-<div class="accordion-gallery">
-  <div style="background-image: url('https://via.placeholder.com/600x400?text=Eu');"><span>Eu</span></div>
-  <div style="background-image: url('https://via.placeholder.com/600x400?text=Mark');"><span>Mark</span></div>
-  <div style="background-image: url('https://via.placeholder.com/600x400?text=Al+Treilea');"><span>Al Treilea</span></div>
+<div class="stats">
+  <div class="stat-card">
+    <span class="stat-number">10+</span>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">10</span>
+    <div class="stat-label">Year Guarantee</div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">100%</span>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">UK</span>
+    <div class="stat-label">Wide Coverage</div>
+  </div>
 </div>
 
+<section class="scroll-fade">
+  <h2>Who We Are</h2>
+  <p style="text-align: center; max-width: 800px; margin: 1rem auto; font-size: 1.1rem;">Eddie Door Ltd is a specialist installation company focused exclusively on doors and windows. We are not general builders or handymen. Every project follows a documented installation standard developed through years of real-world experience.</p>
+</section>
+
+<section class="scroll-fade">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">🚪</div>
+      <h3>The Eddie Door Installation Standard</h3>
+      <ul>
+        <li>Laser-level alignment</li>
+        <li>Millimetre-accurate tolerances</li>
+        <li>Correct structural fixing</li>
+        <li>Thermal & acoustic sealing</li>
+        <li>Clean internal & external finishes</li>
+        <li>Full site clean-up</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏠</div>
+      <h3>What We Install</h3>
+      <p><strong>Doors:</strong> Internal, external, composite, fire, and security doors.</p>
+      <p><strong>Windows:</strong> uPVC and aluminium systems, replacement glazing projects.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Who We Work With</h3>
+      <p>Property developers, landlords, letting agencies, and homeowners who value precision over speed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scroll-fade">
+  <h2>Our Process</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-number">1</div>
+      <div class="timeline-content">
+        <h3>Initial Consultation</h3>
+        <p>We assess your requirements and provide expert recommendations tailored to your property.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-number">2</div>
+      <div class="timeline-content">
+        <h3>Precise Measurement</h3>
+        <p>Laser-accurate measurements ensure perfect fit and optimal performance.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-number">3</div>
+      <div class="timeline-content">
+        <h3>Professional Installation</h3>
+        <p>Our certified installers follow the Eddie Door Standard for flawless results.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-number">4</div>
+      <div class="timeline-content">
+        <h3>Quality Assurance</h3>
+        <p>Final inspection and 10-year written guarantee for complete peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scroll-fade">
+  <div class="highlight">
+    <h2>10-Year Workmanship Guarantee</h2>
+    <p>Our installation quality is guaranteed in writing. If an issue is caused by our workmanship, we put it right. No questions asked.</p>
+    <a class="cta" href="https://wa.me/447775877746">Request a Consultation</a>
+  </div>
+</section>
+
+<section id="contact" class="scroll-fade">
+  <h2>Get In Touch</h2>
+  <div class="contact-info">
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div>
+        <strong>Location</strong><br>
+        <span style="color: var(--grey);">United Kingdom</span>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📞</div>
+      <div>
+        <strong>Phone</strong><br>
+        <span style="color: var(--grey);"><a href="tel:0777 58 777 46">0777 58 777 46</a></span>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">💬</div>
+      <div>
+        <strong>WhatsApp</strong><br>
+        <a href="https://wa.me/447775877746" style="color: var(--accent); text-decoration: none;">Message Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  &copy; 2025 ProApex. Toate drepturile rezervate.
+  <p style="font-size: 1.1rem; margin-bottom: 0.5rem;"><strong>Eddie Door Ltd</strong></p>
+  <p>© 2026 Eddie Door Ltd. Precision over speed.</p>
 </footer>
 
 <script>
-// Mobile tap functionality
-const items = document.querySelectorAll('.accordion-gallery div');
-items.forEach(item => {
-  item.addEventListener('click', () => {
-    // Dezactivează toate
-    items.forEach(i => i.classList.remove('active'));
-    // Activează doar cel selectat
-    item.classList.add('active');
-  });
-});
+  // Scroll animation observer
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+
+  console.log('Eddie Door Premium Website - Loaded Successfully ✓');
 </script>
 
 </body>
