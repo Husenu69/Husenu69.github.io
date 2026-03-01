@@ -1,750 +1,1355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eddie Door Ltd - Premium Installation Services</title>
-  <meta name="description" content="High-precision door and window installation across the UK. Premium workmanship, written standards, and a 10-year guarantee." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eddie Door Ltd | Precision Door & Window Installation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --grey: #64748b;
-      --accent: #2563eb;
-      --accent-light: #3b82f6;
+      --cream: #F5F0E8;
+      --dark: #1A1A18;
+      --dark2: #242420;
+      --mid: #3D3C38;
+      --accent: #C8873A;
+      --accent-light: #E8A85A;
+      --light-gray: #EBEBEB;
+      --white: #FFFFFF;
+      --border: rgba(255,255,255,0.08);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--dark);
-      background: var(--light);
-      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--white);
       overflow-x: hidden;
-      padding-top: 70px; /* Space for fixed navbar */
     }
 
-    /* Sticky Navigation Bar */
-    .navbar {
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark2); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(2, 6, 23, 0.98);
-      backdrop-filter: blur(10px);
-      padding: 1rem 2rem;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      z-index: 9999;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-      animation: slideDown 0.5s ease;
+      padding: 1.2rem 5rem;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
     }
 
-    @keyframes slideDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
+    nav.scrolled {
+      background: rgba(26,26,24,0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.4);
     }
 
-    .navbar-brand {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: white;
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--white);
       text-decoration: none;
-      background: linear-gradient(135deg, #fff, #cbd5f5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      letter-spacing: 0.5px;
     }
+    .logo span { color: var(--accent); }
 
-    .navbar-menu {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      align-items: center;
-    }
-
-    .navbar-menu a {
-      color: #cbd5f5;
+    nav ul { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
+    nav ul a {
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
+      font-size: 0.85rem;
       font-weight: 500;
-      font-size: 1rem;
-      padding: 0.5rem 1.5rem;
-      border-radius: 999px;
-      transition: all 0.3s ease;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--accent-light); }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: var(--white) !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent-light) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
       position: relative;
-    }
-
-    .navbar-menu a:hover {
-      background: rgba(37, 99, 235, 0.2);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .navbar-menu a.active {
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      color: white;
-    }
-
-    /* Mobile Menu Toggle */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      .navbar-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(2, 6, 23, 0.98);
-        flex-direction: column;
-        padding: 1rem 0;
-        gap: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-
-      .navbar-menu.active {
-        max-height: 300px;
-      }
-
-      .navbar-menu a {
-        width: 100%;
-        text-align: center;
-        padding: 1rem;
-        border-radius: 0;
-      }
-
-      .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(7px, 7px);
-      }
-
-      .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-      }
-    }
-
-    /* Hero Header with Animated Background */
-    header {
-      position: relative;
-      background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      color: white;
-      padding: 8rem 1.5rem 6rem;
-      text-align: center;
       overflow: hidden;
+      padding: 8rem 5rem 5rem;
     }
 
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    /* Floating particles background */
-    .particles {
+    /* Dark architectural background */
+    .hero-bg {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(200,135,58,0.06) 0%, transparent 50%),
+        linear-gradient(to bottom, #0F0F0D 0%, #1A1A18 60%, #1A1A18 100%);
+      z-index: 0;
+    }
+
+    /* Geometric lines */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 45%;
+      height: 100%;
+      background: var(--dark2);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 50%; right: 22%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    }
+
+    /* Door silhouette */
+    .door-silhouette {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 520px;
+      z-index: 1;
+      animation: doorReveal 1.2s cubic-bezier(0.4,0,0.2,1) both;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes doorReveal {
+      from { opacity: 0; transform: translateY(-48%) translateX(40px); }
+      to { opacity: 1; transform: translateY(-50%) translateX(0); }
+    }
+
+    .door-frame {
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      z-index: 1;
+      border: 2px solid rgba(200,135,58,0.4);
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 20px;
+      background: linear-gradient(145deg, #242420, #1e1e1c);
+      box-shadow: -20px 0 60px rgba(0,0,0,0.5), inset 0 0 0 8px rgba(255,255,255,0.02);
     }
 
-    .particle {
+    .door-panel {
+      border: 1px solid rgba(200,135,58,0.2);
+      border-radius: 1px;
+      background: rgba(200,135,58,0.03);
+      transition: background 0.3s;
+    }
+
+    .door-frame:hover .door-panel { background: rgba(200,135,58,0.06); }
+
+    .door-knob {
       position: absolute;
-      background: rgba(255, 255, 255, 0.1);
+      right: -12px;
+      top: 52%;
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle at 35% 35%, var(--accent-light), var(--accent));
       border-radius: 50%;
-      animation: float 20s infinite;
+      box-shadow: 0 2px 10px rgba(200,135,58,0.5);
     }
 
-    .particle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
-    .particle:nth-child(2) { width: 60px; height: 60px; left: 30%; animation-delay: 2s; }
-    .particle:nth-child(3) { width: 100px; height: 100px; left: 50%; animation-delay: 4s; }
-    .particle:nth-child(4) { width: 70px; height: 70px; left: 70%; animation-delay: 6s; }
-    .particle:nth-child(5) { width: 90px; height: 90px; left: 85%; animation-delay: 8s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.3; }
-      90% { opacity: 0.3; }
-      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    /* Glow behind door */
+    .door-glow {
+      position: absolute;
+      right: 3%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 340px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(200,135,58,0.08) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
     }
 
-    header > * { position: relative; z-index: 2; }
-
-    header h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #fff, #cbd5f5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeInDown 1s ease-out;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      animation: heroFadeUp 1s cubic-bezier(0.4,0,0.2,1) both;
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    header p {
-      font-size: 1.3rem;
-      max-width: 720px;
-      margin: auto;
-      color: #cbd5f5;
-      animation: fadeInUp 1s ease-out 0.3s both;
-    }
-
-    @keyframes fadeInUp {
+    @keyframes heroFadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Stats Section */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      animation: heroFadeUp 1s 0.1s both;
+    }
+
+    .eyebrow-line {
+      width: 40px;
+      height: 1.5px;
+      background: var(--accent);
+    }
+
+    .eyebrow-text {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -1px;
+      margin-bottom: 1.8rem;
+      animation: heroFadeUp 1s 0.15s both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+      animation: heroFadeUp 1s 0.2s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+      animation: heroFadeUp 1s 0.25s both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(200,135,58,0.35);
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      padding: 0.9rem 2.2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-light); }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      animation: heroFadeUp 1s 0.3s both;
+    }
+
+    .stat-item { border-left: 2px solid var(--accent); padding-left: 1rem; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-lbl {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.3rem;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 2rem;
-      max-width: 1100px;
-      margin: -3rem auto 0;
-      padding: 0 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .trust-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(200,135,58,0.12);
+      border: 1px solid rgba(200,135,58,0.25);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    /* ── WHO WE ARE ── */
+    .about {
+      padding: 7rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-visual {
       position: relative;
-      z-index: 10;
     }
 
-    .stat-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,.1);
-      text-align: center;
-      transform: translateY(0);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .about-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .stat-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 80px rgba(37, 99, 235, 0.2);
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent), transparent);
     }
 
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
+    .about-card::after {
+      content: '"';
+      position: absolute;
+      top: 1rem; right: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(200,135,58,0.06);
+      line-height: 1;
+      pointer-events: none;
     }
 
-    .stat-label {
-      color: var(--grey);
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1.5rem;
     }
 
-    section { padding: 5rem 1.5rem; max-width: 1100px; margin: auto; }
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
+    .about-quote-author {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
       font-weight: 600;
     }
 
-    p { color: var(--grey); margin-bottom: 1rem; }
-
-    /* Service Cards Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: 2rem;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.8rem 1.4rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 24px rgba(200,135,58,0.35);
     }
 
-    .card {
-      background: white;
+    .about-text .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .eyebrow-short { width: 30px; height: 1.5px; background: var(--accent); }
+    .eyebrow-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 7rem 5rem;
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 10px;
       padding: 2.5rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,.06);
       position: relative;
       overflow: hidden;
-      transition: all 0.4s ease;
+      transition: border-color 0.3s, transform 0.3s;
     }
 
-    .card::before {
+    .service-card:hover {
+      border-color: rgba(200,135,58,0.4);
+      transform: translateY(-4px);
+    }
+
+    .service-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), transparent);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.4s ease;
+      transition: transform 0.3s;
     }
 
-    .card:hover::before {
-      transform: scaleX(1);
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(200,135,58,0.08);
+      line-height: 1;
+      margin-bottom: 1rem;
+      letter-spacing: -2px;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
     }
 
-    .card-icon {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius: 1rem;
+    .service-card p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .service-items {
+      margin-top: 1.2rem;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .service-items li {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      animation: iconPulse 2s ease-in-out infinite;
+      gap: 0.6rem;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
     }
 
-    @keyframes iconPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* ── PROCESS ── */
+    .process {
+      padding: 7rem 5rem;
+      background: var(--dark);
     }
 
-    ul { list-style: none; }
-    ul li {
-      padding: 0.6rem 0;
-      color: var(--grey);
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
       position: relative;
-      padding-left: 1.8rem;
-    }
-    
-    ul li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    /* CTA Section */
-    .highlight {
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      color: white;
-      padding: 4rem 2rem;
-      border-radius: 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
       margin-top: 3rem;
     }
 
-    .highlight::before {
+    .process-steps::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
+      top: 2rem;
+      left: calc(12.5% + 1px);
+      right: calc(12.5% + 1px);
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), rgba(200,135,58,0.2), var(--accent));
+      z-index: 0;
     }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .highlight > * { position: relative; z-index: 2; }
-
-    .highlight h2 {
-      margin-bottom: 1rem;
-      color: white;
-      font-size: 2.5rem;
-    }
-
-    .highlight p {
-      color: rgba(255,255,255,0.9);
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
-
-    .cta {
-      display: inline-block;
-      margin-top: 1rem;
-      background: white;
-      color: var(--accent);
-      padding: 1rem 2.5rem;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    .cta:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-
-    /* Process Timeline */
-    .timeline {
+    .step {
+      text-align: center;
+      padding: 0 1.5rem;
       position: relative;
-      padding: 2rem 0;
-      margin-top: 3rem;
+      z-index: 1;
     }
 
-    .timeline-item {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeIn 0.6s ease forwards;
-    }
-
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    .timeline-number {
-      flex-shrink: 0;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      color: white;
+    .step-num {
+      width: 4rem;
+      height: 4rem;
       border-radius: 50%;
+      background: var(--dark2);
+      border: 2px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
       font-weight: 700;
-      font-size: 1.5rem;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      color: var(--accent);
+      transition: background 0.3s;
     }
 
-    .timeline-content {
-      flex: 1;
-      background: white;
-      padding: 1.5rem 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    .step:hover .step-num { background: var(--accent); color: var(--white); }
+
+    .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
     }
 
-    /* Contact Section */
-    #contact {
-      background: white;
-      padding: 3rem;
-      border-radius: 2rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-      margin-top: 3rem;
+    .step p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      font-weight: 300;
     }
 
-    .contact-info {
+    /* ── GUARANTEE ── */
+    .guarantee {
+      padding: 7rem 5rem;
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
     }
 
-    .contact-item {
+    .guarantee-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .guarantee-text h2 span { color: var(--accent); }
+
+    .guarantee-text p {
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .guarantee-visual {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 1rem;
     }
 
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius: 50%;
+    .g-item {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: border-color 0.25s;
+    }
+
+    .g-item:hover { border-color: rgba(200,135,58,0.35); }
+
+    .g-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(200,135,58,0.12);
+      border: 1px solid rgba(200,135,58,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
+      flex-shrink: 0;
     }
 
-    footer {
-      background: #020617;
-      color: #cbd5f5;
+    .g-item h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .g-item p { font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300; }
+
+    /* ── WHO WE WORK WITH ── */
+    .clients {
+      padding: 7rem 5rem;
+      background: var(--dark);
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .client-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
       text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 4rem;
+      transition: border-color 0.25s, transform 0.25s;
     }
 
-    footer p { color: #cbd5f5; }
+    .client-card:hover {
+      border-color: rgba(200,135,58,0.35);
+      transform: translateY(-3px);
+    }
 
-    /* Mobile Responsive */
+    .client-emoji { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+
+    .client-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .client-card p { font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ── CONTACT ── */
+    .contact {
+      padding: 7rem 5rem;
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .contact-text h2 span { color: var(--accent); }
+
+    .contact-text p {
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-opt {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--white);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .contact-opt:hover {
+      border-color: rgba(200,135,58,0.4);
+      transform: translateX(4px);
+    }
+
+    .co-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      background: rgba(200,135,58,0.12);
+      border: 1px solid rgba(200,135,58,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .co-label { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1px; }
+    .co-value { font-size: 0.95rem; font-weight: 600; margin-top: 0.1rem; }
+
+    .contact-visual {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem;
+      position: sticky;
+      top: 6rem;
+    }
+
+    .contact-visual h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-visual p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .form-row { margin-bottom: 1rem; }
+
+    .form-row label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+      width: 100%;
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus,
+    .form-row select:focus {
+      border-color: var(--accent);
+    }
+
+    .form-row textarea { height: 100px; resize: vertical; }
+
+    .form-row select option { background: var(--dark2); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0F0F0D;
+      border-top: 1px solid var(--border);
+      padding: 3rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--accent); }
+
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent-light); }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.2);
+      font-size: 0.78rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 1.2rem 2.5rem; }
+      .hero, .about, .services, .process, .guarantee, .clients, .contact { padding: 5rem 2.5rem; }
+      .trust-bar { padding: 1.5rem 2.5rem; }
+      footer { padding: 2.5rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .process-steps::before { display: none; }
+      .clients-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 768px) {
-      body {
-        padding-top: 60px;
-      }
-      
-      header h1 { font-size: 2.5rem; }
-      header p { font-size: 1.1rem; }
-      .stat-number { font-size: 2.5rem; }
-      h2 { font-size: 2rem; }
-      .timeline-item { flex-direction: column; }
-      
-      .navbar {
-        padding: 1rem 1.5rem;
-      }
-    }
-
-    /* Scroll Animation */
-    .scroll-fade {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .scroll-fade.visible {
-      opacity: 1;
-      transform: translateY(0);
+      nav ul { display: none; }
+      .hero { padding: 7rem 2rem 4rem; }
+      .door-silhouette { display: none; }
+      .hero-bg::before { display: none; }
+      .about, .guarantee, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
 
-<!-- Sticky Navigation Bar -->
-<nav class="navbar">
-  <a href="index.html" class="navbar-brand">Eddie Door Ltd</a>
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <ul class="navbar-menu" id="navbarMenu">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="store.html">My Store</a></li>
-    <li><a href="#contact">Contact</a></li>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="logo">Eddie<span>Door</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="store.html">Our Store</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
   </ul>
 </nav>
 
-<header>
-  <div class="particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-  <h1>Eddie Door Ltd</h1>
-  <p>High-precision door and window installation across the UK. Built on discipline, accuracy, and workmanship that lasts a lifetime.</p>
-</header>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="door-glow"></div>
 
-<div class="stats">
-  <div class="stat-card">
-    <span class="stat-number">10+</span>
-    <div class="stat-label">Years Experience</div>
+  <!-- Decorative door -->
+  <div class="door-silhouette">
+    <div class="door-frame">
+      <div class="door-panel"></div>
+      <div class="door-panel"></div>
+      <div class="door-panel"></div>
+      <div class="door-panel"></div>
+      <div class="door-panel"></div>
+      <div class="door-panel"></div>
+      <div class="door-panel"></div>
+      <div class="door-panel"></div>
+      <div class="door-knob"></div>
+    </div>
   </div>
-  <div class="stat-card">
-    <span class="stat-number">10</span>
-    <div class="stat-label">Year Guarantee</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">UK's Precision Door Specialists</span>
+    </div>
+    <h1>Precision Over<br><em>Speed.</em><br>Every Time.</h1>
+    <p class="hero-sub">High-precision door and window installation across the UK. Built on discipline, accuracy, and workmanship that lasts a lifetime.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request a Consultation →</a>
+      <a href="store.html" class="btn-ghost">Browse Our Doors</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10<span>yr</span></div>
+        <div class="stat-lbl">Guarantee</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-lbl">Client Satisfaction</div>
+      </div>
+    </div>
   </div>
-  <div class="stat-card">
-    <span class="stat-number">100%</span>
-    <div class="stat-label">Client Satisfaction</div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
   </div>
-  <div class="stat-card">
-    <span class="stat-number">UK</span>
-    <div class="stat-label">Wide Coverage</div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">🎯</div>
+    Laser-level alignment
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">📐</div>
+    Millimetre-accurate tolerances
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🔥</div>
+    FD30 Fire Door Certified
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🇬🇧</div>
+    UK-Wide Coverage
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">✍️</div>
+    10-Year Written Guarantee
   </div>
 </div>
 
-<section class="scroll-fade">
-  <h2>Who We Are</h2>
-  <p style="text-align: center; max-width: 800px; margin: 1rem auto; font-size: 1.1rem;">Eddie Door Ltd is a specialist installation company focused exclusively on doors and windows. We are not general builders or handymen. Every project follows a documented installation standard developed through years of real-world experience.</p>
+<!-- WHO WE ARE -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="about-card">
+      <p class="about-quote">"We are not general builders or handymen. Every project follows a documented installation standard developed through years of real-world experience."</p>
+      <div class="about-quote-author">— Eddie Door Ltd</div>
+      <div class="about-badge">Est. 10+ Years</div>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="section-eyebrow">
+      <div class="eyebrow-short"></div>
+      <span class="eyebrow-label">Who We Are</span>
+    </div>
+    <h2>Specialists in Doors &amp; Windows. Nothing Else.</h2>
+    <p>Eddie Door Ltd is a specialist installation company focused exclusively on doors and windows. We bring the precision of a trade professional with the care of a craftsman.</p>
+    <p>We work across the UK serving property developers, landlords, letting agencies, and homeowners who value a perfect finish above everything else.</p>
+    <a href="store.html" class="btn-primary" style="margin-top:1rem;">Browse Our Door Range →</a>
+  </div>
 </section>
 
-<section class="scroll-fade">
-  <h2>Our Services</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="card-icon">🚪</div>
-      <h3>The Eddie Door Installation Standard</h3>
-      <ul>
-        <li>Laser-level alignment</li>
-        <li>Millimetre-accurate tolerances</li>
-        <li>Correct structural fixing</li>
-        <li>Thermal & acoustic sealing</li>
-        <li>Clean internal & external finishes</li>
-        <li>Full site clean-up</li>
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-title">
+    <div class="eyebrow">
+      <div class="eyebrow-short"></div>
+      <span class="eyebrow-label">What We Do</span>
+    </div>
+    <h2>Our Services</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3>The Eddie Door Standard</h3>
+      <p>Every installation follows our documented quality protocol — no shortcuts, no guesswork.</p>
+      <ul class="service-items">
+        <li><div class="dot"></div>Laser-level alignment</li>
+        <li><div class="dot"></div>Millimetre-accurate tolerances</li>
+        <li><div class="dot"></div>Correct structural fixing</li>
+        <li><div class="dot"></div>Thermal &amp; acoustic sealing</li>
+        <li><div class="dot"></div>Full site clean-up</li>
       </ul>
     </div>
-    <div class="card">
-      <div class="card-icon">🏠</div>
-      <h3>What We Install</h3>
-      <p><strong>Doors:</strong> Internal, external, composite, fire, and security doors.</p>
-      <p><strong>Windows:</strong> uPVC and aluminium systems, replacement glazing projects.</p>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3>Door Installation</h3>
+      <p>From internal fire doors to composite front doors — we install every type with the same exacting standard.</p>
+      <ul class="service-items">
+        <li><div class="dot"></div>Internal doors</li>
+        <li><div class="dot"></div>External &amp; composite doors</li>
+        <li><div class="dot"></div>Fire-rated FD30 doors</li>
+        <li><div class="dot"></div>Security doors</li>
+      </ul>
     </div>
-    <div class="card">
-      <div class="card-icon">🤝</div>
-      <h3>Who We Work With</h3>
-      <p>Property developers, landlords, letting agencies, and homeowners who value precision over speed.</p>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3>Window Installation</h3>
+      <p>uPVC and aluminium window systems fitted precisely for long-term performance and energy efficiency.</p>
+      <ul class="service-items">
+        <li><div class="dot"></div>uPVC systems</li>
+        <li><div class="dot"></div>Aluminium systems</li>
+        <li><div class="dot"></div>Replacement glazing</li>
+        <li><div class="dot"></div>Energy-efficient sealing</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="scroll-fade">
-  <h2>Our Process</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-number">1</div>
-      <div class="timeline-content">
-        <h3>Initial Consultation</h3>
-        <p>We assess your requirements and provide expert recommendations tailored to your property.</p>
-      </div>
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-title">
+    <div class="eyebrow">
+      <div class="eyebrow-short"></div>
+      <span class="eyebrow-label">How It Works</span>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-number">2</div>
-      <div class="timeline-content">
-        <h3>Precise Measurement</h3>
-        <p>Laser-accurate measurements ensure perfect fit and optimal performance.</p>
-      </div>
+    <h2>Our Process</h2>
+  </div>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Initial Consultation</h3>
+      <p>We assess your requirements and provide expert recommendations tailored to your property.</p>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-number">3</div>
-      <div class="timeline-content">
-        <h3>Professional Installation</h3>
-        <p>Our certified installers follow the Eddie Door Standard for flawless results.</p>
-      </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Precise Measurement</h3>
+      <p>Laser-accurate measurements ensure a perfect fit and optimal long-term performance.</p>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-number">4</div>
-      <div class="timeline-content">
-        <h3>Quality Assurance</h3>
-        <p>Final inspection and 10-year written guarantee for complete peace of mind.</p>
-      </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Professional Installation</h3>
+      <p>Our certified installers follow the Eddie Door Standard for flawless, reliable results.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Quality Assurance</h3>
+      <p>Final inspection and 10-year written guarantee for complete peace of mind.</p>
     </div>
   </div>
 </section>
 
-<section class="scroll-fade">
-  <div class="highlight">
-    <h2>10-Year Workmanship Guarantee</h2>
-    <p>Our installation quality is guaranteed in writing. If an issue is caused by our workmanship, we put it right. No questions asked.</p>
-    <a class="cta" href="https://wa.me/447775877746">Request a Consultation</a>
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="guarantee-text">
+    <div class="section-eyebrow">
+      <div class="eyebrow-short"></div>
+      <span class="eyebrow-label">Our Promise</span>
+    </div>
+    <h2>10-Year Workmanship <span>Guarantee</span></h2>
+    <p>Our installation quality is guaranteed in writing. If an issue is caused by our workmanship, we put it right. No questions asked. No small print.</p>
+    <a href="https://wa.me/447775877746" class="btn-primary">Request a Consultation →</a>
   </div>
-</section>
 
-<section id="contact" class="scroll-fade">
-  <h2>Get In Touch</h2>
-  <div class="contact-info">
-    <div class="contact-item">
-      <div class="contact-icon">📍</div>
+  <div class="guarantee-visual">
+    <div class="g-item">
+      <div class="g-icon">✅</div>
       <div>
-        <strong>Location</strong><br>
-        <span style="color: var(--grey);">United Kingdom</span>
+        <h4>Written Guarantee</h4>
+        <p>Every job comes with a 10-year written workmanship guarantee.</p>
       </div>
     </div>
-    <div class="contact-item">
-      <div class="contact-icon">📞</div>
+    <div class="g-item">
+      <div class="g-icon">🔧</div>
       <div>
-        <strong>Phone</strong><br>
-        <span style="color: var(--grey);"><a href="tel:0777 58 777 46">0777 58 777 46</a></span>
+        <h4>We Fix Our Mistakes</h4>
+        <p>Any issue caused by our work is resolved quickly, at no cost to you.</p>
       </div>
     </div>
-    <div class="contact-item">
-      <div class="contact-icon">💬</div>
+    <div class="g-item">
+      <div class="g-icon">📋</div>
       <div>
-        <strong>WhatsApp</strong><br>
-        <a href="https://wa.me/447775877746" style="color: var(--accent); text-decoration: none;">Message Us</a>
+        <h4>Documented Standard</h4>
+        <p>Every installation follows our documented quality protocol.</p>
+      </div>
+    </div>
+    <div class="g-item">
+      <div class="g-icon">🏆</div>
+      <div>
+        <h4>100% Client Satisfaction</h4>
+        <p>Our reputation is built on getting every job right, first time.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- WHO WE WORK WITH -->
+<section class="clients">
+  <div class="section-title">
+    <div class="eyebrow">
+      <div class="eyebrow-short"></div>
+      <span class="eyebrow-label">Our Clients</span>
+    </div>
+    <h2>Who We Work With</h2>
+  </div>
+
+  <div class="clients-grid">
+    <div class="client-card">
+      <span class="client-emoji">🏗️</span>
+      <h3>Property Developers</h3>
+      <p>Reliable, on-time installation across new build and renovation projects.</p>
+    </div>
+    <div class="client-card">
+      <span class="client-emoji">🏠</span>
+      <h3>Landlords</h3>
+      <p>Fire door compliance, security upgrades, and quality finishes for rental properties.</p>
+    </div>
+    <div class="client-card">
+      <span class="client-emoji">🤝</span>
+      <h3>Letting Agencies</h3>
+      <p>Trusted trade partner for maintenance, compliance, and refurbishment work.</p>
+    </div>
+    <div class="client-card">
+      <span class="client-emoji">🏡</span>
+      <h3>Homeowners</h3>
+      <p>For those who want the job done properly — once — with no stress.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-eyebrow" style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1.2rem;">
+        <div class="eyebrow-short"></div>
+        <span class="eyebrow-label">Get In Touch</span>
+      </div>
+      <div class="contact-text">
+        <h2>Let's Talk About <span>Your Project</span></h2>
+        <p>Whether you need a single fire door fitted or a full property fitted out, we're ready to help. Reach out via phone, WhatsApp, or email.</p>
+      </div>
+
+      <div class="contact-options">
+        <a href="tel:07775877746" class="contact-opt">
+          <div class="co-icon">📞</div>
+          <div>
+            <div class="co-label">Phone</div>
+            <div class="co-value">0777 58 777 46</div>
+          </div>
+        </a>
+        <a href="https://wa.me/447775877746" class="contact-opt" target="_blank">
+          <div class="co-icon">💬</div>
+          <div>
+            <div class="co-label">WhatsApp</div>
+            <div class="co-value">Message Us Directly</div>
+          </div>
+        </a>
+        <div class="contact-opt" style="cursor:default;">
+          <div class="co-icon">📍</div>
+          <div>
+            <div class="co-label">Coverage</div>
+            <div class="co-value">United Kingdom</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-visual">
+      <h3>Request a Quote</h3>
+      <p>Fill in your details and we'll get back to you within 24 hours.</p>
+
+      <div class="form-row">
+        <label>Your Name</label>
+        <input type="text" placeholder="John Smith"/>
+      </div>
+      <div class="form-row">
+        <label>Phone / WhatsApp</label>
+        <input type="tel" placeholder="+44 7700 000000"/>
+      </div>
+      <div class="form-row">
+        <label>Service Required</label>
+        <select>
+          <option>Select a service…</option>
+          <option>Internal Door Installation</option>
+          <option>External Door Installation</option>
+          <option>Fire Door Installation (FD30)</option>
+          <option>Window Installation</option>
+          <option>Not sure – need advice</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Tell Us About Your Project</label>
+        <textarea placeholder="Number of doors, property type, location…"></textarea>
+      </div>
+      <button class="btn-submit" onclick="window.open('https://wa.me/447775877746?text=Hi, I\'d like to request a quote from your website.','_blank')">
+        Send via WhatsApp →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <p style="font-size: 1.1rem; margin-bottom: 0.5rem;"><strong>Eddie Door Ltd</strong></p>
-  <p>© 2026 Eddie Door Ltd. Precision over speed.</p>
+  <a href="index.html" class="footer-logo">Eddie<span>Door</span></a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/447775877746">WhatsApp</a>
+  </div>
+  <div class="footer-copy">© 2026 Eddie Door Ltd. Precision over speed.</div>
 </footer>
 
 <script>
-  // Mobile menu toggle
-  function toggleMenu() {
-    const menu = document.getElementById('navbarMenu');
-    const toggle = document.querySelector('.menu-toggle');
-    menu.classList.toggle('active');
-    toggle.classList.toggle('active');
-  }
-
-  // Scroll animation observer
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        const offset = 70; // Height of navbar
-        const targetPosition = target.offsetTop - offset;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
+  // Sticky nav
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  console.log('Eddie Door Premium Website - Loaded Successfully ✓');
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .step, .g-item, .client-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
 </script>
 
 </body>
