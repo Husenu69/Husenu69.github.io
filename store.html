@@ -510,20 +510,82 @@
       font-size: 0.83rem;
     }
 
+    /* IMAGE PLACEHOLDER */
+    .img-placeholder {
+      background: linear-gradient(135deg, #2a2a26 0%, #1e1e1c 100%);
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+    .img-placeholder::after {
+      content: '📷 Add your photo to the photo/ folder';
+      font-size: 0.78rem;
+      color: rgba(200,135,58,0.6);
+      text-align: center;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .spot-img.img-placeholder { min-height: 220px; border-radius: 8px; }
+    .spot-img.tall.img-placeholder { min-height: 460px; }
+    .product-img-wrap.img-placeholder { height: 320px; }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      nav { padding: 1rem 2rem; }
-      nav ul { display: none; }
-      .hero, .categories, .products, .spotlight, .cta-section { padding: 3rem 2rem; }
-      .highlight { padding: 3rem 2rem; }
+      nav { padding: 1rem 2rem; position: relative; }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--dark);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        z-index: 200;
+      }
+      nav ul.open { display: flex; }
+      nav ul li a { display: block; padding: 0.9rem 2rem; font-size: 0.95rem; }
+      .nav-cta { margin: 0.5rem 2rem 0.8rem !important; display: inline-block; border-radius: 4px; }
+      .hamburger { display: flex; }
+      .hero, .categories, .products, .spotlight, .cta-section { padding: 3rem 1.5rem; }
+      .highlight { padding: 3rem 1.5rem; }
       .spotlight-inner { grid-template-columns: 1fr; }
       .spotlight-images { order: -1; }
     }
 
     @media (max-width: 600px) {
-      .hero { flex-direction: column; }
+      .hero { flex-direction: column; padding: 3rem 1.2rem; }
       .hero-badge { width: 100%; }
       .highlight-stats { gap: 2rem; }
+      .highlight { flex-direction: column; text-align: center; }
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .products-grid { grid-template-columns: 1fr; }
+      .spotlight-images { grid-template-columns: 1fr; }
+      .spot-img.tall img { min-height: 260px; }
     }
   </style>
 </head>
@@ -531,8 +593,11 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">Eddie<span>Door</span></a>
-  <ul>
+  <a href="index.html" class="logo">Eddie<span>Door</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="nav-menu">
     <li><a href="#">Interior</a></li>
     <li><a href="#">Exterior</a></li>
     <li><a href="#">Fire Doors</a></li>
@@ -599,24 +664,26 @@
 <!-- FIRE DOOR SPOTLIGHT -->
 <section class="spotlight" id="fire-doors">
   <div class="spotlight-inner">
-    <!-- IMAGES: using Howdens Thruxton product images -->
     <div class="spotlight-images">
       <div class="spot-img tall">
         <img
-          src="https://www.howdens.com/-/media/howdens/assets/clh_asset_products/clh_asset_levela_108418/clh_asset_levelb_110205/clh_asset_levelc_110206/ass_25654435.jpg"
-          alt="Thruxton White Grained FD30 Fire Door – Front View"
+          src="photo/door-spotlight-main.jpg"
+          alt="Fire Door – Front View"
+          onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder')"
         />
       </div>
       <div class="spot-img">
         <img
-          src="https://www.howdens.com/-/media/howdens/assets/clh_asset_products/clh_asset_levela_108418/clh_asset_levelb_110205/clh_asset_levelc_110206/ass_prod_img_25511616/ass_prod_img_25511616_1_1.jpg"
-          alt="Thruxton Fire Door in Room Setting"
+          src="photo/door-spotlight-2.jpg"
+          alt="Fire Door in Room Setting"
+          onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder')"
         />
       </div>
       <div class="spot-img">
         <img
-          src="https://www.howdens.com/-/media/howdens/assets/clh_asset_products/clh_asset_levela_108418/clh_asset_levelb_110205/clh_asset_levelc_110206/ass_25654436/ass_25654436_1_1.jpg"
-          alt="Thruxton Fire Door – Detail View"
+          src="photo/door-spotlight-3.jpg"
+          alt="Fire Door – Detail View"
+          onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder')"
         />
       </div>
     </div>
@@ -649,13 +716,14 @@
     <div class="product-card">
       <div class="product-img-wrap">
         <img
-          src="https://www.howdens.com/-/media/howdens/assets/clh_asset_products/clh_asset_levela_108418/clh_asset_levelb_110205/clh_asset_levelc_110206/ass_25654435.jpg"
-          alt="Thruxton White Grained 4 Panel FD30 Fire Door"
+          src="photo/door-product-1.jpg"
+          alt="White 4 Panel FD30 Fire Door"
+          onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder')"
         />
         <span class="product-badge fire">FD30</span>
       </div>
       <div class="product-body">
-        <h3>Thruxton White Grained 4 Panel Fire Door</h3>
+        <h3>White Grained 4 Panel Fire Door</h3>
         <p>Moulded HDF construction with routered flaxboard core. Classic panel design, primed and ready to paint.</p>
         <div class="product-specs">
           <span class="spec-tag">44mm</span>
@@ -673,13 +741,14 @@
     <div class="product-card">
       <div class="product-img-wrap">
         <img
-          src="https://www.howdens.com/-/media/howdens/assets/clh_asset_products/clh_asset_levela_108418/clh_asset_levelb_110205/clh_asset_levelc_110206/ass_prod_img_25511616/ass_prod_img_25511616_1_1.jpg"
-          alt="Thruxton Fire Door in stylish hallway"
+          src="photo/door-product-2.jpg"
+          alt="Fire Door in stylish hallway"
+          onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder')"
         />
         <span class="product-badge new">Popular</span>
       </div>
       <div class="product-body">
-        <h3>Thruxton Fire Door – Room Setting</h3>
+        <h3>Interior Fire Door – Room Setting</h3>
         <p>See how the Thruxton door looks in a real home. Pairs beautifully with MDF skirting and panelled walls.</p>
         <div class="product-specs">
           <span class="spec-tag">Interior</span>
@@ -740,12 +809,27 @@
   <div class="section-label">Get in Touch</div>
   <h2>Need Help Choosing the Right Door?</h2>
   <p>Contact us today for professional advice and competitive pricing. We'll help you find the perfect door for your home.</p>
-  <a href="mailto:info@eddiedoor.co.uk" class="btn-primary">Contact Us Today</a>
+  <a href="/cdn-cgi/l/email-protection#30595e565f705554545955545f5f421e535f1e455b" class="btn-primary">Contact Us Today</a>
 </section>
 
 <footer>
-  © 2026 Eddie Door | All Rights Reserved
+  © 2026 Eddie Door | All rights reserved.
 </footer>
 
+<script>
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('nav-menu');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  // Close menu when a link is clicked
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>

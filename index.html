@@ -943,6 +943,29 @@
       font-size: 0.78rem;
     }
 
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 210;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       nav { padding: 1.2rem 2.5rem; }
@@ -956,8 +979,23 @@
     }
 
     @media (max-width: 768px) {
-      nav ul { display: none; }
-      .hero { padding: 7rem 2rem 4rem; }
+      nav { padding: 1rem 1.5rem; }
+      .hamburger { display: flex; }
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(26,26,24,0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        z-index: 199;
+      }
+      nav ul.open { display: flex; }
+      nav ul a { font-size: 1.1rem; letter-spacing: 1px; }
+      .nav-cta { padding: 0.8rem 2rem !important; }
+      .hero { padding: 7rem 1.5rem 4rem; }
       .door-silhouette { display: none; }
       .hero-bg::before { display: none; }
       .about, .guarantee, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -966,6 +1004,19 @@
       .process-steps { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; text-align: center; }
       .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .trust-bar { padding: 1.2rem 1.5rem; gap: 1rem; }
+      .trust-item { font-size: 0.75rem; }
+      .about, .services, .process, .guarantee, .clients, .contact { padding: 4rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.6rem; }
+      .clients-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { gap: 1rem; }
+      .stat-num { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -974,7 +1025,10 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="index.html" class="logo">Eddie<span>Door</span></a>
-  <ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="nav-menu">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
@@ -1332,6 +1386,20 @@
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+  });
+  navMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navMenu.classList.remove('open');
+    });
   });
 
   // Fade-in on scroll
