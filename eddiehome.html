@@ -84,6 +84,12 @@
     padding:1.5rem;
     border:1px solid rgba(255,255,255,0.08);
     border-radius:10px;
+    transition:0.2s;
+  }
+
+  .card:hover {
+    transform:translateY(-5px);
+    border-color:#d9a441;
   }
 
   .card h3 {
@@ -117,10 +123,60 @@
     text-decoration:none;
   }
 
-  /* MOBILE */
-  @media(max-width:600px){
-    .hero p { font-size:0.95rem; }
+  /* 🚪 SMALL CENTER DOOR */
+  .door-button {
+    margin: 0 auto 1.2rem auto;
+    width:95px;
+    height:140px;
+
+    background:linear-gradient(145deg, #3a2a1e, #1f140e);
+    border:2px solid #d9a441;
+    border-radius:8px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+    box-shadow:0 15px 35px rgba(0,0,0,0.6);
+
+    position:relative;
+    transition:0.3s ease;
   }
+
+  .door-button::after {
+    content:"";
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    width:6px;
+    height:6px;
+    background:#d9a441;
+    border-radius:50%;
+  }
+
+  .door-button::before {
+    content:"";
+    position:absolute;
+    inset:10px;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:6px;
+  }
+
+  .door-text {
+    font-size:0.9rem;
+    font-weight:700;
+    color:#f0c060;
+    letter-spacing:2px;
+    z-index:2;
+  }
+
+  .door-button:hover {
+    transform:scale(1.05) rotateY(-8deg);
+    box-shadow:0 25px 60px rgba(0,0,0,0.8);
+  }
+
 </style>
 </head>
 
@@ -129,13 +185,21 @@
 <!-- HERO -->
 <div class="hero">
   <div>
+
+    <!-- 🚪 DOOR (SMALL & CENTER TOP) -->
+    <a href="/index.html" class="door-button">
+      <div class="door-text">HOME</div>
+    </a>
+
     <h1>We Do <span>Everything</span> in Your Home & Garden</h1>
+
     <p>
       One company. One team. No stress.  
       From small repairs to full house & garden renovation — we handle it all.
     </p>
 
     <a class="btn" href="#services">See Services</a>
+
   </div>
 </div>
 
@@ -143,9 +207,7 @@
 <section>
   <h2>One Team for Everything</h2>
   <p>
-    You don’t need 5 different companies.  
-    We provide a full service for your home and garden.  
-    If it’s inside or outside your property — we can help.
+    You don’t need multiple companies. We handle all home & garden work for you.
   </p>
 </section>
 
@@ -162,12 +224,12 @@
 
     <div class="card">
       <h3>Painting</h3>
-      <p>Interior & exterior painting .</p>
+      <p>Interior & exterior painting.</p>
     </div>
 
     <div class="card">
       <h3>Tiling</h3>
-      <p>Bathroom, kitchen, floors, walls .</p>
+      <p>Bathroom, kitchen, floors, walls.</p>
     </div>
 
     <div class="card">
@@ -177,26 +239,20 @@
 
     <div class="card">
       <h3>Repairs</h3>
-      <p>Small fixes, maintenance, handyman work.</p>
+      <p>Small fixes & maintenance work.</p>
     </div>
 
     <div class="card">
-      <h3>Garden Work</h3>
-      <p>Basic garden improvements & outdoor jobs.</p>
+      <h3>Garden Services</h3>
+      <p>Outdoor improvements & garden work.</p>
     </div>
 
   </div>
-
-  <p style="margin-top:2rem;">
-    <strong>Important:</strong> If you have multiple jobs in your house or garden — just ask.  
-    We will tell you if our team can handle it. One company, everything simplified.
-  </p>
 </section>
 
 <!-- CONTACT -->
 <section class="contact">
   <h2>Contact Us</h2>
-  <p>Fast response via phone or WhatsApp</p>
 
   <a href="tel:07775877746">📞 0777 58 777 46</a>
   <a href="https://wa.me/447775877746">💬 WhatsApp Message</a>
