@@ -14,6 +14,7 @@
   --bg:#111;
   --gold:#c9a96e;
   --gold-light:#e8d5b0;
+  --cream:#1a1a1a;
 }
 
 body {
@@ -34,50 +35,83 @@ body {
 
 .brand {
   font-family:"Cormorant Garamond";
-  color:white;
   font-size:22px;
+  color:white;
 }
 
 .brand em { color:var(--gold); }
 
 .counter { color:var(--gold); }
 
-/* HOME */
+/* HOME BUTTON (fara cerc) */
 .home-btn {
   position:fixed;
   top:20px;
   left:20px;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:1px solid var(--gold);
-  background:transparent;
+  background:none;
+  border:none;
   color:var(--gold);
+  font-size:18px;
   cursor:pointer;
 }
 
 /* BOOK */
-.stage {
+.book {
   position:absolute;
-  top:50%; left:50%;
+  top:50%;
+  left:50%;
   transform:translate(-50%,-50%);
-  width:350px;
-  height:500px;
+  width:360px;
+  height:520px;
+  perspective:1800px;
 }
 
 .page {
+  position:absolute;
   width:100%;
   height:100%;
-  background:#1a1a1a;
+  background:var(--cream);
   border-radius:6px;
   overflow:hidden;
-  position:relative;
+  transform-origin:left;
+  backface-visibility:hidden;
 }
 
 .page img {
   width:100%;
   height:100%;
   object-fit:cover;
+}
+
+/* SHADOW + REAL EFFECT */
+.page::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, rgba(0,0,0,0.4), transparent 40%);
+  opacity:0;
+  pointer-events:none;
+}
+
+/* FLIP */
+.page.flip {
+  animation:flip 0.7s ease forwards;
+}
+
+@keyframes flip {
+  0% { transform:rotateY(0); }
+  50% { transform:rotateY(-90deg); }
+  100% { transform:rotateY(-180deg); }
+}
+
+.page.flip::after {
+  animation:shade 0.7s;
+}
+
+@keyframes shade {
+  0% { opacity:0; }
+  50% { opacity:0.7; }
+  100% { opacity:0; }
 }
 
 /* TEXT */
@@ -125,6 +159,34 @@ body {
 }
 
 .dot.active { background:var(--gold); }
+
+.home-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;   /* 🔥 aici e schimbarea */
+  left: auto;    /* important */
+  
+  background: rgba(0,0,0,0.4);
+  border: 1px solid #c9a96e;
+  color: #c9a96e;
+
+  padding: 6px 12px;
+  border-radius: 20px;
+
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  z-index: 100;
+  font-family: 'Montserrat', sans-serif;
+
+  backdrop-filter: blur(6px);
+}
+
+
+.home-btn:hover {
+  opacity: 0.7;
+}
+
 </style>
 </head>
 
@@ -132,15 +194,17 @@ body {
 
 <!-- HEADER -->
 <div class="header">
-  <div class="brand">Eddie <em>Doors</em></div>
+  <button class="home-btn" onclick="goHome()">Home...........</button>
+  <br>
+  
   <div id="counter">0 / 0</div>
 </div>
 
-<!-- HOME BUTTON -->
-<button class="home-btn" onclick="goHome()">⌂</button>
+<!-- HOME -->
+<button class="home-btn" onclick="goHome()">←</button>
 
 <!-- BOOK -->
-<div class="stage" id="stage"></div>
+<div class="book" id="book"></div>
 
 <!-- HINT -->
 <div class="hint">
@@ -152,43 +216,54 @@ body {
 
 <script>
 
-/* 🔥 LISTA IMAGINI (modifici aici doar) */
+/* 🔥 IMAGES */
 const images = [
   "images/tugstonebaia.jpg",
   "images/usa tungstone.jpg",
   "images/door3.jpg",
   "images/door4.jpg",
   "images/door5.jpg"
-  // adaugi până la 100 aici
 ];
 
 let current = 0;
+let animating = false;
 
-const stage = document.getElementById("stage");
+const book = document.getElementById("book");
 const counter = document.getElementById("counter");
 const dots = document.getElementById("dots");
 
 /* HOME */
 function goHome() {
-  window.location.href = "https://eddiedoor.co.uk";
+  window.location.href = "/index.html"; // merge la homepage
 }
 
-/* RENDER */
-function render() {
-  stage.innerHTML = "";
-
+/* CREATE PAGE */
+function createPage(index) {
   const page = document.createElement("div");
   page.className = "page";
 
   page.innerHTML = `
-    <img src="${images[current]}">
+    <img src="${images[index]}">
     <div class="info">
-      <div class="title">Door Model ${current+1}</div>
-      <div class="subtitle">${current+1} / ${images.length}</div>
+      <div class="title">Door Model ${index+1}</div>
+      <div class="subtitle">${index+1} / ${images.length}</div>
     </div>
   `;
+  return page;
+}
 
-  stage.appendChild(page);
+/* RENDER */
+function render() {
+  book.innerHTML = "";
+
+  if (current + 1 < images.length) {
+    const next = createPage(current + 1);
+    book.appendChild(next);
+  }
+
+  const currentPage = createPage(current);
+  currentPage.classList.add("current");
+  book.appendChild(currentPage);
 
   counter.textContent = `${current+1} / ${images.length}`;
 
@@ -200,28 +275,40 @@ function render() {
   });
 }
 
-/* NAVIGATION */
-stage.onclick = (e) => {
-  if (e.offsetX > stage.clientWidth / 2) next();
-  else prev();
-};
+/* FLIP */
+function nextPage() {
+  if (animating || current >= images.length - 1) return;
+  animating = true;
 
-function next() {
-  if (current < images.length - 1) {
+  const page = document.querySelector(".current");
+  page.classList.add("flip");
+
+  page.addEventListener("animationend", () => {
     current++;
     render();
-  }
+    animating = false;
+  }, { once:true });
 }
 
-function prev() {
-  if (current > 0) {
-    current--;
-    render();
-  }
+function prevPage() {
+  if (animating || current <= 0) return;
+  current--;
+  render();
 }
+
+/* CLICK */
+book.addEventListener("click", e => {
+  const x = e.offsetX;
+  if (x > book.clientWidth * 0.4) nextPage();
+  else prevPage();
+});
 
 /* INIT */
 render();
+
+function goHome() {
+  window.location.href = "/index.html";
+}
 
 </script>
 
