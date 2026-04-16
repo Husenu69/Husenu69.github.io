@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Door Catalogue</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Montserrat&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:#111;
+  --gold:#c9a96e;
+  --gold-light:#e8d5b0;
+}
+
+body {
+  background:var(--bg);
+  font-family:Montserrat;
+  overflow:hidden;
+}
+
+/* HEADER */
+.header {
+  position:fixed;
+  top:0; left:0; right:0;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  z-index:10;
+}
+
+.brand {
+  font-family:"Cormorant Garamond";
+  color:white;
+  font-size:22px;
+}
+
+.brand em { color:var(--gold); }
+
+.counter { color:var(--gold); }
+
+/* HOME */
+.home-btn {
+  position:fixed;
+  top:20px;
+  left:20px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  cursor:pointer;
+}
+
+/* BOOK */
+.stage {
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:350px;
+  height:500px;
+}
+
+.page {
+  width:100%;
+  height:100%;
+  background:#1a1a1a;
+  border-radius:6px;
+  overflow:hidden;
+  position:relative;
+}
+
+.page img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* TEXT */
+.info {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:20px;
+  background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color:white;
+}
+
+.title { font-size:22px; }
+
+.subtitle {
+  font-size:11px;
+  color:var(--gold-light);
+}
+
+/* HINT */
+.hint {
+  position:fixed;
+  bottom:60px;
+  width:100%;
+  text-align:center;
+  color:var(--gold);
+  font-size:11px;
+}
+
+/* DOTS */
+.dots {
+  position:fixed;
+  bottom:25px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:6px;
+}
+
+.dot {
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--gold-light);
+}
+
+.dot.active { background:var(--gold); }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="brand">Eddie <em>Doors</em></div>
+  <div id="counter">0 / 0</div>
+</div>
+
+<!-- HOME BUTTON -->
+<button class="home-btn" onclick="goHome()">⌂</button>
+
+<!-- BOOK -->
+<div class="stage" id="stage"></div>
+
+<!-- HINT -->
+<div class="hint">
+  Tap right → next • Tap left → back
+</div>
+
+<!-- DOTS -->
+<div class="dots" id="dots"></div>
+
+<script>
+
+/* 🔥 LISTA IMAGINI (modifici aici doar) */
+const images = [
+  "images/tugstonebaia.jpg",
+  "images/usa tungstone.jpg",
+  "images/door3.jpg",
+  "images/door4.jpg",
+  "images/door5.jpg"
+  // adaugi până la 100 aici
+];
+
+let current = 0;
+
+const stage = document.getElementById("stage");
+const counter = document.getElementById("counter");
+const dots = document.getElementById("dots");
+
+/* HOME */
+function goHome() {
+  window.location.href = "https://eddiedoor.co.uk";
+}
+
+/* RENDER */
+function render() {
+  stage.innerHTML = "";
+
+  const page = document.createElement("div");
+  page.className = "page";
+
+  page.innerHTML = `
+    <img src="${images[current]}">
+    <div class="info">
+      <div class="title">Door Model ${current+1}</div>
+      <div class="subtitle">${current+1} / ${images.length}</div>
+    </div>
+  `;
+
+  stage.appendChild(page);
+
+  counter.textContent = `${current+1} / ${images.length}`;
+
+  dots.innerHTML = "";
+  images.forEach((_, i) => {
+    const d = document.createElement("div");
+    d.className = "dot" + (i === current ? " active" : "");
+    dots.appendChild(d);
+  });
+}
+
+/* NAVIGATION */
+stage.onclick = (e) => {
+  if (e.offsetX > stage.clientWidth / 2) next();
+  else prev();
+};
+
+function next() {
+  if (current < images.length - 1) {
+    current++;
+    render();
+  }
+}
+
+function prev() {
+  if (current > 0) {
+    current--;
+    render();
+  }
+}
+
+/* INIT */
+render();
+
+</script>
+
+</body>
+</html>
