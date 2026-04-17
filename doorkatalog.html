@@ -4,313 +4,546 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Door Catalogue</title>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
 
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-:root {
-  --bg:#111;
+:root{
   --gold:#c9a96e;
   --gold-light:#e8d5b0;
-  --cream:#1a1a1a;
+  --bg:#0d0d0d;
+  --spine:#1a1208;
+  --cover:#111;
 }
 
-body {
+body{
   background:var(--bg);
-  font-family:Montserrat;
+  font-family:Montserrat,sans-serif;
+  height:100vh;
   overflow:hidden;
-}
-
-/* HEADER */
-.header {
-  position:fixed;
-  top:0; left:0; right:0;
-  padding:20px;
   display:flex;
-  justify-content:space-between;
-  z-index:10;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
-.brand {
-  font-family:"Cormorant Garamond";
-  font-size:22px;
-  color:white;
-}
-
-.brand em { color:var(--gold); }
-
-.counter { color:var(--gold); }
-
-/* HOME BUTTON (fara cerc) */
-.home-btn {
-  position:fixed;
-  top:20px;
-  left:20px;
-  background:none;
-  border:none;
-  color:var(--gold);
-  font-size:18px;
-  cursor:pointer;
-}
-
-/* BOOK */
-.book {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:360px;
-  height:520px;
-  perspective:1800px;
-}
-
-.page {
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:var(--cream);
-  border-radius:6px;
-  overflow:hidden;
-  transform-origin:left;
-  backface-visibility:hidden;
-}
-
-.page img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* SHADOW + REAL EFFECT */
-.page::after {
+/* Ambient table surface glow */
+body::before{
   content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to right, rgba(0,0,0,0.4), transparent 40%);
-  opacity:0;
+  position:fixed;
+  bottom:0;left:50%;
+  transform:translateX(-50%);
+  width:700px;height:200px;
+  background:radial-gradient(ellipse at center bottom, rgba(201,169,110,0.08) 0%, transparent 70%);
   pointer-events:none;
 }
 
-/* FLIP */
-.page.flip {
-  animation:flip 0.7s ease forwards;
-}
-
-@keyframes flip {
-  0% { transform:rotateY(0); }
-  50% { transform:rotateY(-90deg); }
-  100% { transform:rotateY(-180deg); }
-}
-
-.page.flip::after {
-  animation:shade 0.7s;
-}
-
-@keyframes shade {
-  0% { opacity:0; }
-  50% { opacity:0.7; }
-  100% { opacity:0; }
-}
-
-/* TEXT */
-.info {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  padding:20px;
-  background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  color:white;
-}
-
-.title { font-size:22px; }
-
-.subtitle {
-  font-size:11px;
-  color:var(--gold-light);
-}
-
-/* HINT */
-.hint {
+/* ───── HEADER ───── */
+header{
   position:fixed;
-  bottom:60px;
-  width:100%;
-  text-align:center;
-  color:var(--gold);
-  font-size:11px;
-}
-
-/* DOTS */
-.dots {
-  position:fixed;
-  bottom:25px;
-  width:100%;
+  top:0;left:0;right:0;
   display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 28px;
+  z-index:100;
+}
+
+.brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+  color:rgba(255,255,255,0.85);
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.brand em{color:var(--gold);font-style:normal;}
+
+.home-btn{
+  background:rgba(201,169,110,0.1);
+  border:1px solid rgba(201,169,110,0.35);
+  color:var(--gold);
+  padding:7px 18px;
+  border-radius:20px;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  font-family:Montserrat,sans-serif;
+  transition:all .3s;
+  backdrop-filter:blur(8px);
+}
+.home-btn:hover{background:rgba(201,169,110,0.2);border-color:var(--gold);}
+
+/* ───── SCENE / PERSPECTIVE ───── */
+.scene{
+  perspective:2200px;
+  perspective-origin:50% 42%;
+  position:relative;
+}
+
+/* ───── BOOK WRAPPER ───── */
+.book-wrapper{
+  position:relative;
+  width:420px;
+  height:560px;
+  transform-style:preserve-3d;
+}
+
+/* Drop shadow on "table" */
+.book-shadow{
+  position:absolute;
+  bottom:-22px;left:12px;right:12px;
+  height:40px;
+  background:radial-gradient(ellipse, rgba(0,0,0,0.7) 0%, transparent 70%);
+  filter:blur(8px);
+  z-index:0;
+}
+
+/* ───── HARD COVER (back board) ───── */
+.cover-back{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(160deg, #1c1507 0%, #0d0a03 100%);
+  border-radius:4px 8px 8px 4px;
+  box-shadow:
+    -6px 0 12px rgba(0,0,0,0.8),
+    inset -2px 0 6px rgba(0,0,0,0.5);
+  z-index:1;
+}
+
+/* ───── BOOK SPINE ───── */
+.spine{
+  position:absolute;
+  left:-18px;top:6px;bottom:6px;
+  width:18px;
+  background:linear-gradient(to right, #0a0800 0%, #1f1709 40%, #2a1f0c 60%, #0d0b04 100%);
+  border-radius:4px 0 0 4px;
+  box-shadow:-4px 0 10px rgba(0,0,0,0.8);
+  z-index:2;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
   justify-content:center;
-  gap:6px;
+}
+.spine::before{
+  content:'DOORS';
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  font-family:'Cormorant Garamond',serif;
+  font-size:9px;
+  letter-spacing:3px;
+  color:rgba(201,169,110,0.6);
 }
 
-.dot {
+/* ───── PAGE STACK (depth illusion) ───── */
+.page-stack{
+  position:absolute;
+  right:-3px;top:3px;bottom:3px;
   width:6px;
-  height:6px;
+  background:repeating-linear-gradient(
+    to bottom,
+    #e8e0d0 0px, #e8e0d0 1px,
+    #d4c8b0 1px, #d4c8b0 2px
+  );
+  border-radius:0 2px 2px 0;
+  z-index:2;
+}
+
+/* ───── PAGES ───── */
+.pages-container{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  z-index:3;
+}
+
+.page{
+  position:absolute;
+  inset:0;
+  border-radius:4px 6px 6px 4px;
+  overflow:hidden;
+  transform-origin:left center;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  user-select:none;
+}
+
+.page img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  pointer-events:none;
+}
+
+/* Paper texture overlay */
+.page::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:10;
+  mix-blend-mode:overlay;
+}
+
+/* Bottom info bar */
+.page-info{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:28px 22px 18px;
+  background:linear-gradient(to top,
+    rgba(0,0,0,0.82) 0%,
+    rgba(0,0,0,0.5) 50%,
+    transparent 100%);
+  z-index:11;
+}
+.page-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;
+  font-weight:600;
+  color:#fff;
+  letter-spacing:1px;
+}
+.page-sub{
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--gold-light);
+  text-transform:uppercase;
+  margin-top:4px;
+}
+
+/* Corner fold decoration */
+.page-corner{
+  position:absolute;
+  top:14px;right:14px;
+  width:28px;height:28px;
+  z-index:12;
+  overflow:hidden;
+}
+.page-corner::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  border-style:solid;
+  border-width:0 28px 28px 0;
+  border-color:transparent rgba(201,169,110,0.3) transparent transparent;
+}
+.page-corner::after{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  border-style:solid;
+  border-width:0 26px 26px 0;
+  border-color:transparent rgba(0,0,0,0.6) transparent transparent;
+}
+
+/* ─── THE TURNING PAGE (clone flying over) ─── */
+.turning-page{
+  position:absolute;
+  inset:0;
+  border-radius:4px 6px 6px 4px;
+  overflow:hidden;
+  transform-origin:left center;
+  transform-style:preserve-3d;
+  pointer-events:none;
+  z-index:20;
+}
+.turning-page img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Highlight sweep on turning page */
+.turning-page::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.2) 20%,
+    rgba(255,255,255,0.12) 45%,
+    rgba(255,255,255,0.25) 50%,
+    rgba(255,255,255,0.08) 55%,
+    rgba(0,0,0,0.3) 80%,
+    rgba(0,0,0,0.65) 100%);
+  pointer-events:none;
+}
+
+/* Spine shadow cast on current page */
+.spine-shadow{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.1) 12%,
+    transparent 30%);
+  pointer-events:none;
+  z-index:15;
+  border-radius:4px 6px 6px 4px;
+}
+
+/* ───── ANIMATIONS ───── */
+@keyframes turnForward{
+  0%  {transform:rotateY(0deg);   box-shadow:none;}
+  30% {transform:rotateY(-50deg); box-shadow:-18px 0 35px rgba(0,0,0,0.6);}
+  70% {transform:rotateY(-130deg);box-shadow:-12px 0 25px rgba(0,0,0,0.5);}
+  100%{transform:rotateY(-180deg);box-shadow:none;}
+}
+@keyframes turnBackward{
+  0%  {transform:rotateY(-180deg);}
+  30% {transform:rotateY(-130deg);}
+  70% {transform:rotateY(-50deg);}
+  100%{transform:rotateY(0deg);}
+}
+
+.anim-forward{animation:turnForward 0.65s cubic-bezier(0.4,0,0.2,1) forwards;}
+.anim-backward{animation:turnBackward 0.65s cubic-bezier(0.4,0,0.2,1) forwards;}
+
+/* ───── CONTROLS ───── */
+.nav-btn{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(201,169,110,0.08);
+  border:1px solid rgba(201,169,110,0.2);
+  color:rgba(201,169,110,0.6);
+  width:44px;height:80px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:18px;
+  transition:all .3s;
+  z-index:50;
+}
+.nav-btn:hover{
+  background:rgba(201,169,110,0.18);
+  color:var(--gold);
+  border-color:rgba(201,169,110,0.5);
+}
+.nav-btn:disabled{opacity:0.15;cursor:default;}
+#btn-prev{left:calc(50% - 290px);}
+#btn-next{right:calc(50% - 290px);}
+
+/* ───── FOOTER ───── */
+footer{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  padding:0 0 20px;
+}
+.dots{display:flex;gap:7px;}
+.dot{
+  width:6px;height:6px;
   border-radius:50%;
-  background:var(--gold-light);
+  background:rgba(201,169,110,0.2);
+  transition:all .3s;
+}
+.dot.active{
+  background:var(--gold);
+  width:20px;
+  border-radius:3px;
+}
+.hint{
+  font-size:10px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:rgba(201,169,110,0.3);
 }
 
-.dot.active { background:var(--gold); }
-
-.home-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;   /* 🔥 aici e schimbarea */
-  left: auto;    /* important */
-  
-  background: rgba(0,0,0,0.4);
-  border: 1px solid #c9a96e;
-  color: #c9a96e;
-
-  padding: 6px 12px;
-  border-radius: 20px;
-
-  font-size: 13px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  z-index: 100;
-  font-family: 'Montserrat', sans-serif;
-
-  backdrop-filter: blur(6px);
+/* ───── COUNTER ───── */
+.counter{
+  position:fixed;
+  top:50%;right:28px;
+  transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;
+  color:rgba(201,169,110,0.4);
+  letter-spacing:2px;
+  writing-mode:vertical-rl;
+  z-index:50;
 }
 
-
-.home-btn:hover {
-  opacity: 0.7;
+/* ───── SWIPE ZONES (invisible) ───── */
+.zone{
+  position:fixed;
+  top:0;bottom:0;
+  width:40%;
+  cursor:pointer;
+  z-index:40;
 }
-
+#zone-prev{left:0;}
+#zone-next{right:0;}
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <button class="home-btn" onclick="goHome()">Home...........</button>
-  <br>
-  
-  <div id="counter">0 / 0</div>
+<header>
+  <div class="brand"><em>PRESTIGE</em> DOORS</div>
+  <button class="home-btn" onclick="goHome()">← Back</button>
+</header>
+
+<button class="nav-btn" id="btn-prev" onclick="prevPage()">‹</button>
+<button class="nav-btn" id="btn-next" onclick="nextPage()">›</button>
+
+<div class="counter" id="counter">1 / 5</div>
+
+<div class="scene">
+  <div class="book-wrapper" id="bookWrapper">
+    <div class="book-shadow"></div>
+    <div class="spine"></div>
+    <div class="cover-back"></div>
+    <div class="page-stack"></div>
+    <div class="pages-container" id="pagesContainer"></div>
+  </div>
 </div>
 
-<!-- HOME -->
-<button class="home-btn" onclick="goHome()">←</button>
+<div id="zone-prev" class="zone" onclick="prevPage()"></div>
+<div id="zone-next" class="zone" onclick="nextPage()"></div>
 
-<!-- BOOK -->
-<div class="book" id="book"></div>
-
-<!-- HINT -->
-<div class="hint">
-  Tap right → next • Tap left → back
-</div>
-
-<!-- DOTS -->
-<div class="dots" id="dots"></div>
+<footer>
+  <div class="dots" id="dots"></div>
+  <div class="hint">Swipe or click to browse</div>
+</footer>
 
 <script>
-
-/* 🔥 IMAGES */
 const images = [
-  "images/tugstonebaia.jpg",
-  "images/usa tungstone.jpg",
-  "images/door3.jpg",
-  "images/door4.jpg",
-  "images/door5.jpg"
+  {src:"images/tugstonebaia.jpg",  title:"Baia Collection",  sub:"Tungstone Series · Model 01"},
+  {src:"images/usa tungstone.jpg", title:"Heritage Oak",     sub:"Tungstone Series · Model 02"},
+  {src:"images/door3.jpg",         title:"Grand Entrance",   sub:"Premium Line · Model 03"},
+  {src:"images/door4.jpg",         title:"Nordic Frost",     sub:"Scandinavian · Model 04"},
+  {src:"images/door5.jpg",         title:"Ebony Classic",    sub:"Luxury Series · Model 05"},
 ];
 
 let current = 0;
 let animating = false;
 
-const book = document.getElementById("book");
-const counter = document.getElementById("counter");
-const dots = document.getElementById("dots");
+const container  = document.getElementById("pagesContainer");
+const dotsEl     = document.getElementById("dots");
+const counterEl  = document.getElementById("counter");
+const btnPrev    = document.getElementById("btn-prev");
+const btnNext    = document.getElementById("btn-next");
 
-/* HOME */
-function goHome() {
-  window.location.href = "/index.html"; // merge la homepage
+function goHome(){ window.location.href = "/index.html"; }
+
+function makePage(index){
+  const d = document.createElement("div");
+  d.className = "page";
+  const img = images[index];
+  d.innerHTML = `
+    <img src="${img.src}" alt="${img.title}" loading="lazy">
+    <div class="spine-shadow"></div>
+    <div class="page-corner"></div>
+    <div class="page-info">
+      <div class="page-title">${img.title}</div>
+      <div class="page-sub">${img.sub}</div>
+    </div>`;
+  return d;
 }
 
-/* CREATE PAGE */
-function createPage(index) {
-  const page = document.createElement("div");
-  page.className = "page";
-
-  page.innerHTML = `
-    <img src="${images[index]}">
-    <div class="info">
-      <div class="title">Door Model ${index+1}</div>
-      <div class="subtitle">${index+1} / ${images.length}</div>
-    </div>
-  `;
-  return page;
+function makeTurning(index){
+  const d = document.createElement("div");
+  d.className = "turning-page";
+  const img = images[index];
+  d.innerHTML = `<img src="${img.src}" alt="" loading="eager">`;
+  return d;
 }
 
-/* RENDER */
-function render() {
-  book.innerHTML = "";
+function renderDots(){
+  dotsEl.innerHTML = "";
+  images.forEach((_,i)=>{
+    const d = document.createElement("div");
+    d.className = "dot"+(i===current?" active":"");
+    dotsEl.appendChild(d);
+  });
+  counterEl.textContent = `${current+1} / ${images.length}`;
+  btnPrev.disabled = current === 0;
+  btnNext.disabled = current === images.length - 1;
+}
 
-  if (current + 1 < images.length) {
-    const next = createPage(current + 1);
-    book.appendChild(next);
+function render(){
+  container.innerHTML = "";
+
+  // Background page (next/prev peek)
+  const behindIdx = current + 1 < images.length ? current + 1 : null;
+  if(behindIdx !== null){
+    const bg = makePage(behindIdx);
+    bg.style.zIndex = 1;
+    container.appendChild(bg);
   }
 
-  const currentPage = createPage(current);
-  currentPage.classList.add("current");
-  book.appendChild(currentPage);
+  // Current page on top
+  const front = makePage(current);
+  front.style.zIndex = 2;
+  container.appendChild(front);
 
-  counter.textContent = `${current+1} / ${images.length}`;
-
-  dots.innerHTML = "";
-  images.forEach((_, i) => {
-    const d = document.createElement("div");
-    d.className = "dot" + (i === current ? " active" : "");
-    dots.appendChild(d);
-  });
+  renderDots();
 }
 
-/* FLIP */
-function nextPage() {
-  if (animating || current >= images.length - 1) return;
+function nextPage(){
+  if(animating || current >= images.length - 1) return;
   animating = true;
 
-  const page = document.querySelector(".current");
-  page.classList.add("flip");
+  // Clone current page as turning page
+  const turning = makeTurning(current);
+  turning.style.zIndex = 10;
+  container.appendChild(turning);
+  turning.classList.add("anim-forward");
 
-  page.addEventListener("animationend", () => {
+  turning.addEventListener("animationend", ()=>{
     current++;
     render();
     animating = false;
-  }, { once:true });
+  },{once:true});
 }
 
-function prevPage() {
-  if (animating || current <= 0) return;
+function prevPage(){
+  if(animating || current <= 0) return;
+  animating = true;
+
+  // Show the page that will "come back"
   current--;
   render();
+
+  // Animate the returning page from -180° back to 0°
+  const returning = makeTurning(current);
+  returning.style.zIndex = 10;
+  returning.style.transform = "rotateY(-180deg)";
+  container.appendChild(returning);
+
+  // small delay so transform is applied before animation
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      returning.classList.add("anim-backward");
+      returning.addEventListener("animationend",()=>{
+        render();
+        animating = false;
+      },{once:true});
+    });
+  });
 }
 
-/* CLICK */
-book.addEventListener("click", e => {
-  const x = e.offsetX;
-  if (x > book.clientWidth * 0.4) nextPage();
-  else prevPage();
+// Touch / swipe support
+let touchStartX = 0;
+document.addEventListener("touchstart", e=> touchStartX = e.touches[0].clientX,{passive:true});
+document.addEventListener("touchend", e=>{
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if(Math.abs(dx) > 50){
+    dx < 0 ? nextPage() : prevPage();
+  }
+},{passive:true});
+
+// Keyboard
+document.addEventListener("keydown", e=>{
+  if(e.key==="ArrowRight"||e.key==="ArrowDown") nextPage();
+  if(e.key==="ArrowLeft" ||e.key==="ArrowUp")   prevPage();
 });
 
-/* INIT */
 render();
-
-function goHome() {
-  window.location.href = "/index.html";
-}
-
 </script>
-
 </body>
 </html>
