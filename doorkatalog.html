@@ -2,548 +2,318 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Door Catalogue</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Prestige Doors — Catalogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 :root{
-  --gold:#c9a96e;
-  --gold-light:#e8d5b0;
-  --bg:#0d0d0d;
-  --spine:#1a1208;
-  --cover:#111;
+  --gold:#C9A96E;--gold-b:#EDD28A;--dark:#0D0B08;
+  --glass:rgba(10,8,5,0.55);--gbr:rgba(255,255,255,0.12);
 }
+html,body{width:100%;height:100%;overflow:hidden;background:var(--dark);font-family:'DM Sans',sans-serif;touch-action:none;user-select:none;-webkit-user-select:none;}
 
-body{
-  background:var(--bg);
-  font-family:Montserrat,sans-serif;
-  height:100vh;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
+/* PROGRESS */
+.prog{position:fixed;top:0;left:0;right:0;height:2.5px;z-index:400;background:rgba(255,255,255,0.08);}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-b));transition:width .4s cubic-bezier(.4,0,.2,1);border-radius:0 2px 2px 0;}
 
-/* Ambient table surface glow */
-body::before{
-  content:'';
-  position:fixed;
-  bottom:0;left:50%;
-  transform:translateX(-50%);
-  width:700px;height:200px;
-  background:radial-gradient(ellipse at center bottom, rgba(201,169,110,0.08) 0%, transparent 70%);
-  pointer-events:none;
-}
+/* TOP BAR */
+.topbar{position:fixed;top:0;left:0;right:0;height:58px;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:linear-gradient(to bottom,rgba(13,11,8,0.95) 0%,rgba(13,11,8,0) 100%);}
+.logo{font-family:'Playfair Display',serif;font-size:17px;color:#fff;letter-spacing:2.5px;text-transform:uppercase;}
+.logo em{color:var(--gold);font-style:normal;}
+.topbar-btns{display:flex;gap:8px;}
+.tbtn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:22px;font-size:11px;font-weight:600;letter-spacing:0.8px;cursor:pointer;border:1px solid var(--gbr);font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap;}
+.tbtn svg{width:13px;height:13px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.tbtn-home{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);}
+.tbtn-home:active{background:rgba(255,255,255,0.15);}
+.tbtn-contact{background:var(--gold);color:#0D0B08;border-color:var(--gold);font-weight:700;}
+.tbtn-contact:active{background:var(--gold-b);}
 
-/* ───── HEADER ───── */
-header{
-  position:fixed;
-  top:0;left:0;right:0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 28px;
-  z-index:100;
-}
+/* FEED */
+.feed-wrap{position:fixed;inset:0;overflow:hidden;}
+.feed{display:flex;flex-direction:column;transition:transform .48s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;}
 
-.brand{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;
-  color:rgba(255,255,255,0.85);
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-.brand em{color:var(--gold);font-style:normal;}
+/* SLIDE */
+.slide{position:relative;width:100vw;height:100vh;flex-shrink:0;overflow:hidden;}
+.slide-placeholder{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:110px;letter-spacing:-4px;color:rgba(201,169,110,0.07);pointer-events:none;}
+.slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 7s ease-out;transform:scale(1.06);}
+.slide.active .slide-img{transform:scale(1);}
+.vig{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(13,11,8,0.55) 0%,transparent 20%),linear-gradient(to top,rgba(13,11,8,0.9) 0%,rgba(13,11,8,0.25) 50%,transparent 75%);}
 
-.home-btn{
-  background:rgba(201,169,110,0.1);
-  border:1px solid rgba(201,169,110,0.35);
-  color:var(--gold);
-  padding:7px 18px;
-  border-radius:20px;
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  cursor:pointer;
-  font-family:Montserrat,sans-serif;
-  transition:all .3s;
-  backdrop-filter:blur(8px);
-}
-.home-btn:hover{background:rgba(201,169,110,0.2);border-color:var(--gold);}
+/* BADGE */
+.badge{position:absolute;top:66px;left:16px;z-index:5;background:var(--glass);border:1px solid var(--gbr);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:20px;padding:4px 13px;font-size:10px;font-weight:500;letter-spacing:2px;color:rgba(255,255,255,0.55);text-transform:uppercase;}
+.badge em{color:var(--gold);font-style:normal;font-weight:700;}
 
-/* ───── SCENE / PERSPECTIVE ───── */
-.scene{
-  perspective:2200px;
-  perspective-origin:50% 42%;
-  position:relative;
-}
+/* INFO */
+.info{position:absolute;bottom:0;left:0;right:72px;padding:0 20px 38px;z-index:10;}
+.tag{display:inline-flex;align-items:center;gap:6px;background:rgba(201,169,110,0.14);border:1px solid rgba(201,169,110,0.32);color:var(--gold-b);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;padding:5px 12px;border-radius:20px;margin-bottom:12px;}
+.tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.info-title{font-family:'Playfair Display',serif;font-size:29px;line-height:1.1;color:#fff;margin-bottom:10px;text-shadow:0 2px 20px rgba(0,0,0,0.6);}
+.info-desc{font-size:13px;line-height:1.62;color:rgba(255,255,255,0.65);font-weight:300;max-width:275px;margin-bottom:18px;}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0D0B08;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:11px 22px;border-radius:26px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;box-shadow:0 6px 28px rgba(201,169,110,0.4);transition:transform .15s,box-shadow .15s;}
+.cta:active{transform:scale(0.93);}
+.cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 
-/* ───── BOOK WRAPPER ───── */
-.book-wrapper{
-  position:relative;
-  width:420px;
-  height:560px;
-  transform-style:preserve-3d;
-}
+/* SIDE ACTIONS */
+.acts{position:absolute;right:10px;bottom:95px;z-index:10;display:flex;flex-direction:column;align-items:center;gap:22px;}
+.act{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;}
+.act-c{width:50px;height:50px;border-radius:50%;background:var(--glass);border:1px solid var(--gbr);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s,border-color .2s;}
+.act:active .act-c{transform:scale(0.85);}
+.act-c svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.act-c.fav svg{stroke:var(--gold);}
+.act-c.fav{background:rgba(201,169,110,0.22);border-color:rgba(201,169,110,0.45);}
+.act-lbl{font-size:10px;color:rgba(255,255,255,0.5);font-weight:500;}
 
-/* Drop shadow on "table" */
-.book-shadow{
-  position:absolute;
-  bottom:-22px;left:12px;right:12px;
-  height:40px;
-  background:radial-gradient(ellipse, rgba(0,0,0,0.7) 0%, transparent 70%);
-  filter:blur(8px);
-  z-index:0;
-}
+/* NAV DOTS */
+.dots{position:fixed;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 9px;z-index:200;}
+.dot{width:3px;border-radius:3px;background:rgba(255,255,255,0.2);transition:all .35s cubic-bezier(.4,0,.2,1);height:13px;cursor:pointer;}
+.dot.on{height:30px;background:var(--gold);}
 
-/* ───── HARD COVER (back board) ───── */
-.cover-back{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(160deg, #1c1507 0%, #0d0a03 100%);
-  border-radius:4px 8px 8px 4px;
-  box-shadow:
-    -6px 0 12px rgba(0,0,0,0.8),
-    inset -2px 0 6px rgba(0,0,0,0.5);
-  z-index:1;
-}
+/* ARROW BUTTONS */
+.arrows{position:fixed;right:15px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:250;}
+.arr{width:40px;height:40px;border-radius:50%;background:rgba(13,11,8,0.65);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s,opacity .35s,visibility .35s;}
+.arr:active{transform:scale(0.86);}
+.arr svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.arr.hide{opacity:0;pointer-events:none;visibility:hidden;}
+.arr-sep{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,0.12);}
 
-/* ───── BOOK SPINE ───── */
-.spine{
-  position:absolute;
-  left:-18px;top:6px;bottom:6px;
-  width:18px;
-  background:linear-gradient(to right, #0a0800 0%, #1f1709 40%, #2a1f0c 60%, #0d0b04 100%);
-  border-radius:4px 0 0 4px;
-  box-shadow:-4px 0 10px rgba(0,0,0,0.8);
-  z-index:2;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.spine::before{
-  content:'DOORS';
-  writing-mode:vertical-rl;
-  text-orientation:mixed;
-  font-family:'Cormorant Garamond',serif;
-  font-size:9px;
-  letter-spacing:3px;
-  color:rgba(201,169,110,0.6);
-}
+/* SWIPE HINT */
+.hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:300;pointer-events:none;animation:hfade 4s 1.5s forwards;}
+.hint-icon{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.hint-icon svg{width:20px;height:20px;fill:none;stroke:rgba(255,255,255,0.4);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.hint-icon svg:nth-child(1){animation:aUp .9s ease-in-out infinite alternate;}
+.hint-icon svg:nth-child(2){animation:aDn .9s ease-in-out infinite alternate;}
+.hint-txt{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:500;}
+@keyframes hfade{0%{opacity:1}75%{opacity:.4}100%{opacity:0}}
+@keyframes aUp{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+@keyframes aDn{from{transform:translateY(0)}to{transform:translateY(5px)}}
 
-/* ───── PAGE STACK (depth illusion) ───── */
-.page-stack{
-  position:absolute;
-  right:-3px;top:3px;bottom:3px;
-  width:6px;
-  background:repeating-linear-gradient(
-    to bottom,
-    #e8e0d0 0px, #e8e0d0 1px,
-    #d4c8b0 1px, #d4c8b0 2px
-  );
-  border-radius:0 2px 2px 0;
-  z-index:2;
-}
-
-/* ───── PAGES ───── */
-.pages-container{
-  position:absolute;
-  inset:0;
-  transform-style:preserve-3d;
-  z-index:3;
-}
-
-.page{
-  position:absolute;
-  inset:0;
-  border-radius:4px 6px 6px 4px;
-  overflow:hidden;
-  transform-origin:left center;
-  transform-style:preserve-3d;
-  backface-visibility:hidden;
-  user-select:none;
-}
-
-.page img{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-  pointer-events:none;
-}
-
-/* Paper texture overlay */
-.page::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;
-  z-index:10;
-  mix-blend-mode:overlay;
-}
-
-/* Bottom info bar */
-.page-info{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  padding:28px 22px 18px;
-  background:linear-gradient(to top,
-    rgba(0,0,0,0.82) 0%,
-    rgba(0,0,0,0.5) 50%,
-    transparent 100%);
-  z-index:11;
-}
-.page-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:26px;
-  font-weight:600;
-  color:#fff;
-  letter-spacing:1px;
-}
-.page-sub{
-  font-size:10px;
-  letter-spacing:3px;
-  color:var(--gold-light);
-  text-transform:uppercase;
-  margin-top:4px;
-}
-
-/* Corner fold decoration */
-.page-corner{
-  position:absolute;
-  top:14px;right:14px;
-  width:28px;height:28px;
-  z-index:12;
-  overflow:hidden;
-}
-.page-corner::before{
-  content:'';
-  position:absolute;
-  top:0;right:0;
-  border-style:solid;
-  border-width:0 28px 28px 0;
-  border-color:transparent rgba(201,169,110,0.3) transparent transparent;
-}
-.page-corner::after{
-  content:'';
-  position:absolute;
-  top:0;right:0;
-  border-style:solid;
-  border-width:0 26px 26px 0;
-  border-color:transparent rgba(0,0,0,0.6) transparent transparent;
-}
-
-/* ─── THE TURNING PAGE (clone flying over) ─── */
-.turning-page{
-  position:absolute;
-  inset:0;
-  border-radius:4px 6px 6px 4px;
-  overflow:hidden;
-  transform-origin:left center;
-  transform-style:preserve-3d;
-  pointer-events:none;
-  z-index:20;
-}
-.turning-page img{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-/* Highlight sweep on turning page */
-.turning-page::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to right,
-    rgba(0,0,0,0.55) 0%,
-    rgba(0,0,0,0.2) 20%,
-    rgba(255,255,255,0.12) 45%,
-    rgba(255,255,255,0.25) 50%,
-    rgba(255,255,255,0.08) 55%,
-    rgba(0,0,0,0.3) 80%,
-    rgba(0,0,0,0.65) 100%);
-  pointer-events:none;
-}
-
-/* Spine shadow cast on current page */
-.spine-shadow{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to right,
-    rgba(0,0,0,0.45) 0%,
-    rgba(0,0,0,0.1) 12%,
-    transparent 30%);
-  pointer-events:none;
-  z-index:15;
-  border-radius:4px 6px 6px 4px;
-}
-
-/* ───── ANIMATIONS ───── */
-@keyframes turnForward{
-  0%  {transform:rotateY(0deg);   box-shadow:none;}
-  30% {transform:rotateY(-50deg); box-shadow:-18px 0 35px rgba(0,0,0,0.6);}
-  70% {transform:rotateY(-130deg);box-shadow:-12px 0 25px rgba(0,0,0,0.5);}
-  100%{transform:rotateY(-180deg);box-shadow:none;}
-}
-@keyframes turnBackward{
-  0%  {transform:rotateY(-180deg);}
-  30% {transform:rotateY(-130deg);}
-  70% {transform:rotateY(-50deg);}
-  100%{transform:rotateY(0deg);}
-}
-
-.anim-forward{animation:turnForward 0.65s cubic-bezier(0.4,0,0.2,1) forwards;}
-.anim-backward{animation:turnBackward 0.65s cubic-bezier(0.4,0,0.2,1) forwards;}
-
-/* ───── CONTROLS ───── */
-.nav-btn{
-  position:fixed;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(201,169,110,0.08);
-  border:1px solid rgba(201,169,110,0.2);
-  color:rgba(201,169,110,0.6);
-  width:44px;height:80px;
-  border-radius:4px;
-  cursor:pointer;
-  font-size:18px;
-  transition:all .3s;
-  z-index:50;
-}
-.nav-btn:hover{
-  background:rgba(201,169,110,0.18);
-  color:var(--gold);
-  border-color:rgba(201,169,110,0.5);
-}
-.nav-btn:disabled{opacity:0.15;cursor:default;}
-#btn-prev{left:calc(50% - 290px);}
-#btn-next{right:calc(50% - 290px);}
-
-/* ───── FOOTER ───── */
-footer{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  padding:0 0 20px;
-}
-.dots{display:flex;gap:7px;}
-.dot{
-  width:6px;height:6px;
-  border-radius:50%;
-  background:rgba(201,169,110,0.2);
-  transition:all .3s;
-}
-.dot.active{
-  background:var(--gold);
-  width:20px;
-  border-radius:3px;
-}
-.hint{
-  font-size:10px;
-  letter-spacing:2.5px;
-  text-transform:uppercase;
-  color:rgba(201,169,110,0.3);
-}
-
-/* ───── COUNTER ───── */
-.counter{
-  position:fixed;
-  top:50%;right:28px;
-  transform:translateY(-50%);
-  font-family:'Cormorant Garamond',serif;
-  font-size:13px;
-  color:rgba(201,169,110,0.4);
-  letter-spacing:2px;
-  writing-mode:vertical-rl;
-  z-index:50;
-}
-
-/* ───── SWIPE ZONES (invisible) ───── */
-.zone{
-  position:fixed;
-  top:0;bottom:0;
-  width:40%;
-  cursor:pointer;
-  z-index:40;
-}
-#zone-prev{left:0;}
-#zone-next{right:0;}
+/* FLASH */
+.flash{position:fixed;inset:0;z-index:500;pointer-events:none;background:rgba(201,169,110,0.07);opacity:0;transition:opacity .12s;}
+.flash.on{opacity:1;}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="brand"><em>PRESTIGE</em> DOORS</div>
-  <button class="home-btn" onclick="goHome()">← Back</button>
+<div class="prog"><div class="prog-fill" id="prog"></div></div>
+
+<header class="topbar">
+  <div class="logo"><em>PRESTIGE</em> DOORS</div>
+  <div class="topbar-btns">
+    <button class="tbtn tbtn-home" onclick="goHome()">
+      <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+      Home
+    </button>
+    <button class="tbtn tbtn-contact" onclick="goContact()">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Contact Us
+    </button>
+  </div>
 </header>
 
-<button class="nav-btn" id="btn-prev" onclick="prevPage()">‹</button>
-<button class="nav-btn" id="btn-next" onclick="nextPage()">›</button>
-
-<div class="counter" id="counter">1 / 5</div>
-
-<div class="scene">
-  <div class="book-wrapper" id="bookWrapper">
-    <div class="book-shadow"></div>
-    <div class="spine"></div>
-    <div class="cover-back"></div>
-    <div class="page-stack"></div>
-    <div class="pages-container" id="pagesContainer"></div>
+<div class="arrows">
+  <div class="arr hide" id="aUp" onclick="nav(-1)">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  </div>
+  <div class="arr-sep"></div>
+  <div class="arr" id="aDown" onclick="nav(1)">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </div>
 
-<div id="zone-prev" class="zone" onclick="prevPage()"></div>
-<div id="zone-next" class="zone" onclick="nextPage()"></div>
+<nav class="dots" id="dots"></nav>
 
-<footer>
-  <div class="dots" id="dots"></div>
-  <div class="hint">Swipe or click to browse</div>
-</footer>
+<div class="feed-wrap">
+  <div class="feed" id="feed"></div>
+</div>
+
+<div class="hint">
+  <div class="hint-icon">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+  <div class="hint-txt">Swipe or use the arrows</div>
+</div>
+
+<div class="flash" id="flash"></div>
 
 <script>
-const images = [
-  {src:"images/tugstonebaia.jpg",  title:"Baia Collection",  sub:"Tungstone Series · Model 01"},
-  {src:"images/usa tungstone.jpg", title:"Heritage Oak",     sub:"Tungstone Series · Model 02"},
-  {src:"images/door3.jpg",         title:"Grand Entrance",   sub:"Premium Line · Model 03"},
-  {src:"images/door4.jpg",         title:"Nordic Frost",     sub:"Scandinavian · Model 04"},
-  {src:"images/door5.jpg",         title:"Ebony Classic",    sub:"Luxury Series · Model 05"},
+// ─────────────────────────────────────────────
+//  DOOR DATA
+//  src: path to your image (e.g. "images/door1.jpg")
+//       if the image is missing, a dark gradient placeholder shows instead
+//  bg:  placeholder gradient colour
+// ─────────────────────────────────────────────
+const doors = [
+  {
+    src:   "images/tugstonebaia.jpg",
+    bg:    "linear-gradient(145deg,#1a1108 0%,#2e1e0a 40%,#1a1108 100%)",
+    cat:   "Tungstone Series · No.01",
+    title: "Baia Collection",
+    desc:  "Mediterranean elegance redefined. UV-treated natural oak veneer, fully weatherproof for the British climate."
+  },
+  {
+    src:   "images/usa tungstone.jpg",
+    bg:    "linear-gradient(145deg,#0d1318 0%,#1a2a34 40%,#0d1318 100%)",
+    cat:   "Tungstone Series · No.02",
+    title: "Heritage Oak",
+    desc:  "Tradition and modernity in perfect balance. Solid American oak frame with triple-glazed security glass."
+  },
+  {
+    src:   "images/door3.jpg",
+    bg:    "linear-gradient(145deg,#10100e 0%,#232220 40%,#10100e 100%)",
+    cat:   "Premium Line · No.03",
+    title: "Grand Entrance",
+    desc:  "A first impression that lasts. Architectural design with satin nickel hardware and a thermally broken frame."
+  },
+  {
+    src:   "images/door4.jpg",
+    bg:    "linear-gradient(145deg,#0e1214 0%,#1c2830 40%,#0e1214 100%)",
+    cat:   "Scandinavian · No.04",
+    title: "Nordic Frost",
+    desc:  "Nordic minimalism at its finest. Clean lines, frosted glass and a flush anodised aluminium handle."
+  },
+  {
+    src:   "images/door5.jpg",
+    bg:    "linear-gradient(145deg,#0f0c09 0%,#221a0e 40%,#0f0c09 100%)",
+    cat:   "Luxury Series · No.05",
+    title: "Ebony Classic",
+    desc:  "Ebony-stained hardwood paired with solid brass fittings. A bespoke piece for exceptional homes."
+  },
 ];
 
-let current = 0;
-let animating = false;
+let cur = 0, busy = false;
+const T = doors.length;
+const feed   = document.getElementById("feed");
+const prog   = document.getElementById("prog");
+const dotsEl = document.getElementById("dots");
+const aUp    = document.getElementById("aUp");
+const aDown  = document.getElementById("aDown");
+const flash  = document.getElementById("flash");
 
-const container  = document.getElementById("pagesContainer");
-const dotsEl     = document.getElementById("dots");
-const counterEl  = document.getElementById("counter");
-const btnPrev    = document.getElementById("btn-prev");
-const btnNext    = document.getElementById("btn-next");
+// Build slides
+doors.forEach((d, i) => {
+  const s = document.createElement("div");
+  s.className = "slide" + (i === 0 ? " active" : "");
 
-function goHome(){ window.location.href = "/index.html"; }
+  const ph = document.createElement("div");
+  ph.className = "slide-placeholder";
+  ph.style.background = d.bg;
+  ph.textContent = String(i + 1).padStart(2, "0");
 
-function makePage(index){
-  const d = document.createElement("div");
-  d.className = "page";
-  const img = images[index];
-  d.innerHTML = `
-    <img src="${img.src}" alt="${img.title}" loading="lazy">
-    <div class="spine-shadow"></div>
-    <div class="page-corner"></div>
-    <div class="page-info">
-      <div class="page-title">${img.title}</div>
-      <div class="page-sub">${img.sub}</div>
-    </div>`;
-  return d;
-}
+  const img = document.createElement("img");
+  img.className = "slide-img";
+  img.alt = d.title;
+  img.loading = i === 0 ? "eager" : "lazy";
+  img.style.background = d.bg;
+  img.src = d.src;
+  img.onerror = () => { img.style.opacity = "0"; };
 
-function makeTurning(index){
-  const d = document.createElement("div");
-  d.className = "turning-page";
-  const img = images[index];
-  d.innerHTML = `<img src="${img.src}" alt="" loading="eager">`;
-  return d;
-}
-
-function renderDots(){
-  dotsEl.innerHTML = "";
-  images.forEach((_,i)=>{
-    const d = document.createElement("div");
-    d.className = "dot"+(i===current?" active":"");
-    dotsEl.appendChild(d);
-  });
-  counterEl.textContent = `${current+1} / ${images.length}`;
-  btnPrev.disabled = current === 0;
-  btnNext.disabled = current === images.length - 1;
-}
-
-function render(){
-  container.innerHTML = "";
-
-  // Background page (next/prev peek)
-  const behindIdx = current + 1 < images.length ? current + 1 : null;
-  if(behindIdx !== null){
-    const bg = makePage(behindIdx);
-    bg.style.zIndex = 1;
-    container.appendChild(bg);
-  }
-
-  // Current page on top
-  const front = makePage(current);
-  front.style.zIndex = 2;
-  container.appendChild(front);
-
-  renderDots();
-}
-
-function nextPage(){
-  if(animating || current >= images.length - 1) return;
-  animating = true;
-
-  // Clone current page as turning page
-  const turning = makeTurning(current);
-  turning.style.zIndex = 10;
-  container.appendChild(turning);
-  turning.classList.add("anim-forward");
-
-  turning.addEventListener("animationend", ()=>{
-    current++;
-    render();
-    animating = false;
-  },{once:true});
-}
-
-function prevPage(){
-  if(animating || current <= 0) return;
-  animating = true;
-
-  // Show the page that will "come back"
-  current--;
-  render();
-
-  // Animate the returning page from -180° back to 0°
-  const returning = makeTurning(current);
-  returning.style.zIndex = 10;
-  returning.style.transform = "rotateY(-180deg)";
-  container.appendChild(returning);
-
-  // small delay so transform is applied before animation
-  requestAnimationFrame(()=>{
-    requestAnimationFrame(()=>{
-      returning.classList.add("anim-backward");
-      returning.addEventListener("animationend",()=>{
-        render();
-        animating = false;
-      },{once:true});
-    });
-  });
-}
-
-// Touch / swipe support
-let touchStartX = 0;
-document.addEventListener("touchstart", e=> touchStartX = e.touches[0].clientX,{passive:true});
-document.addEventListener("touchend", e=>{
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  if(Math.abs(dx) > 50){
-    dx < 0 ? nextPage() : prevPage();
-  }
-},{passive:true});
-
-// Keyboard
-document.addEventListener("keydown", e=>{
-  if(e.key==="ArrowRight"||e.key==="ArrowDown") nextPage();
-  if(e.key==="ArrowLeft" ||e.key==="ArrowUp")   prevPage();
+  s.appendChild(ph);
+  s.appendChild(img);
+  s.insertAdjacentHTML("beforeend", `
+    <div class="vig"></div>
+    <div class="badge">Door <em>${String(i+1).padStart(2,"0")}</em> of ${T}</div>
+    <div class="info">
+      <div class="tag">${d.cat}</div>
+      <div class="info-title">${d.title}</div>
+      <div class="info-desc">${d.desc}</div>
+      <button class="cta" onclick="getQuote('${d.title}')">
+        Get a Quote
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+    <div class="acts">
+      <div class="act" onclick="toggleSave(this,${i})">
+        <div class="act-c" id="fc${i}">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <span class="act-lbl">Save</span>
+      </div>
+      <div class="act" onclick="shareSlide('${d.title}')">
+        <div class="act-c">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <span class="act-lbl">Share</span>
+      </div>
+      <div class="act" onclick="goContact()">
+        <div class="act-c">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <span class="act-lbl">Call</span>
+      </div>
+    </div>
+  `);
+  feed.appendChild(s);
 });
 
-render();
+// Build dots
+doors.forEach((_, i) => {
+  const d = document.createElement("div");
+  d.className = "dot" + (i === 0 ? " on" : "");
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+});
+
+function upUI() {
+  prog.style.width = ((cur + 1) / T * 100) + "%";
+  dotsEl.querySelectorAll(".dot").forEach((d, i) => d.classList.toggle("on", i === cur));
+  aUp.classList.toggle("hide", cur === 0);
+  aDown.classList.toggle("hide", cur === T - 1);
+}
+
+function goTo(idx) {
+  if (busy || idx === cur || idx < 0 || idx >= T) return;
+  busy = true;
+  flash.classList.add("on");
+  setTimeout(() => flash.classList.remove("on"), 140);
+  feed.children[cur].classList.remove("active");
+  cur = idx;
+  feed.children[cur].classList.add("active");
+  feed.style.transform = `translateY(-${cur * 100}vh)`;
+  upUI();
+  setTimeout(() => busy = false, 520);
+}
+
+function nav(d) { goTo(cur + d); }
+
+// Touch
+let ty = 0;
+document.addEventListener("touchstart", e => { ty = e.touches[0].clientY; }, { passive: true });
+document.addEventListener("touchend",   e => {
+  const dy = ty - e.changedTouches[0].clientY;
+  if (Math.abs(dy) > 50) nav(dy > 0 ? 1 : -1);
+}, { passive: true });
+
+// Wheel
+let wcd = false;
+document.addEventListener("wheel", e => {
+  if (wcd || busy) return; wcd = true;
+  nav(e.deltaY > 0 ? 1 : -1);
+  setTimeout(() => wcd = false, 600);
+}, { passive: true });
+
+// Keys
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown" || e.key === "ArrowRight") nav(1);
+  if (e.key === "ArrowUp"   || e.key === "ArrowLeft")  nav(-1);
+});
+
+// Actions
+const saved = new Set();
+function toggleSave(el, i) {
+  const c = document.getElementById("fc" + i);
+  saved.has(i) ? (saved.delete(i), c.classList.remove("fav")) : (saved.add(i), c.classList.add("fav"));
+}
+function shareSlide(t) {
+  if (navigator.share) navigator.share({ title: "Prestige Doors — " + t, url: location.href });
+  else alert("Copy the link from your address bar to share!");
+}
+function getQuote(t) { window.location.href = "contact.html?model=" + encodeURIComponent(t); }
+function goHome()     { window.location.href = "index.html"; }
+function goContact()  { window.location.href = "contact.html"; }
+
+upUI();
 </script>
 </body>
 </html>
