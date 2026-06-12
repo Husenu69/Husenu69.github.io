@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appliance Repair in Williamsburg, VA | Zoltan Appliance Repair</title>
+<meta name="description" content="Trusted appliance repair in Williamsburg, VA. Fast &amp; reliable in-home service. Refrigerator, washer, dryer, oven & more. Honest pricing, same-week service. Call (757) 817-3934.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0d0d0d;
+    --bg2:       #161616;
+    --bg3:       #1e1e1e;
+    --border:    rgba(255,255,255,0.08);
+    --border-hi: rgba(255,255,255,0.15);
+    --text:      #f0ede8;
+    --muted:     #888880;
+    --accent:    #e8e0d0;
+    --gold:      #c8a96e;
+    --gold-dim:  rgba(200,169,110,0.12);
+    --radius:    10px;
+    --radius-lg: 16px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 0.5px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+  .nav-brand {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: #1a1200;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+    transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 5rem 2rem 4rem;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border: 0.5px solid rgba(200,169,110,0.25);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.75rem;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 2.25rem;
+    line-height: 1.75;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: #1a1200;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0.85rem 1.75rem;
+    border-radius: 8px;
+    transition: opacity 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0.85rem 1.75rem;
+    border-radius: 8px;
+    border: 0.5px solid var(--border-hi);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); background: var(--gold-dim); }
+  .hero-stars {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .stars { color: var(--gold); letter-spacing: 2px; }
+
+  /* ── SECTION SHELL ── */
+  section { padding: 4.5rem 2rem; }
+  .container { max-width: 860px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .section-body {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.8;
+  }
+  hr.divider {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── TRUST STRIP ── */
+  .trust-strip {
+    background: var(--bg2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 1.5rem 2rem;
+  }
+  .trust-strip-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 3rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .trust-icon { color: var(--gold); font-size: 18px; }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 2.5rem;
+    background: var(--border);
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .service-card:hover { background: var(--bg3); }
+  .service-icon { font-size: 22px; margin-bottom: 4px; }
+  .service-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .service-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── WHY JAMES CITY ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+  .why-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .why-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── COMMON CALLS ── */
+  .calls-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .call-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--bg2);
+    padding: 1.25rem 1.5rem;
+  }
+  .call-row + .call-row { border-top: 0.5px solid var(--border); }
+  .call-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--gold);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .call-content h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .call-content p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-block {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .cta-block h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  .cta-block p {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 2rem;
+  }
+  .cta-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -0.03em;
+  }
+  .cta-note {
+    margin-top: 0.75rem;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 520px) {
+    nav { padding: 1rem; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .cta-block { padding: 2.25rem 1.25rem; }
+    .cta-phone { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://zoltanappliancesrepair.com/" class="nav-brand">⚙ Zoltan <span>Repair</span></a>
+  <a href="tel:+17578173934" class="nav-cta">📞 (757) 817-3934</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">📍 Williamsburg, VA</div>
+  <h1>Appliance repair in<br><em>Williamsburg</em> —<br>done right.</h1>
+  <p class="hero-sub">Professional appliance repair serving homeowners throughout Williamsburg, VA. Honest diagnostics, upfront pricing, and repairs that last — backed by 10+ years of hands-on experience.</p>
+  <div class="hero-actions">
+    <a href="tel:+17578173934" class="btn-primary">📞 Call now</a>
+    <a href="https://zoltanappliancesrepair.com/" class="btn-secondary">View all services ↗</a>
+  </div>
+  <div class="hero-stars">
+    <span class="stars">★★★★★</span>
+    <span>5.0 rated · 50+ verified reviews</span>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item"><span class="trust-icon">✔</span> Honest diagnostics</div>
+    <div class="trust-item"><span class="trust-icon">💰</span> Fair, upfront pricing</div>
+    <div class="trust-item"><span class="trust-icon">🔧</span> All major brands</div>
+    <div class="trust-item"><span class="trust-icon">📅</span> Same-day & next-day service</div>
+    <div class="trust-item"><span class="trust-icon">🗣</span> Real person answers every call</div>
+  </div>
+</div>
+
+<!-- SEO CONTENT -->
+<section>
+  <div class="container">
+    <p class="section-label">Local service</p>
+    <h2 class="section-title">Serving Williamsburg homeowners</h2>
+    <p class="section-body">We proudly serve homeowners throughout Williamsburg with fast, reliable appliance repair services tailored to residential needs. In many cases we can provide same-day or next-day service depending on availability — so you're never waiting long for a technician to arrive.</p>
+    <p class="section-body" style="margin-top: 1rem;">Our goal is to provide honest assessments and cost-effective repairs that extend the life of your appliances — saving you money compared to early replacement.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMMON CALLS -->
+<section>
+  <div class="container">
+    <p class="section-label">What we see most</p>
+    <h2 class="section-title">Common appliance issues in Williamsburg</h2>
+    <p class="section-body">These are the issues we fix most often for Williamsburg homeowners.</p>
+
+    <div class="calls-list">
+      <div class="call-row">
+        <div class="call-num">01</div>
+        <div class="call-content">
+          <h3>Refrigerators not cooling properly</h3>
+          <p>A warm fridge puts your food at risk fast. We pinpoint the cause — compressor, thermostat, condenser coils, or refrigerant — and fix it on the first visit before spoilage becomes a problem.</p>
+        </div>
+      </div>
+      <div class="call-row">
+        <div class="call-num">02</div>
+        <div class="call-content">
+          <h3>Washing machines not spinning or draining</h3>
+          <p>A washer stuck mid-cycle is a laundry emergency. We handle door lock faults, clogged pumps, worn belts, and control board failures — getting your machine back in service quickly.</p>
+        </div>
+      </div>
+      <div class="call-row">
+        <div class="call-num">03</div>
+        <div class="call-content">
+          <h3>Dryers not heating</h3>
+          <p>A dryer that runs but won't heat is almost always a fixable part failure — heating element, thermal fuse, or gas valve. We diagnose accurately so you're not paying for parts you don't need.</p>
+        </div>
+      </div>
+      <div class="call-row">
+        <div class="call-num">04</div>
+        <div class="call-content">
+          <h3>Dishwashers not cleaning effectively</h3>
+          <p>Poor wash results usually point to a clogged spray arm, failing pump, or water inlet issue. We restore full cleaning performance so you're not hand-washing every load.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section>
+  <div class="container">
+    <p class="section-label">What we fix</p>
+    <h2 class="section-title">Appliance repair services in Williamsburg</h2>
+    <p class="section-body">From refrigerators to ranges — if it's broken, we fix it.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🧊</div>
+        <h3>Refrigerator repair</h3>
+        <p>Cooling failures, ice maker problems, leaks, warm fridge, compressor and thermostat issues.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👕</div>
+        <h3>Washer repair</h3>
+        <p>Won't drain, won't spin, excessive vibration, error codes, water leaks, and door lock faults.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌀</div>
+        <h3>Dryer repair</h3>
+        <p>No heat, takes too long, drum not spinning, noisy operation, and control board issues.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍽</div>
+        <h3>Dishwasher repair</h3>
+        <p>Leaking, not draining, poor cleaning results, door latch problems, and pump failures.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔥</div>
+        <h3>Oven & stove repair</h3>
+        <p>Burners not lighting, heating elements, ignition systems, temperature calibration, and controls.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❄️</div>
+        <h3>Freezer repair</h3>
+        <p>Frost buildup, cooling problems, defrost system failures, and thermostat replacements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHY ZOLTAN -->
+<section>
+  <div class="container">
+    <p class="section-label">Why Zoltan</p>
+    <h2 class="section-title">Reliable. Honest. Local.</h2>
+    <p class="section-body">Williamsburg homeowners choose us because we show up, communicate clearly, and never recommend a repair you don't need.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>📅 Same-day & next-day service</h3>
+        <p>Most repairs are completed on the first visit. We often offer same-day or next-day availability across Williamsburg — so you're not waiting days with a broken appliance.</p>
+      </div>
+      <div class="why-card">
+        <h3>💰 Transparent pricing</h3>
+        <p>You'll know the cost before any work begins. No surprises, no hidden fees — just honest quotes upfront.</p>
+      </div>
+      <div class="why-card">
+        <h3>🔧 10+ years experience</h3>
+        <p>Deep hands-on expertise across all major appliance types and brands — GE, LG, Samsung, Whirlpool, Bosch, and more.</p>
+      </div>
+      <div class="why-card">
+        <h3>🗣 Real person, every call</h3>
+        <p>Every call is answered by a real person — not a robot, not a call center. We're easy to reach and quick to respond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="cta-block">
+      <h2>Appliance acting up in Williamsburg?</h2>
+      <p>We serve Williamsburg and all surrounding areas — call us and we'll get you scheduled fast.</p>
+      <a href="tel:+17578173934" class="cta-phone">📞 (757) 817-3934</a>
+      <p class="cta-note">📱 Call or text — we respond fast · Same-day & next-day service available</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <a href="https://zoltanappliancesrepair.com/">⚙ Zoltan Appliance Repair</a> ·
+    Williamsburg, VA ·
+    <a href="tel:+17578173934">(757) 817-3934</a> ·
+    <a href="https://zoltanappliancesrepair.com/privacy.html">Privacy</a>
+  </p>
+  <p style="margin-top: 0.5rem;">© 2026 Zoltan LLC · Williamsburg, VA 23188</p>
+</footer>
+
+</body>
+</html>
