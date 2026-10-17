@@ -4,36 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Appliance Repair Williamsburg VA | Refrigerator, Washer & Dryer Repair</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Google Fonts (optimizat) -->
+<meta name="description" content="Appliance repair in Williamsburg, VA and nearby areas. Refrigerator, washer, dryer, dishwasher, oven and freezer repair with upfront pricing. Call (757) 817-3934.">
+<link rel="canonical" href="https://zoltanappliancesrepair.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zoltan Appliance Repair | Williamsburg, VA">
+<meta property="og:description" content="Honest diagnostics and upfront pricing for appliance repair in Williamsburg and surrounding areas.">
+<meta property="og:url" content="https://zoltanappliancesrepair.com/">
+<meta property="og:image" content="https://zoltanappliancesrepair.com/photo1.jpeg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Favicon fallback (cel mai important pentru Google) -->
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
 <link rel="icon" href="/favicon/favicon.ico" sizes="any">
-
-<!-- PNG favicons -->
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png">
-
-<!-- Apple Touch Icon (iPhone/iPad) -->
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-
-<!-- Android / PWA icons -->
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon/web-app-manifest-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/favicon/web-app-manifest-512x512.png">
-
-<!-- Web App Manifest -->
 <link rel="manifest" href="/favicon/site.webmanifest">
+<meta name="theme-color" content="#0d1b2a">
 
-<!-- Safari pinned tab (opțional dar PRO) -->
-<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#000000">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Zoltan Appliance Repair",
+  "url": "https://zoltanappliancesrepair.com/",
+  "telephone": "+1-757-817-3934",
+  "image": "https://zoltanappliancesrepair.com/photo1.jpeg",
+  "description": "Appliance repair in Williamsburg, Virginia and surrounding areas.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Williamsburg",
+    "addressRegion": "VA",
+    "postalCode": "23188",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Williamsburg"},
+    {"@type": "AdministrativeArea", "name": "James City County"},
+    {"@type": "City", "name": "Yorktown"},
+    {"@type": "City", "name": "Toano"},
+    {"@type": "City", "name": "Newport News"}
+  ],
+  "sameAs": [
+    "https://www.yelp.com/biz/zoltan-williamsburg",
+    "https://nextdoor.com/pages/zoltan-appliance-repair-williamsburg-va/",
+    "https://www.facebook.com/p/Zoltan-LLC-100031928273381/",
+    "https://www.homeadvisor.com/rated.ZoltanLLC.93759099.html"
+  ]
+}
+</script>
 
-<!-- Theme color (mobil + Chrome UI) -->
-<meta name="theme-color" content="#000000">
+<!-- GA4: replace G-XXXXXXXXXX with your Measurement ID, then remove this comment wrapper
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="tel:"]');
+    if (a) gtag('event', 'phone_call_click', {link_url: a.getAttribute('href')});
+  });
+</script>
+-->
+
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -60,7 +98,7 @@
     overflow-x: hidden;
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: sticky;
     top: 0;
@@ -82,19 +120,6 @@
     text-decoration: none;
   }
   nav .logo span { color: var(--orange); }
-  nav .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  nav .nav-stars {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: .8rem;
-    color: var(--steel);
-  }
-  nav .nav-stars .stars { color: #fbbf24; font-size: .9rem; letter-spacing: 1px; }
   nav a.nav-cta {
     background: var(--orange);
     color: var(--white);
@@ -108,7 +133,7 @@
   }
   nav a.nav-cta:hover { background: var(--orange2); }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
     position: relative;
     background: var(--navy);
@@ -116,23 +141,13 @@
     padding: 70px 20px 80px;
     text-align: center;
   }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .gear {
-    position: absolute;
-    opacity: 0.07;
-  }
+  .hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .gear { position: absolute; opacity: 0.07; }
   .gear-1 { width: 320px; top: -80px; right: -80px; animation: spin 30s linear infinite; }
   .gear-2 { width: 180px; bottom: -40px; left: -40px; animation: spin 20s linear infinite reverse; }
   .gear-3 { width: 100px; top: 55%; left: 8%; animation: spin 15s linear infinite; }
-
   @keyframes spin { to { transform: rotate(360deg); } }
-  @media (prefers-reduced-motion: reduce) { .gear { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .gear, .btn-primary { animation: none; } }
 
   .hero::after {
     content: '';
@@ -142,6 +157,7 @@
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--orange), transparent);
   }
+  .hero > *:not(.hero-bg) { position: relative; }
 
   .hero-badge {
     display: inline-block;
@@ -157,7 +173,6 @@
     border-radius: 100px;
     margin-bottom: 22px;
   }
-
   .hero h1 {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
@@ -167,7 +182,6 @@
     margin-bottom: 20px;
   }
   .hero h1 em { font-style: normal; color: var(--orange); }
-
   .hero p {
     max-width: 540px;
     margin: 0 auto 16px;
@@ -175,8 +189,6 @@
     font-size: 1rem;
     line-height: 1.7;
   }
-
-  /* Personal tagline */
   .hero-personal {
     max-width: 460px;
     margin: 0 auto 32px;
@@ -184,7 +196,6 @@
     color: rgba(148,163,184,0.75);
     font-style: italic;
   }
-
   .hero-btns {
     display: flex;
     flex-direction: column;
@@ -192,11 +203,6 @@
     gap: 12px;
     margin-bottom: 40px;
   }
-  @media (min-width: 480px) {
-    .hero-btns { flex-direction: row; justify-content: center; }
-  }
-
-  /* Hero stars */
   .hero-rating {
     display: flex;
     align-items: center;
@@ -204,15 +210,7 @@
     gap: 10px;
     flex-wrap: wrap;
   }
-  .hero-rating .stars-big {
-    color: #fbbf24;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-  }
-  .hero-rating .rating-text {
-    font-size: .9rem;
-    color: var(--steel);
-  }
+  .hero-rating .rating-text { font-size: .9rem; color: var(--steel); }
   .hero-rating .rating-text strong { color: var(--white); }
   .hero-rating .rating-sources {
     display: flex;
@@ -248,30 +246,13 @@
     animation: pulse-ring 2.5s ease-out infinite;
   }
   .btn-primary:hover { background: var(--orange2); transform: translateY(-2px); }
-
   @keyframes pulse-ring {
     0%   { box-shadow: 0 0 0 0 rgba(249,115,22,.45); }
     70%  { box-shadow: 0 0 0 14px rgba(249,115,22,0); }
     100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
   }
 
-  .btn-ghost {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--white);
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 15px 28px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    border: 1.5px solid rgba(255,255,255,.2);
-    transition: border-color .2s, background .2s;
-  }
-  .btn-ghost:hover { border-color: var(--orange); background: rgba(249,115,22,.08); }
-
-  /* ── TRUST BAR ── */
+  /* TRUST BAR */
   .trust-bar {
     background: var(--navy2);
     border-top: 1px solid rgba(255,255,255,.06);
@@ -292,12 +273,8 @@
   }
   .trust-item .icon { color: var(--orange); font-size: 1.15rem; }
 
-  /* ── SECTION COMMONS ── */
-  .section {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 80px 20px;
-  }
+  /* SECTIONS */
+  .section { max-width: 1080px; margin: 0 auto; padding: 80px 20px; }
   .section-label {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
@@ -323,22 +300,11 @@
     margin: 0 auto 52px;
     font-size: .97rem;
   }
+  .divider { width: 48px; height: 3px; background: var(--orange); border-radius: 2px; margin: 14px auto 0; }
 
-  .divider {
-    width: 48px;
-    height: 3px;
-    background: var(--orange);
-    border-radius: 2px;
-    margin: 14px auto 0;
-  }
-
-  /* ── PHOTO GALLERY ── */
+  /* GALLERY */
   .gallery-section { background: var(--navy2); }
-  .gallery-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 70px 20px;
-  }
+  .gallery-inner { max-width: 1080px; margin: 0 auto; padding: 70px 20px; }
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -361,7 +327,6 @@
     transition: transform .35s ease;
   }
   .gallery-item:hover img { transform: scale(1.04); }
-  /* Placeholder when no photo loaded */
   .gallery-item .photo-placeholder {
     width: 100%;
     height: 100%;
@@ -375,7 +340,7 @@
   }
   .gallery-item .photo-placeholder .ph-icon { font-size: 2rem; opacity: .5; }
 
-  /* ── SERVICES GRID ── */
+  /* SERVICES */
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -403,15 +368,11 @@
   }
   .service-card:hover { border-color: rgba(249,115,22,.35); transform: translateY(-3px); }
   .service-card:hover::before { transform: scaleY(1); }
-
   .service-icon {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     background: rgba(249,115,22,.12);
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     margin-bottom: 16px;
     font-size: 1.5rem;
   }
@@ -422,14 +383,20 @@
     margin-bottom: 8px;
   }
   .service-card p { color: var(--steel); font-size: .92rem; line-height: 1.6; }
-
-  /* ── WHY US ── */
-  .why-section { background: var(--navy2); }
-  .why-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 80px 20px;
+  .more-btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
   }
+  .more-btn:hover { background: #0056b3; }
+
+  /* WHY US */
+  .why-section { background: var(--navy2); }
+  .why-inner { max-width: 1080px; margin: 0 auto; padding: 80px 20px; }
   .why-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -446,25 +413,17 @@
   .why-number {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     color: var(--orange);
     line-height: 1;
     margin-bottom: 8px;
   }
-  .why-label {
-    font-weight: 600;
-    margin-bottom: 8px;
-    font-size: 1rem;
-  }
+  .why-label { font-weight: 600; margin-bottom: 8px; font-size: 1rem; }
   .why-desc { color: var(--steel); font-size: .88rem; }
 
-  /* ── REVIEWS ── */
+  /* REVIEWS */
   .reviews-section { background: var(--navy); }
-  .reviews-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 80px 20px;
-  }
+  .reviews-inner { max-width: 1080px; margin: 0 auto; padding: 80px 20px; }
   .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -493,26 +452,10 @@
     line-height: 1;
   }
   .review-stars { color: #fbbf24; letter-spacing: 2px; font-size: 1rem; }
-  .review-text {
-    color: var(--light);
-    font-size: .93rem;
-    line-height: 1.65;
-    flex: 1;
-  }
-  .review-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .reviewer-name {
-    font-weight: 600;
-    font-size: .9rem;
-  }
-  .reviewer-loc {
-    font-size: .78rem;
-    color: var(--steel);
-  }
+  .review-text { color: var(--light); font-size: .93rem; line-height: 1.65; flex: 1; }
+  .review-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .reviewer-name { font-weight: 600; font-size: .9rem; }
+  .reviewer-loc { font-size: .78rem; color: var(--steel); }
   .review-source {
     font-size: .72rem;
     font-weight: 600;
@@ -522,44 +465,23 @@
     color: var(--steel);
     white-space: nowrap;
   }
-  .review-source.yelp   { border-color: rgba(196,3,3,.4);   color: #f87171; }
-  .review-source.nd     { border-color: rgba(34,197,94,.4);  color: #86efac; }
-  .review-source.ha     { border-color: rgba(96,165,250,.4); color: #93c5fd; }
-  .review-source.angi   { border-color: rgba(249,115,22,.4); color: #fdba74; }
+  .review-source.nd   { border-color: rgba(34,197,94,.4);  color: #86efac; }
+  .review-source.ha   { border-color: rgba(96,165,250,.4); color: #93c5fd; }
+  .review-source.angi { border-color: rgba(249,115,22,.4); color: #fdba74; }
 
-  /* Overall rating summary */
   .rating-summary {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 48px;
+    margin: 40px 0 48px;
     padding: 24px;
     background: var(--card-bg);
     border-radius: var(--radius);
     border: 1px solid rgba(249,115,22,.2);
   }
-  .rating-big {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 3.5rem;
-    color: var(--orange);
-    line-height: 1;
-  }
-  .rating-details {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .rating-details .stars-row { color: #fbbf24; font-size: 1.4rem; letter-spacing: 3px; }
-  .rating-details .rating-sub { font-size: .85rem; color: var(--steel); }
-  .rating-platforms {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  .rating-platforms { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
   .platform-pill {
     display: flex;
     flex-direction: column;
@@ -569,25 +491,17 @@
     border-radius: 10px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.08);
+    text-decoration: none;
+    color: var(--white);
   }
   .platform-pill .p-name { font-size: .72rem; color: var(--steel); font-weight: 600; }
   .platform-pill .p-stars { color: #fbbf24; font-size: .85rem; }
   .platform-pill .p-score { font-weight: 700; font-size: .95rem; }
 
-  /* ── SERVICE AREA ── */
+  /* AREA */
   .area-section { background: var(--navy2); }
-  .area-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 70px 20px;
-  }
-  .area-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 36px;
-  }
+  .area-inner { max-width: 1080px; margin: 0 auto; padding: 70px 20px; }
+  .area-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 36px; }
   .area-tag {
     background: var(--card-bg);
     border: 1px solid rgba(255,255,255,.1);
@@ -596,20 +510,15 @@
     font-weight: 600;
     font-size: .88rem;
     color: var(--light);
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 6px;
   }
   .area-tag .pin { color: var(--orange); }
 
-  /* ── BRANDS ── */
-  .brands-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 40px;
-  }
+  /* BRANDS */
+  .brands-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 40px; }
   .brand-tag {
     background: var(--card-bg);
     border: 1px solid rgba(255,255,255,.1);
@@ -621,7 +530,7 @@
     letter-spacing: .3px;
   }
 
-  /* ── CTA STRIP ── */
+  /* CTA */
   .cta-strip {
     background: linear-gradient(135deg, #f97316, #c2500e);
     padding: 60px 20px;
@@ -633,13 +542,7 @@
     font-size: clamp(1.8rem, 5vw, 2.6rem);
     margin-bottom: 10px;
   }
-  .cta-strip p { font-size: .97rem; margin-bottom: 10px; opacity: .9; }
-  .cta-strip .cta-personal {
-    font-size: .88rem;
-    opacity: .8;
-    margin-bottom: 28px;
-    font-style: italic;
-  }
+  .cta-strip .cta-personal { font-size: .88rem; opacity: .85; margin-bottom: 20px; font-style: italic; }
   .cta-strip .phone-num {
     display: block;
     font-family: 'Barlow Condensed', sans-serif;
@@ -650,29 +553,8 @@
     text-decoration: none;
     margin-bottom: 10px;
   }
-  .cta-strip .sms-note {
-    font-size: .85rem;
-    opacity: .75;
-    margin-bottom: 28px;
-  }
-  .cta-strip .guarantee-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,.15);
-    border: 1.5px solid rgba(255,255,255,.35);
-    border-radius: 100px;
-    padding: 8px 20px;
-    font-size: .88rem;
-    font-weight: 700;
-    margin-bottom: 32px;
-  }
-  .cta-strip .btn-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+  .cta-strip .sms-note { font-size: .85rem; opacity: .85; margin-bottom: 28px; }
+  .cta-strip .btn-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
   .btn-white {
     background: var(--white);
     color: var(--orange2);
@@ -687,43 +569,23 @@
     transition: opacity .2s;
   }
   .btn-white:hover { opacity: .9; }
-  .btn-outline-white {
-    background: transparent;
-    color: var(--white);
-    font-weight: 600;
-    font-size: .97rem;
-    padding: 14px 26px;
-    border-radius: var(--radius);
-    border: 2px solid rgba(255,255,255,.6);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: border-color .2s, background .2s;
-  }
-  .btn-outline-white:hover { border-color: white; background: rgba(255,255,255,.1); }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer {
     background: #050d15;
     text-align: center;
     padding: 30px 20px;
-    color: #4b6278;
+    color: #7389a0;
     font-size: .85rem;
     border-top: 1px solid rgba(255,255,255,.05);
   }
   footer a { color: var(--steel); text-decoration: none; }
   footer a:hover { color: var(--orange); }
-  footer .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
+  footer .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
+  footer .credit { margin-top: 10px; font-size: .75rem; opacity: .7; }
 
-  @media (max-width: 480px) {
-    nav .nav-stars { display: none; }
+  @media (min-width: 480px) {
+    .hero-btns { flex-direction: row; justify-content: center; }
   }
 </style>
 </head>
@@ -731,19 +593,13 @@
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="#"><span>⚙</span> Zoltan Repair</a>
-  <div class="nav-right">
-    <div class="nav-stars">
-      <span class="stars">★★★★★</span>
-      <span>5.0 rated</span>
-    </div>
-    <a class="nav-cta" href="tel:+17578173934">📞 Call Now</a>
-  </div>
+  <a class="logo" href="/"><span>⚙</span> Zoltan Repair</a>
+  <a class="nav-cta" href="tel:+17578173934">📞 Call Now</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg">
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true">
     <svg class="gear gear-1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill="white" d="M100 60a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm0 56a16 16 0 1 1 0-32 16 16 0 0 1 0 32z"/>
       <path fill="white" d="M177 85h-11a67 67 0 0 0-5-13l8-8a8 8 0 0 0 0-11l-11-11a8 8 0 0 0-11 0l-8 8a67 67 0 0 0-13-5V23a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v11a67 67 0 0 0-13 5l-8-8a8 8 0 0 0-11 0L51 42a8 8 0 0 0 0 11l8 8a67 67 0 0 0-5 13H23a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h11a67 67 0 0 0 5 13l-8 8a8 8 0 0 0 0 11l11 11a8 8 0 0 0 11 0l8-8a67 67 0 0 0 13 5v11a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8v-11a67 67 0 0 0 13-5l8 8a8 8 0 0 0 11 0l11-11a8 8 0 0 0 0-11l-8-8a67 67 0 0 0 5-13h11a8 8 0 0 0 8-8V93a8 8 0 0 0-8-8z"/>
@@ -760,34 +616,19 @@
 
   <div class="hero-badge">📍 Williamsburg, Virginia</div>
   <h1>Your Appliance <em>Fixed Right.</em><br>Fast.</h1>
-  <p>Expert repair for all major household appliances. Honest pricing, and work that lasts — backed by 10+ years of hands-on experience.</p>
-  <p class="hero-personal"> "Every call is answered by a real person — not a robot, not a call center."</p>
+  <p>Expert repair for all major household appliances. Honest diagnostics, upfront pricing, and work that lasts.</p>
 
   <div class="hero-btns">
-    <a class="btn-primary" href="tel:+17578173934">
-      📞 (757) 817-3934
-    </a>
-    
+    <a class="btn-primary" href="tel:+17578173934">📞 (757) 817-3934</a>
   </div>
+</header>
 
-  <div class="hero-rating">
-    <span class="stars-big">★★★★★</span>
-    <span class="rating-text"><strong>5.0</strong> across all platforms</span>
-    <div class="rating-sources">
-      <a class="source-badge" href="https://www.yelp.com/biz/zoltan-williamsburg" target="_blank">Yelp ★5.0</a>
-      <a class="source-badge" href="https://nextdoor.com/pages/zoltan-appliance-repair-williamsburg-va/" target="_blank">Nextdoor ★5.0</a>
-      <a class="source-badge" href="https://www.facebook.com/p/Zoltan-LLC-100031928273381/" target="_blank">Facebook</a>
-      <a class="source-badge" href="https://www.homeadvisor.com/rated.ZoltanLLC.93759099.html" target="_blank">HomeAdvisor ★5.0</a>
-    </div>
-  </div>
-</section>
+<main>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  
   <div class="trust-item"><span class="icon">✔</span> Honest Diagnostics</div>
   <div class="trust-item"><span class="icon">💰</span> Fair, Upfront Pricing</div>
- 
   <div class="trust-item"><span class="icon">🔧</span> All Major Brands</div>
 </div>
 
@@ -799,64 +640,26 @@
     <div class="divider"></div>
 
     <div class="gallery-grid">
-      <!--
-        INSTRUCȚIUNI POZE:
-        Pune pozele în același folder cu index.html
-        și schimbă src="" cu numele fișierului.
-        Exemplu: src="zoltan-work-1.jpg"
-
-        Poți pune oricâte vrei — adaugă mai multe <div class="gallery-item"> după nevoie.
-      -->
       <div class="gallery-item">
-        <img src="/photo1.jpeg" alt="Zoltan repairing appliance"
+        <img src="/photo1.jpeg" alt="Zoltan repairing an appliance" width="1600" height="1200" loading="lazy"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          <span class="ph-icon">📷</span>
-          <span>photo1.jpg</span>
-        </div>
+        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo1</span></div>
       </div>
       <div class="gallery-item">
-        <img src="/photo2.jpg" alt="Appliance repair work"
+        <img src="/photo2.jpg" alt="Appliance repair work" width="1600" height="1200" loading="lazy"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          <span class="ph-icon">📷</span>
-          <span>photo2.jpg</span>
-        </div>
+        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo2</span></div>
       </div>
       <div class="gallery-item">
-        <img src="/photo3.jpeg" alt="Zoltan at work"
+        <img src="/photo3.jpeg" alt="Zoltan at work" width="1600" height="1200" loading="lazy"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          <span class="ph-icon">📷</span>
-          <span>photo3.jpg</span>
-        </div>
+        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo3</span></div>
       </div>
       <div class="gallery-item">
-        <img src="/photo4.jpg" alt="Repair completed"
+        <img src="/photo4.jpg" alt="Completed appliance repair" width="1600" height="1200" loading="lazy"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          <span class="ph-icon">📷</span>
-          <span>photo4.jpg</span>
-        </div>
+        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo4</span></div>
       </div>
-      <!--
-      <div class="gallery-item">
-        <img src="/photo5.jpg" alt="Appliance fixed"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          <span class="ph-icon">📷</span>
-          <span>photo5.jpg</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/photo6.jpg" alt="Professional repair"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          <span class="ph-icon">📷</span>
-          <span>photo6.jpg</span>
-        </div>
-      </div>
-      -->
     </div>
   </div>
 </section>
@@ -873,126 +676,16 @@
       <div class="service-icon">🧊</div>
       <h3>Refrigerator Repair</h3>
       <p>Cooling failures, ice maker problems, leaks, warm fridge, compressor and thermostat issues.</p>
-
-          <div>
-              <a href="/refrigeratorrepair.html" class="more-btn">More</a>
-          </div>
-
-          <style>
-          .more-btn {
-              display: inline-block;
-              padding: 10px 20px;
-              background: #007bff;
-              color: white;
-              text-decoration: none;
-              border-radius: 5px;
-          }
-
-          .more-btn:hover {
-              background: #0056b3;
-          }
-          </style>
     </div>
     <div class="service-card">
       <div class="service-icon">👕</div>
       <h3>Washer Repair</h3>
       <p>Won't drain, won't spin, excessive vibration, error codes, water leaks, and door lock faults.</p>
-              <div>
-            <a href="/washingrepair.html" class="more-btn">More</a>
-        </div>
-
-        <style>
-        .more-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .more-btn:hover {
-            background: #0056b3;
-        }
-
-                                .turos-badge {
-              position: fixed;
-              bottom: 18px;
-              right: 18px;
-
-              font-family: Arial, sans-serif;
-              font-size: 12px;
-              letter-spacing: 1px;
-
-              color: rgba(255,255,255,0.9);
-              text-decoration: none;
-
-              padding: 10px 14px;
-              border-radius: 12px;
-
-              background: rgba(20, 20, 20, 0.55);
-              backdrop-filter: blur(10px);
-
-              border: 1px solid rgba(255,255,255,0.12);
-
-              box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-
-              transition: all 0.35s ease;
-
-              animation: turosFloat 4s ease-in-out infinite;
-            }
-
-            @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-.turos-footer {
-  width: 100%;
-  text-align: center;
-  padding: 20px 10px;
-  margin-top: 40px;
-  background: transparent;
-}
-
-.turos-footer a {
-  font-family: 'Pacifico', cursive;
-  font-size: 16px;
-  color: #7980ad;
-  text-decoration: none;
-  letter-spacing: 1px;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.turos-footer a:hover {
-  opacity: 1;
-}
-        </style>
     </div>
-
-
-
-
     <div class="service-card">
       <div class="service-icon">🌀</div>
       <h3>Dryer Repair</h3>
       <p>No heat, takes too long, drum not spinning, noisy operation, and control board issues.</p>
-      <div>
-              <a href="/dryerrepair.html" class="more-btn">More</a>
-          </div>
-
-          <style>
-          .more-btn {
-              display: inline-block;
-              padding: 10px 20px;
-              background: #007bff;
-              color: white;
-              text-decoration: none;
-              border-radius: 5px;
-          }
-
-          .more-btn:hover {
-              background: #0056b3;
-          }
-          </style>
     </div>
     <div class="service-card">
       <div class="service-icon">🍽</div>
@@ -1021,137 +714,20 @@
 
     <div class="why-grid">
       <div class="why-card">
-        <div class="why-number">Book<br><span style="font-size:1.5rem">Now</span></div>
-        <div class="why-label">Fast Scheduling</div>
-        <p class="why-desc"> Most repairs completed on the first visit.</p>
+        <div class="why-number">Call<br>Today</div>
+        <div class="why-label">Easy Scheduling</div>
+        <p class="why-desc">Call and talk to a real person to book your visit.</p>
       </div>
       <div class="why-card">
-        <div class="why-number">100%</div>
+        <div class="why-number">Upfront</div>
         <div class="why-label">Transparent Pricing</div>
         <p class="why-desc">You'll know the cost before any work begins. No surprises, no hidden fees.</p>
       </div>
       <div class="why-card">
-        <div class="why-number">10+</div>
-        <div class="why-label">Years Experience</div>
-        <p class="why-desc">Deep hands-on expertise across all major appliance types and brands.</p>
+        <div class="why-number">Local</div>
+        <div class="why-label">Williamsburg-Based</div>
+        <p class="why-desc">Serving Williamsburg and the surrounding area.</p>
       </div>
-      
-    </div>
-  </div>
-</section>
-
-<!-- REAL REVIEWS -->
-<section class="reviews-section">
-  <div class="reviews-inner">
-    <div class="section-label">What Neighbors Say</div>
-    <h2 class="section-title">Real Reviews from Real Customers</h2>
-    <div class="divider"></div>
-
-    <!-- Rating Summary -->
-    <div class="rating-summary" style="margin-top: 40px;">
-      <div class="rating-big">5.0</div>
-      <div class="rating-details">
-        <div class="stars-row">★★★★★</div>
-        <div class="rating-sub">Across all platforms · 50+ verified reviews</div>
-      </div>
-      <div class="rating-platforms">
-        <div class="platform-pill">
-          <span class="p-name">YELP</span>
-          <span class="p-stars">★★★★★</span>
-          <span class="p-score">5.0</span>
-        </div>
-        <div class="platform-pill">
-          <span class="p-name">NEXTDOOR</span>
-          <span class="p-stars">★★★★★</span>
-          <span class="p-score">5.0</span>
-        </div>
-        <div class="platform-pill">
-          <span class="p-name">HOMEADVISOR</span>
-          <span class="p-stars">★★★★★</span>
-          <span class="p-score">5.0</span>
-        </div>
-        <div class="platform-pill">
-          <span class="p-name">ANGI</span>
-          <span class="p-stars">★★★★★</span>
-          <span class="p-score">5.0</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="reviews-grid">
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Outstanding service! They were proactive, calling ahead and arriving promptly. His expertise was evident — he quickly identified a wiring issue in my double oven and fixed it on the spot, saving us the cost of an expensive replacement. Without a doubt, we'll be reaching out to Zoltan for any future appliance needs."</p>
-        <div class="review-footer">
-          <div>
-            <div class="reviewer-name">Verified Customer</div>
-            <div class="reviewer-loc">Williamsburg, VA</div>
-          </div>
-          <span class="review-source ha">HomeAdvisor</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"We called Zoltan for a refrigerator water filter issue. They came out the same day we contacted them and fixed the issue. I would highly recommend Zoltan for appliance repair."</p>
-        <div class="review-footer">
-          <div>
-            <div class="reviewer-name">Verified Neighbor</div>
-            <div class="reviewer-loc">Williamsburg, VA</div>
-          </div>
-          <span class="review-source nd">Nextdoor</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Zoltan was professional, friendly, on-time, and an expert. He not only diagnosed the problems, but gave me the best advice on repairs or replacement. He even fixed a drain problem I didn't even know was causing the issue with the dishwasher."</p>
-        <div class="review-footer">
-          <div>
-            <div class="reviewer-name">Verified Customer</div>
-            <div class="reviewer-loc">Williamsburg, VA</div>
-          </div>
-          <span class="review-source angi">Angi</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"I have had 3 homes over the past 40 years and Zoltan is the BEST appliance repair! Their communication, promptness and thoroughness is exceptional. Every service technician is knowledgeable and kind."</p>
-        <div class="review-footer">
-          <div>
-            <div class="reviewer-name">Long-time Customer</div>
-            <div class="reviewer-loc">Williamsburg, VA</div>
-          </div>
-          <span class="review-source nd">Nextdoor</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Very professional in scheduling appointments, shows up on time, calls before he arrives, and did a great job at a fair price. Extremely quick response. Strongly suggest using this service provider."</p>
-        <div class="review-footer">
-          <div>
-            <div class="reviewer-name">Verified Customer</div>
-            <div class="reviewer-loc">Williamsburg, VA</div>
-          </div>
-          <span class="review-source ha">HomeAdvisor</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Zoltan is very reliable, fair priced, and knows what he's doing. He's our go-to guy for appliance repair! His response was quick and he made an appointment within a few days and showed up on time."</p>
-        <div class="review-footer">
-          <div>
-            <div class="reviewer-name">M.E.</div>
-            <div class="reviewer-loc">Toano, VA · Verified 2018</div>
-          </div>
-          <span class="review-source nd">Nextdoor</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1162,13 +738,12 @@
     <div class="section-label">Where We Serve</div>
     <h2 class="section-title">Proud to Serve Greater Williamsburg</h2>
     <div class="divider"></div>
-    <p style="text-align:center; color:var(--steel); margin-top:14px; font-size:.95rem;">Service Areas</p>
-    <div class="area-grid">                
-      <a href="/ApplianceRepairWilliamsburgVA.html" class="area-tag"><span class="pin">📍</span> Williamsburg</a>
-      <a href="/ApplianceRepairJamesCityCountyVA.html" class="area-tag"><span class="pin">📍</span> James City County</a>
-      <a href="/ApplianceRepairYorktownVA.html" class="area-tag"><span class="pin">📍</span> Yorktown</a>
-      <a href="/ApplianceRepairNorthNewportNewsVA.html" class="area-tag"><span class="pin">📍</span> North Newport News</a>
-      <a href="/ApplianceRepairToanoVA.html" class="area-tag"><span class="pin">📍</span>Toano</a>                     
+    <div class="area-grid">
+      <div class="area-tag"><span class="pin">📍</span> Williamsburg</div>
+      <div class="area-tag"><span class="pin">📍</span> James City County</div>
+      <div class="area-tag"><span class="pin">📍</span> Yorktown</div>
+      <div class="area-tag"><span class="pin">📍</span> North Newport News</div>
+      <div class="area-tag"><span class="pin">📍</span> Toano</div>
     </div>
   </div>
 </section>
@@ -1197,33 +772,26 @@
 <!-- CTA STRIP -->
 <section class="cta-strip">
   <h2>Appliance Acting Up?</h2>
-  
-  <p class="cta-personal">Available  · Williamsburg & surrounding areas</p>
+  <p class="cta-personal">Serving Williamsburg &amp; surrounding areas</p>
   <a class="phone-num" href="tel:+17578173934">(757) 817-3934</a>
-  <p class="sms-note">📱Call us  — we respond fast</p>
-  <div class="guarantee-badge">Trust Labor  on Every Repair</div>
+  <p class="sms-note">Call to schedule your visit</p>
   <div class="btn-row">
     <a class="btn-white" href="tel:+17578173934">📞 Call Now</a>
-    
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-links">
-    <a href="https://www.yelp.com/biz/zoltan-williamsburg" target="_blank">Yelp</a>
-    <a href="https://nextdoor.com/pages/zoltan-appliance-repair-williamsburg-va/" target="_blank">Nextdoor</a>
-    <a href="https://www.facebook.com/p/Zoltan-LLC-100031928273381/" target="_blank">Facebook</a>
+    <a href="https://www.yelp.com/biz/zoltan-williamsburg" target="_blank" rel="noopener">Yelp</a>
+    <a href="https://nextdoor.com/pages/zoltan-appliance-repair-williamsburg-va/" target="_blank" rel="noopener">Nextdoor</a>
+    <a href="https://www.facebook.com/p/Zoltan-LLC-100031928273381/" target="_blank" rel="noopener">Facebook</a>
     <a href="/privacy.html">Privacy</a>
   </div>
- 
-  <p>© 2026 Zoltan Appliance Repair &nbsp;·&nbsp;  Williamsburg, VA 23188</p>
-     <footer class="turos-footer">
-  <a href="https://turos.co.uk" target="_blank">
-    Website design by TUROS
-  </a>
-</footer>
-</a>
+  <p>© 2026 Zoltan Appliance Repair &nbsp;·&nbsp; Williamsburg, VA 23188</p>
+  <p class="credit"><a href="https://turos.co.uk" target="_blank" rel="nofollow noopener">Website design by TUROS</a></p>
 </footer>
 
 </body>
