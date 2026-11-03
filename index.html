@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Appliance Repair Williamsburg VA | Refrigerator, Washer & Dryer Repair</title>
-<meta name="description" content="Appliance repair in Williamsburg, VA and nearby areas. Refrigerator, washer, dryer, dishwasher, oven and freezer repair with upfront pricing. Call (757) 817-3934.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Appliance Repair Williamsburg VA | Refrigerator, Washer &amp; Dryer Repair</title>
+<meta name="description" content="Appliance repair in Williamsburg, VA and nearby areas. Refrigerator, washer, dryer, dishwasher, oven and freezer repair. $120 service call. Call (757) 817-3934.">
 <link rel="canonical" href="https://zoltanappliancesrepair.com/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Zoltan Appliance Repair | Williamsburg, VA">
 <meta property="og:description" content="Honest diagnostics and upfront pricing for appliance repair in Williamsburg and surrounding areas.">
@@ -16,9 +15,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
 <link rel="icon" href="/favicon/favicon.ico" sizes="any">
@@ -33,6 +31,15 @@
   "name": "Zoltan Appliance Repair",
   "url": "https://zoltanappliancesrepair.com/",
   "telephone": "+1-757-817-3934",
+  "priceRange": "$120 service call",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
   "image": "https://zoltanappliancesrepair.com/photo1.jpeg",
   "description": "Appliance repair in Williamsburg, Virginia and surrounding areas.",
   "address": {
@@ -58,741 +65,381 @@
 }
 </script>
 
-<!-- GA4: replace G-XXXXXXXXXX with your Measurement ID, then remove this comment wrapper
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('a[href^="tel:"]');
-    if (a) gtag('event', 'phone_call_click', {link_url: a.getAttribute('href')});
-  });
-</script>
--->
-
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --navy:    #0d1b2a;
-    --navy2:   #112236;
-    --orange:  #f97316;
-    --orange2: #ea6007;
-    --steel:   #94a3b8;
-    --light:   #e8edf3;
-    --white:   #ffffff;
-    --card-bg: #162032;
-    --radius:  14px;
-  }
+:root {
+  --navy:   #0d1b2a;
+  --panel:  #14263a;
+  --line:   #25405c;
+  --orange: #f97316;
+  --orange-dark: #c2410c;
+  --text:   #f4f7fa;
+  --muted:  #a9b8c9;
+  --green:  #4ade80;
+  --red:    #f87171;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+}
 
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 70px); -webkit-text-size-adjust: 100%; }
 
-  body {
-    background: var(--navy);
-    color: var(--white);
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+body {
+  background: var(--navy);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
 
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(13,27,42,0.96);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(249,115,22,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 20px;
-  }
-  nav .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: .5px;
-    color: var(--white);
-    text-decoration: none;
-  }
-  nav .logo span { color: var(--orange); }
-  nav a.nav-cta {
-    background: var(--orange);
-    color: var(--white);
-    font-weight: 600;
-    font-size: .85rem;
-    padding: 9px 18px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background .2s;
-    white-space: nowrap;
-  }
-  nav a.nav-cta:hover { background: var(--orange2); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
 
-  /* HERO */
-  .hero {
-    position: relative;
-    background: var(--navy);
-    overflow: hidden;
-    padding: 70px 20px 80px;
-    text-align: center;
-  }
-  .hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-  .gear { position: absolute; opacity: 0.07; }
-  .gear-1 { width: 320px; top: -80px; right: -80px; animation: spin 30s linear infinite; }
-  .gear-2 { width: 180px; bottom: -40px; left: -40px; animation: spin 20s linear infinite reverse; }
-  .gear-3 { width: 100px; top: 55%; left: 8%; animation: spin 15s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  @media (prefers-reduced-motion: reduce) { .gear, .btn-primary { animation: none; } }
+h1, h2, h3 { font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; line-height: 1.05; }
 
-  .hero::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--orange), transparent);
-  }
-  .hero > *:not(.hero-bg) { position: relative; }
+.wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
 
-  .hero-badge {
-    display: inline-block;
-    background: rgba(249,115,22,.15);
-    border: 1px solid rgba(249,115,22,.35);
-    color: var(--orange);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: .85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 5px 14px;
-    border-radius: 100px;
-    margin-bottom: 22px;
-  }
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2.4rem, 8vw, 4.2rem);
-    line-height: 1.05;
-    letter-spacing: -0.5px;
-    margin-bottom: 20px;
-  }
-  .hero h1 em { font-style: normal; color: var(--orange); }
-  .hero p {
-    max-width: 540px;
-    margin: 0 auto 16px;
-    color: var(--steel);
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-  .hero-personal {
-    max-width: 460px;
-    margin: 0 auto 32px;
-    font-size: .88rem;
-    color: rgba(148,163,184,0.75);
-    font-style: italic;
-  }
-  .hero-btns {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 40px;
-  }
-  .hero-rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .hero-rating .rating-text { font-size: .9rem; color: var(--steel); }
-  .hero-rating .rating-text strong { color: var(--white); }
-  .hero-rating .rating-sources {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-rating .source-badge {
-    font-size: .72rem;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 100px;
-    border: 1px solid rgba(255,255,255,.12);
-    color: var(--steel);
-    text-decoration: none;
-    transition: border-color .2s, color .2s;
-  }
-  .hero-rating .source-badge:hover { border-color: var(--orange); color: var(--orange); }
+/* TOP BAR */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(13,27,42,.97);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+.brand { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 1.35rem; text-decoration: none; letter-spacing: .3px; }
+.brand b { color: var(--orange); font-weight: 800; }
+.top-call {
+  background: var(--orange); color: #111; font-weight: 700; font-size: .95rem;
+  text-decoration: none; padding: 10px 16px; border-radius: 10px;
+}
 
-  .btn-primary {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--orange);
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 16px 28px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    transition: background .2s, transform .15s;
-    box-shadow: 0 0 0 0 rgba(249,115,22,.5);
-    animation: pulse-ring 2.5s ease-out infinite;
-  }
-  .btn-primary:hover { background: var(--orange2); transform: translateY(-2px); }
-  @keyframes pulse-ring {
-    0%   { box-shadow: 0 0 0 0 rgba(249,115,22,.45); }
-    70%  { box-shadow: 0 0 0 14px rgba(249,115,22,0); }
-    100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
-  }
+/* HERO */
+.hero { padding: 34px 0 30px; }
+.status {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 100px; padding: 7px 14px; font-size: .92rem; font-weight: 600;
+  margin-bottom: 18px; min-height: 36px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); flex: none; }
+.status.open .dot { background: var(--green); box-shadow: 0 0 0 4px rgba(74,222,128,.2); }
+.status.closed .dot { background: var(--red); }
 
-  /* TRUST BAR */
-  .trust-bar {
-    background: var(--navy2);
-    border-top: 1px solid rgba(255,255,255,.06);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    padding: 22px 20px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 28px 40px;
-  }
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: .9rem;
-    color: var(--steel);
-    font-weight: 500;
-  }
-  .trust-item .icon { color: var(--orange); font-size: 1.15rem; }
+.hero h1 { font-size: clamp(2.6rem, 11vw, 3.6rem); font-weight: 800; letter-spacing: -.3px; margin-bottom: 14px; }
+.hero .lead { color: var(--muted); font-size: 1.1rem; margin-bottom: 24px; }
 
-  /* SECTIONS */
-  .section { max-width: 1080px; margin: 0 auto; padding: 80px 20px; }
-  .section-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: .8rem;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    line-height: 1.1;
-    text-align: center;
-    margin-bottom: 14px;
-  }
-  .section-sub {
-    text-align: center;
-    color: var(--steel);
-    max-width: 520px;
-    margin: 0 auto 52px;
-    font-size: .97rem;
-  }
-  .divider { width: 48px; height: 3px; background: var(--orange); border-radius: 2px; margin: 14px auto 0; }
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; min-height: 60px; border-radius: 14px;
+  background: var(--orange); color: #111; font-weight: 700; font-size: 1.2rem;
+  text-decoration: none; border: 0;
+}
+.btn small { display: block; font-size: .82rem; font-weight: 500; opacity: .8; }
+.btn-note { text-align: center; color: var(--muted); font-size: .92rem; margin-top: 10px; }
 
-  /* GALLERY */
-  .gallery-section { background: var(--navy2); }
-  .gallery-inner { max-width: 1080px; margin: 0 auto; padding: 70px 20px; }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 14px;
-    margin-top: 40px;
-  }
-  .gallery-item {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.07);
-    aspect-ratio: 4/3;
-    position: relative;
-  }
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .35s ease;
-  }
-  .gallery-item:hover img { transform: scale(1.04); }
-  .gallery-item .photo-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: var(--steel);
-    font-size: .85rem;
-  }
-  .gallery-item .photo-placeholder .ph-icon { font-size: 2rem; opacity: .5; }
+/* PRICE */
+.price-box {
+  margin-top: 26px;
+  background: var(--panel); border: 2px solid var(--orange); border-radius: 18px;
+  padding: 22px 20px;
+}
+.price-box .small { color: var(--muted); font-size: .95rem; font-weight: 600; }
+.price-line { display: flex; align-items: baseline; gap: 12px; margin: 2px 0 14px; flex-wrap: wrap; }
+.price-big { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 4.2rem; line-height: 1; color: var(--orange); }
+.price-name { font-size: 1.15rem; font-weight: 600; }
+.price-box ul { list-style: none; display: grid; gap: 8px; margin-bottom: 16px; }
+.price-box li { padding-left: 30px; position: relative; }
+.price-box li::before {
+  content: ""; position: absolute; left: 2px; top: 5px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green);
+}
+.price-box li::after {
+  content: ""; position: absolute; left: 8px; top: 8px; width: 5px; height: 9px;
+  border: solid #0d1b2a; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg);
+}
+.price-then {
+  border-top: 1px solid var(--line); padding-top: 14px; color: var(--text);
+}
+.price-then strong { color: var(--orange); }
 
-  /* SERVICES */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 18px;
-  }
-  .service-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,.07);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    transition: border-color .25s, transform .2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: var(--orange);
-    border-radius: 4px 0 0 4px;
-    transform: scaleY(0);
-    transition: transform .25s;
-    transform-origin: bottom;
-  }
-  .service-card:hover { border-color: rgba(249,115,22,.35); transform: translateY(-3px); }
-  .service-card:hover::before { transform: scaleY(1); }
-  .service-icon {
-    width: 48px; height: 48px;
-    background: rgba(249,115,22,.12);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px;
-    font-size: 1.5rem;
-  }
-  .service-card h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-  }
-  .service-card p { color: var(--steel); font-size: .92rem; line-height: 1.6; }
-  .more-btn {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  .more-btn:hover { background: #0056b3; }
+/* SECTIONS */
+section { padding: 38px 0 6px; }
+h2 { font-size: 2.1rem; font-weight: 800; margin-bottom: 8px; }
+.sub { color: var(--muted); margin-bottom: 18px; }
 
-  /* WHY US */
-  .why-section { background: var(--navy2); }
-  .why-inner { max-width: 1080px; margin: 0 auto; padding: 80px 20px; }
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 24px;
-    margin-top: 52px;
-  }
-  .why-card {
-    text-align: center;
-    padding: 32px 20px;
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    border: 1px solid rgba(255,255,255,.06);
-  }
-  .why-number {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 2.4rem;
-    color: var(--orange);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .why-label { font-weight: 600; margin-bottom: 8px; font-size: 1rem; }
-  .why-desc { color: var(--steel); font-size: .88rem; }
+/* STEPS */
+.steps { list-style: none; counter-reset: step; display: grid; gap: 12px; }
+.steps li {
+  counter-increment: step; position: relative;
+  background: var(--panel); border-radius: 14px; padding: 16px 16px 16px 64px;
+}
+.steps li::before {
+  content: counter(step); position: absolute; left: 16px; top: 14px;
+  width: 36px; height: 36px; border-radius: 50%; background: var(--orange); color: #111;
+  font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps b { display: block; font-size: 1.05rem; }
+.steps span { color: var(--muted); font-size: .98rem; }
 
-  /* REVIEWS */
-  .reviews-section { background: var(--navy); }
-  .reviews-inner { max-width: 1080px; margin: 0 auto; padding: 80px 20px; }
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 18px;
-    margin-top: 48px;
-  }
-  .review-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,.07);
-    border-radius: var(--radius);
-    padding: 26px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    position: relative;
-  }
-  .review-card::before {
-    content: '"';
-    position: absolute;
-    top: 16px; right: 20px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 5rem;
-    font-weight: 800;
-    color: var(--orange);
-    opacity: .12;
-    line-height: 1;
-  }
-  .review-stars { color: #fbbf24; letter-spacing: 2px; font-size: 1rem; }
-  .review-text { color: var(--light); font-size: .93rem; line-height: 1.65; flex: 1; }
-  .review-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-  .reviewer-name { font-weight: 600; font-size: .9rem; }
-  .reviewer-loc { font-size: .78rem; color: var(--steel); }
-  .review-source {
-    font-size: .72rem;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 100px;
-    border: 1px solid rgba(255,255,255,.12);
-    color: var(--steel);
-    white-space: nowrap;
-  }
-  .review-source.nd   { border-color: rgba(34,197,94,.4);  color: #86efac; }
-  .review-source.ha   { border-color: rgba(96,165,250,.4); color: #93c5fd; }
-  .review-source.angi { border-color: rgba(249,115,22,.4); color: #fdba74; }
+/* HOURS */
+.hours { background: var(--panel); border-radius: 16px; padding: 6px 18px; }
+.hrow { display: flex; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.hrow:last-child { border-bottom: 0; }
+.hrow .t { font-weight: 600; }
+.hrow.today { color: var(--orange); font-weight: 700; }
+.hrow .closed { color: var(--muted); }
+.hrow.today .closed { color: var(--orange); }
+.tz { color: var(--muted); font-size: .9rem; margin-top: 10px; }
 
-  .rating-summary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 40px 0 48px;
-    padding: 24px;
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    border: 1px solid rgba(249,115,22,.2);
-  }
-  .rating-platforms { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-  .platform-pill {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.08);
-    text-decoration: none;
-    color: var(--white);
-  }
-  .platform-pill .p-name { font-size: .72rem; color: var(--steel); font-weight: 600; }
-  .platform-pill .p-stars { color: #fbbf24; font-size: .85rem; }
-  .platform-pill .p-score { font-weight: 700; font-size: .95rem; }
+/* SERVICES */
+.svc { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.svc div { background: var(--panel); border-radius: 14px; padding: 16px 14px; }
+.svc .ic { font-size: 1.7rem; display: block; margin-bottom: 4px; }
+.svc b { font-size: 1.02rem; display: block; line-height: 1.25; }
+.svc-list { margin-top: 14px; color: var(--muted); font-size: .98rem; }
 
-  /* AREA */
-  .area-section { background: var(--navy2); }
-  .area-inner { max-width: 1080px; margin: 0 auto; padding: 70px 20px; }
-  .area-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 36px; }
-  .area-tag {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-weight: 600;
-    font-size: .88rem;
-    color: var(--light);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .area-tag .pin { color: var(--orange); }
+details { background: var(--panel); border-radius: 14px; margin-bottom: 10px; }
+summary {
+  list-style: none; cursor: pointer; padding: 16px 18px; font-weight: 600;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 56px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.6rem; color: var(--orange); line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { padding: 0 18px 16px; color: var(--muted); }
 
-  /* BRANDS */
-  .brands-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 40px; }
-  .brand-tag {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-weight: 600;
-    font-size: .88rem;
-    color: var(--light);
-    letter-spacing: .3px;
-  }
+/* AREAS & BRANDS */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span { background: var(--panel); border: 1px solid var(--line); border-radius: 100px; padding: 8px 14px; font-size: .95rem; font-weight: 500; }
 
-  /* CTA */
-  .cta-strip {
-    background: linear-gradient(135deg, #f97316, #c2500e);
-    padding: 60px 20px;
-    text-align: center;
-  }
-  .cta-strip h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
-    margin-bottom: 10px;
-  }
-  .cta-strip .cta-personal { font-size: .88rem; opacity: .85; margin-bottom: 20px; font-style: italic; }
-  .cta-strip .phone-num {
-    display: block;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2rem, 7vw, 3.2rem);
-    letter-spacing: 1px;
-    color: var(--white);
-    text-decoration: none;
-    margin-bottom: 10px;
-  }
-  .cta-strip .sms-note { font-size: .85rem; opacity: .85; margin-bottom: 28px; }
-  .cta-strip .btn-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
-  .btn-white {
-    background: var(--white);
-    color: var(--orange2);
-    font-weight: 700;
-    font-size: .97rem;
-    padding: 15px 26px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: opacity .2s;
-  }
-  .btn-white:hover { opacity: .9; }
+/* PHOTOS */
+.photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.photos figure { background: var(--panel); border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 3; }
+.photos img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-  /* FOOTER */
-  footer {
-    background: #050d15;
-    text-align: center;
-    padding: 30px 20px;
-    color: #7389a0;
-    font-size: .85rem;
-    border-top: 1px solid rgba(255,255,255,.05);
-  }
-  footer a { color: var(--steel); text-decoration: none; }
-  footer a:hover { color: var(--orange); }
-  footer .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
-  footer .credit { margin-top: 10px; font-size: .75rem; opacity: .7; }
+/* BOTTOM CTA */
+.final { margin-top: 40px; background: var(--panel); border-radius: 18px; padding: 26px 20px; text-align: center; }
+.final h2 { margin-bottom: 4px; }
+.final .phone { display: block; font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 2.4rem; color: var(--orange); text-decoration: none; margin: 6px 0 16px; }
 
-  @media (min-width: 480px) {
-    .hero-btns { flex-direction: row; justify-content: center; }
-  }
+footer { padding: 30px 0 10px; text-align: center; color: var(--muted); font-size: .9rem; }
+footer .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 22px; margin-bottom: 12px; }
+footer .links a { padding: 8px 0; }
+
+/* STICKY CALL BAR */
+.callbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: rgba(13,27,42,.97); border-top: 1px solid var(--line);
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+}
+.callbar .btn { max-width: 608px; margin: 0 auto; min-height: 56px; }
+
+@media (min-width: 700px) { body { font-size: 18px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="logo" href="/"><span>⚙</span> Zoltan Repair</a>
-  <a class="nav-cta" href="tel:+17578173934">📞 Call Now</a>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <svg class="gear gear-1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="white" d="M100 60a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm0 56a16 16 0 1 1 0-32 16 16 0 0 1 0 32z"/>
-      <path fill="white" d="M177 85h-11a67 67 0 0 0-5-13l8-8a8 8 0 0 0 0-11l-11-11a8 8 0 0 0-11 0l-8 8a67 67 0 0 0-13-5V23a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v11a67 67 0 0 0-13 5l-8-8a8 8 0 0 0-11 0L51 42a8 8 0 0 0 0 11l8 8a67 67 0 0 0-5 13H23a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h11a67 67 0 0 0 5 13l-8 8a8 8 0 0 0 0 11l11 11a8 8 0 0 0 11 0l8-8a67 67 0 0 0 13 5v11a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8v-11a67 67 0 0 0 13-5l8 8a8 8 0 0 0 11 0l11-11a8 8 0 0 0 0-11l-8-8a67 67 0 0 0 5-13h11a8 8 0 0 0 8-8V93a8 8 0 0 0-8-8z"/>
-    </svg>
-    <svg class="gear gear-2" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="white" d="M100 60a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm0 56a16 16 0 1 1 0-32 16 16 0 0 1 0 32z"/>
-      <path fill="white" d="M177 85h-11a67 67 0 0 0-5-13l8-8a8 8 0 0 0 0-11l-11-11a8 8 0 0 0-11 0l-8 8a67 67 0 0 0-13-5V23a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v11a67 67 0 0 0-13 5l-8-8a8 8 0 0 0-11 0L51 42a8 8 0 0 0 0 11l8 8a67 67 0 0 0-5 13H23a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h11a67 67 0 0 0 5 13l-8 8a8 8 0 0 0 0 11l11 11a8 8 0 0 0 11 0l8-8a67 67 0 0 0 13 5v11a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8v-11a67 67 0 0 0 13-5l8 8a8 8 0 0 0 11 0l11-11a8 8 0 0 0 0-11l-8-8a67 67 0 0 0 5-13h11a8 8 0 0 0 8-8V93a8 8 0 0 0-8-8z"/>
-    </svg>
-    <svg class="gear gear-3" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="white" d="M100 60a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm0 56a16 16 0 1 1 0-32 16 16 0 0 1 0 32z"/>
-      <path fill="white" d="M177 85h-11a67 67 0 0 0-5-13l8-8a8 8 0 0 0 0-11l-11-11a8 8 0 0 0-11 0l-8 8a67 67 0 0 0-13-5V23a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v11a67 67 0 0 0-13 5l-8-8a8 8 0 0 0-11 0L51 42a8 8 0 0 0 0 11l8 8a67 67 0 0 0-5 13H23a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h11a67 67 0 0 0 5 13l-8 8a8 8 0 0 0 0 11l11 11a8 8 0 0 0 11 0l8-8a67 67 0 0 0 13 5v11a8 8 0 0 0 8 8h16a8 8 0 0 0 8-8v-11a67 67 0 0 0 13-5l8 8a8 8 0 0 0 11 0l11-11a8 8 0 0 0 0-11l-8-8a67 67 0 0 0 5-13h11a8 8 0 0 0 8-8V93a8 8 0 0 0-8-8z"/>
-    </svg>
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><b>⚙</b> Zoltan Appliances Repair</a>
+    <a class="top-call" href="tel:+17578173934">Call</a>
   </div>
-
-  <div class="hero-badge">📍 Williamsburg, Virginia</div>
-  <h1>Your Appliance <em>Fixed Right.</em><br>Fast.</h1>
-  <p>Expert repair for all major household appliances. Honest diagnostics, upfront pricing, and work that lasts.</p>
-
-  <div class="hero-btns">
-    <a class="btn-primary" href="tel:+17578173934">📞 (757) 817-3934</a>
-  </div>
-</header>
-
-<main>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item"><span class="icon">✔</span> Honest Diagnostics</div>
-  <div class="trust-item"><span class="icon">💰</span> Fair, Upfront Pricing</div>
-  <div class="trust-item"><span class="icon">🔧</span> All Major Brands</div>
 </div>
 
-<!-- PHOTO GALLERY -->
-<section class="gallery-section">
-  <div class="gallery-inner">
-    <div class="section-label">Real Work, Real Results</div>
-    <h2 class="section-title">See Us in Action</h2>
-    <div class="divider"></div>
+<main>
+<div class="wrap">
 
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="/photo1.jpeg" alt="Zoltan repairing an appliance" width="1600" height="1200" loading="lazy"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo1</span></div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="status" id="status" role="status"><span class="dot"></span><span id="status-text">Williamsburg, VA</span></div>
+    <h1>Appliance repair in Williamsburg, VA</h1>
+    <p class="lead">Refrigerator, washer, dryer, dishwasher, oven and freezer repair. We come to your home.</p>
+
+    <a class="btn" href="tel:+17578173934">
+      <span>📞</span>
+      <span>Call (757) 817-3934</span>
+    </a>
+    <p class="btn-note">Call to schedule your visit.</p>
+
+    <!-- PRICE -->
+    <div class="price-box" id="price">
+      <div class="small">Our price to come out and diagnose</div>
+      <div class="price-line">
+        <span class="price-big">$120</span>
+        <span class="price-name">Service call</span>
       </div>
-      <div class="gallery-item">
-        <img src="/photo2.jpg" alt="Appliance repair work" width="1600" height="1200" loading="lazy"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo2</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="/photo3.jpeg" alt="Zoltan at work" width="1600" height="1200" loading="lazy"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo3</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="/photo4.jpg" alt="Completed appliance repair" width="1600" height="1200" loading="lazy"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none"><span class="ph-icon">📷</span><span>photo4</span></div>
-      </div>
+      <ul>
+        <li>We drive to your home</li>
+        <li>We inspect your appliance</li>
+        <li>We find out what is wrong</li>
+        <li>You get a repair estimate for parts and labor</li>
+      </ul>
+      <p class="price-then"><strong>Parts and labor are quoted separately.</strong> We explain the repair and the price first. We do not start any work until you say yes.</p>
     </div>
+  </header>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><b>Call us</b><span>Talk to a real person and pick a time.</span></li>
+      <li><b>We visit and diagnose</b><span>That is the $120 service call.</span></li>
+      <li><b>You get the price</b><span>We explain the repair and quote parts and labor.</span></li>
+      <li><b>You decide</b><span>No work starts without your approval.</span></li>
+    </ol>
+  </section>
+
+  <!-- HOURS -->
+  <section id="hours">
+    <h2>Hours</h2>
+    <p class="sub">Call during business hours to schedule.</p>
+    <div class="hours" id="hours-table">
+      <div class="hrow" data-day="1"><span class="t">Monday</span><span>9 AM – 6 PM</span></div>
+      <div class="hrow" data-day="2"><span class="t">Tuesday</span><span>9 AM – 6 PM</span></div>
+      <div class="hrow" data-day="3"><span class="t">Wednesday</span><span>9 AM – 6 PM</span></div>
+      <div class="hrow" data-day="4"><span class="t">Thursday</span><span>9 AM – 6 PM</span></div>
+      <div class="hrow" data-day="5"><span class="t">Friday</span><span>9 AM – 6 PM</span></div>
+      <div class="hrow" data-day="6"><span class="t">Saturday</span><span class="closed">Closed</span></div>
+      <div class="hrow" data-day="0"><span class="t">Sunday</span><span class="closed">Closed</span></div>
+    </div>
+    <p class="tz">All times are Eastern Time (Williamsburg, VA).</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>What we fix</h2>
+    <p class="sub">Tap an appliance to see common problems we repair.</p>
+
+    <details>
+      <summary><span>🧊 Refrigerator</span></summary>
+      <p>Not cooling, warm fridge, ice maker problems, leaks, compressor and thermostat issues.</p>
+    </details>
+    <details>
+      <summary><span>👕 Washer</span></summary>
+      <p>Won’t drain, won’t spin, shaking, error codes, water leaks and door lock problems.</p>
+    </details>
+    <details>
+      <summary><span>🌀 Dryer</span></summary>
+      <p>No heat, takes too long to dry, drum won’t turn, loud noise and control board problems.</p>
+    </details>
+    <details>
+      <summary><span>🍽 Dishwasher</span></summary>
+      <p>Leaking, not draining, dishes not getting clean, door latch and pump problems.</p>
+    </details>
+    <details>
+      <summary><span>🔥 Oven &amp; stove</span></summary>
+      <p>Burners won’t light, heating elements, ignition, wrong temperature and control problems.</p>
+    </details>
+    <details>
+      <summary><span>❄️ Freezer</span></summary>
+      <p>Frost buildup, not freezing, defrost system and thermostat problems.</p>
+    </details>
+  </section>
+
+  <!-- AREAS -->
+  <section id="areas">
+    <h2>Where we work</h2>
+    <p class="sub">Based in Williamsburg. We serve:</p>
+    <div class="tags">
+      <span>📍 Williamsburg</span>
+      <span>📍 James City County</span>
+      <span>📍 Yorktown</span>
+      <span>📍 North Newport News</span>
+      <span>📍 Toano</span>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section id="brands">
+    <h2>All major brands</h2>
+    <div class="tags">
+      <span>LG</span><span>Samsung</span><span>Whirlpool</span><span>GE</span><span>Bosch</span><span>Maytag</span>
+      <span>Frigidaire</span><span>KitchenAid</span><span>Kenmore</span><span>Electrolux</span><span>Amana</span><span>and more</span>
+    </div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section id="photos">
+    <h2>See our work</h2>
+    <p class="sub">Zoltan repairing appliances in Williamsburg.</p>
+    <div class="photos">
+      <figure><img src="/photo1.jpeg" alt="Zoltan repairing an appliance" width="1600" height="1200" loading="lazy" onerror="this.parentNode.style.display='none'"></figure>
+      <figure><img src="/photo2.jpg" alt="Appliance repair work" width="1600" height="1200" loading="lazy" onerror="this.parentNode.style.display='none'"></figure>
+      <figure><img src="/photo3.jpeg" alt="Zoltan at work" width="1600" height="1200" loading="lazy" onerror="this.parentNode.style.display='none'"></figure>
+      <figure><img src="/photo4.jpg" alt="Completed appliance repair" width="1600" height="1200" loading="lazy" onerror="this.parentNode.style.display='none'"></figure>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final">
+    <h2>Appliance not working?</h2>
+    <a class="phone" href="tel:+17578173934">(757) 817-3934</a>
+    <a class="btn" href="tel:+17578173934"><span>📞</span><span>Call now</span></a>
   </div>
-</section>
 
-<!-- SERVICES -->
-<section class="section">
-  <div class="section-label">What We Fix</div>
-  <h2 class="section-title">Appliance Repair Services</h2>
-  <div class="divider"></div>
-  <p class="section-sub" style="margin-top:16px;">From refrigerators to ranges — if it's broken, we fix it. Serving Williamsburg and surrounding areas.</p>
-
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">🧊</div>
-      <h3>Refrigerator Repair</h3>
-      <p>Cooling failures, ice maker problems, leaks, warm fridge, compressor and thermostat issues.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">👕</div>
-      <h3>Washer Repair</h3>
-      <p>Won't drain, won't spin, excessive vibration, error codes, water leaks, and door lock faults.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🌀</div>
-      <h3>Dryer Repair</h3>
-      <p>No heat, takes too long, drum not spinning, noisy operation, and control board issues.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🍽</div>
-      <h3>Dishwasher Repair</h3>
-      <p>Leaking, not draining, poor cleaning results, door latch problems, and pump failures.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔥</div>
-      <h3>Oven & Stove Repair</h3>
-      <p>Burners not lighting, heating elements, ignition systems, temperature calibration, and controls.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">❄️</div>
-      <h3>Freezer Repair</h3>
-      <p>Frost buildup, cooling problems, defrost system failures, and thermostat replacements.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="why-section">
-  <div class="why-inner">
-    <div class="section-label">Why Zoltan</div>
-    <h2 class="section-title">Reliable. Honest. Local.</h2>
-    <div class="divider"></div>
-
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-number">Call<br>Today</div>
-        <div class="why-label">Easy Scheduling</div>
-        <p class="why-desc">Call and talk to a real person to book your visit.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-number">Upfront</div>
-        <div class="why-label">Transparent Pricing</div>
-        <p class="why-desc">You'll know the cost before any work begins. No surprises, no hidden fees.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-number">Local</div>
-        <div class="why-label">Williamsburg-Based</div>
-        <p class="why-desc">Serving Williamsburg and the surrounding area.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICE AREA -->
-<section class="area-section">
-  <div class="area-inner">
-    <div class="section-label">Where We Serve</div>
-    <h2 class="section-title">Proud to Serve Greater Williamsburg</h2>
-    <div class="divider"></div>
-    <div class="area-grid">
-      <div class="area-tag"><span class="pin">📍</span> Williamsburg</div>
-      <div class="area-tag"><span class="pin">📍</span> James City County</div>
-      <div class="area-tag"><span class="pin">📍</span> Yorktown</div>
-      <div class="area-tag"><span class="pin">📍</span> North Newport News</div>
-      <div class="area-tag"><span class="pin">📍</span> Toano</div>
-    </div>
-  </div>
-</section>
-
-<!-- BRANDS -->
-<section class="section" style="padding-bottom: 70px;">
-  <div class="section-label">Compatible With</div>
-  <h2 class="section-title">All Major Brands</h2>
-  <div class="divider"></div>
-  <div class="brands-row">
-    <div class="brand-tag">LG</div>
-    <div class="brand-tag">Samsung</div>
-    <div class="brand-tag">Whirlpool</div>
-    <div class="brand-tag">GE</div>
-    <div class="brand-tag">Bosch</div>
-    <div class="brand-tag">Maytag</div>
-    <div class="brand-tag">Frigidaire</div>
-    <div class="brand-tag">KitchenAid</div>
-    <div class="brand-tag">Kenmore</div>
-    <div class="brand-tag">Electrolux</div>
-    <div class="brand-tag">Amana</div>
-    <div class="brand-tag">+ More</div>
-  </div>
-</section>
-
-<!-- CTA STRIP -->
-<section class="cta-strip">
-  <h2>Appliance Acting Up?</h2>
-  <p class="cta-personal">Serving Williamsburg &amp; surrounding areas</p>
-  <a class="phone-num" href="tel:+17578173934">(757) 817-3934</a>
-  <p class="sms-note">Call to schedule your visit</p>
-  <div class="btn-row">
-    <a class="btn-white" href="tel:+17578173934">📞 Call Now</a>
-  </div>
-</section>
-
+</div>
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-links">
-    <a href="https://www.yelp.com/biz/zoltan-williamsburg" target="_blank" rel="noopener">Yelp</a>
-    <a href="https://nextdoor.com/pages/zoltan-appliance-repair-williamsburg-va/" target="_blank" rel="noopener">Nextdoor</a>
-    <a href="https://www.facebook.com/p/Zoltan-LLC-100031928273381/" target="_blank" rel="noopener">Facebook</a>
-    <a href="/privacy.html">Privacy</a>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://www.yelp.com/biz/zoltan-williamsburg" target="_blank" rel="noopener">Yelp</a>
+      <a href="https://nextdoor.com/pages/zoltan-appliance-repair-williamsburg-va/" target="_blank" rel="noopener">Nextdoor</a>
+      <a href="https://www.facebook.com/p/Zoltan-LLC-100031928273381/" target="_blank" rel="noopener">Facebook</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+    <p>© 2026 Zoltan Appliance Repair · Williamsburg, VA 23188</p>
   </div>
-  <p>© 2026 Zoltan Appliance Repair &nbsp;·&nbsp; Williamsburg, VA 23188</p>
-
 </footer>
+
+<!-- Sticky call button (always visible on phones) -->
+<div class="callbar">
+  <a class="btn" href="tel:+17578173934"><span>📞</span><span>Call (757) 817-3934</span></a>
+</div>
+
+<script>
+// Shows "Open now" / "Closed now" and highlights today, using Williamsburg (Eastern) time.
+(function () {
+  try {
+    var parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', hour12: false
+    }).formatToParts(new Date());
+    var wd = '', hr = 0;
+    parts.forEach(function (p) {
+      if (p.type === 'weekday') wd = p.value;
+      if (p.type === 'hour') hr = parseInt(p.value, 10) % 24;
+    });
+    var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    var names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var day = map[wd];
+    if (day === undefined) return;
+
+    var row = document.querySelector('.hrow[data-day="' + day + '"]');
+    if (row) row.classList.add('today');
+
+    var isWeekday = day >= 1 && day <= 5;
+    var openNow = isWeekday && hr >= 9 && hr < 18;
+    var box = document.getElementById('status');
+    var txt = document.getElementById('status-text');
+
+    if (openNow) {
+      box.className = 'status open';
+      txt.textContent = 'Open now · until 6 PM';
+    } else {
+      box.className = 'status closed';
+      var next;
+      if (isWeekday && hr < 9) next = 'today at 9 AM';
+      else if (day === 5 || day === 6 || day === 0) next = 'Monday at 9 AM';
+      else next = names[day + 1] + ' at 9 AM';
+      txt.textContent = 'Closed now · opens ' + next;
+    }
+  } catch (e) { /* page still works without the status badge */ }
+})();
+</script>
 
 </body>
 </html>
