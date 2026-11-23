@@ -166,7 +166,7 @@ redirect_from:
   padding-top: env(safe-area-inset-top, 0px);
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 70px); -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: auto; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 70px); -webkit-text-size-adjust: 100%; }
 
 body {
   background: var(--navy);
@@ -487,6 +487,11 @@ footer a { color:white; }
  .svc-btns .ic {font-size:2.7rem}
  .brand-stripes i {width:22px;height:4px}.brand-stripes i:nth-child(2){width:18px}.brand-stripes i:nth-child(3){width:14px}
 }
+/* Stable header anchor navigation and mobile dropdown */
+#services, #areas, #about, #contact { scroll-margin-top: 100px; }
+.mobile-menu { background:transparent; margin-bottom:0; border-radius:0; }
+.mobile-menu nav a { display:block; }
+@media(max-width:700px) { .mobile-menu[open] nav { max-height:calc(100dvh - 85px); overflow-y:auto; } }
 </style>
 </head>
 
@@ -687,6 +692,20 @@ footer a { color:white; }
   <a class="btn" href="tel:+17578173934"><span>📞</span><span>Call (757) 817-3934</span></a>
 </div>
 
+<script>
+// Close the mobile dropdown after choosing a section, including browser back/forward.
+(function () {
+  var menu = document.querySelector('.mobile-menu');
+  if (!menu) return;
+  menu.querySelectorAll('nav a').forEach(function (link) {
+    link.addEventListener('click', function () { menu.open = false; });
+  });
+  document.addEventListener('click', function (event) {
+    if (menu.open && !menu.contains(event.target)) menu.open = false;
+  });
+  window.addEventListener('hashchange', function () { menu.open = false; });
+})();
+</script>
 <script>
 // Shows "Open now" / "Closed now" and highlights today, using Williamsburg (Eastern) time.
 (function () {
