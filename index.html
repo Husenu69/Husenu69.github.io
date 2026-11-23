@@ -451,6 +451,42 @@ footer a { color:white; }
 }
 @media(max-width:390px) { .brand {font-size:.8rem;} .brand-stripes {font-size:1.6rem;} .top-call {font-size:.75rem;padding:8px;} }
 
+
+/* Photo-led homepage matching approved layout: navy first, restrained red */
+.brand-stripes {display:flex;flex-direction:column;gap:4px;transform:skew(24deg);align-self:flex-start;margin-top:4px}
+.brand-stripes i {display:block;width:33px;height:5px;background:#e21b23;border-radius:1px}
+.brand-stripes i:nth-child(2){width:28px}.brand-stripes i:nth-child(3){width:23px}
+.hero {grid-template-columns:1fr;min-height:560px;background:#102d58 url('/photo1.jpeg') center 38%/cover no-repeat;isolation:isolate}
+.hero:before {content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,29,65,.96) 0%,rgba(8,35,75,.89) 27%,rgba(9,39,77,.40) 54%,rgba(9,39,77,.02) 85%);z-index:-1}
+.hero-copy {width:min(52%,650px);background:none;padding:54px 25px 115px 36px}
+.hero h1 {font-size:clamp(2.6rem,4.4vw,4.5rem);line-height:1.04;text-shadow:0 2px 8px #0004}
+.hero-photo {display:none}
+.hero-info {background:#f5f8fc;border:1px solid #dce5f1;bottom:16px;box-shadow:0 8px 24px #0002}
+.hero-info>div+div {border-left:2px solid #102d58;padding-left:26px}
+.hero-points li:before {color:#fff;text-shadow:2px 2px #e21b23}
+.hero .btn {background:#e21b23}
+.secondary-btn {background:#0b2b5a99}
+.main-nav a[aria-current] {background:#102d58;color:#fff;padding:9px 15px;border-radius:9px}
+.svc-btns {grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.svc-btns a {position:relative;min-height:168px;justify-content:space-between;padding:22px 8px 18px;border-radius:16px;background:linear-gradient(180deg,#f8fafc,#eaf0f7);font-size:.94rem}
+.svc-btns .ic {font-size:3.5rem;line-height:1.1}
+#services>h2 {text-align:center;margin-bottom:22px}
+#services>.sub {text-align:center}
+@media(max-width:1050px) {.svc-btns {grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px) {
+ .hero {margin:0 -22px 20px;min-height:0;background-position:center top;background-size:cover}
+ .hero:before {background:linear-gradient(180deg,rgba(6,29,65,.93) 0%,rgba(6,29,65,.78) 43%,rgba(6,29,65,.2) 74%,rgba(6,29,65,.3) 100%)}
+ .hero-copy {width:100%;padding:25px 22px 28px;min-height:490px;display:flex;flex-direction:column;align-items:flex-start}
+ .hero h1 {font-size:clamp(2.4rem,10vw,3.6rem)}
+ .hero-points {margin:16px 0 22px;gap:9px}
+ .hero .btn {margin-top:auto}
+ .hero-info {position:relative;bottom:auto;left:auto;right:auto;border-radius:0;grid-template-columns:1fr;padding:17px 22px}
+ .hero-info>div+div {border-left:0;border-top:1px solid #ccd8e7;padding:12px 0 0}
+ .svc-btns {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .svc-btns a {min-height:138px}
+ .svc-btns .ic {font-size:2.7rem}
+ .brand-stripes i {width:22px;height:4px}.brand-stripes i:nth-child(2){width:18px}.brand-stripes i:nth-child(3){width:14px}
+}
 </style>
 </head>
 
@@ -458,7 +494,7 @@ footer a { color:white; }
 
 <div class="topbar">
   <div class="wrap nav-inner">
-    <a class="brand" href="/" aria-label="Zoltan Appliance Repair home"><span class="brand-name">ZOLTAN<br>APPLIANCES<br>REPAIR</span><span class="brand-stripes" aria-hidden="true">≋</span></a>
+    <a class="brand" href="/" aria-label="Zoltan Appliance Repair home"><span class="brand-name">ZOLTAN<br>APPLIANCES<br>REPAIR</span><span class="brand-stripes" aria-hidden="true"><i></i><i></i><i></i></span></a>
     <nav class="main-nav" aria-label="Main navigation">
       <a href="/" aria-current="page">Home</a>
       <a href="#services">Services</a>
@@ -479,11 +515,11 @@ footer a { color:white; }
     <div class="hero-copy">
       <div class="status" id="status" role="status"><span class="dot"></span><span id="status-text">Williamsburg, VA</span></div>
       <h1>Appliance Repair in Williamsburg, VA</h1>
-      <ul class="hero-points"><li>Refrigerator, washer, dryer, dishwasher, oven &amp; freezer repair</li><li>Experienced appliance repair service</li><li>We come to your home</li></ul>
+      <ul class="hero-points"><li>Refrigerator, washer, dryer, dishwasher, oven &amp; freezer repair</li><li>Appliance diagnosis and repair estimates</li><li>We come to your home</li></ul>
       <a class="btn" href="tel:+17578173934">☎ Call (757) 817-3934</a>
       <a class="secondary-btn" href="tel:+17578173934">Schedule Service by Phone</a>
     </div>
-    <div class="hero-photo" role="img" aria-label="Zoltan Appliance Repair service photograph"></div>
+    <div class="hero-photo" role="img" aria-label="Zoltan Appliance Repair work photograph"></div>
     <div class="hero-info">
       <div><strong>$120 Service Call &amp; Diagnosis</strong><span>Includes inspection and estimate. Parts and labor are separate.</span></div>
       <div><strong>Business Hours</strong><span>Mon–Fri: 9 AM–6 PM · Weekends closed</span></div>
@@ -519,7 +555,7 @@ footer a { color:white; }
 
   <!-- SERVICES -->
   <section id="services">
-    <h2>Appliance repair services in Williamsburg, VA</h2>
+    <h2>Our Appliance Repair Services</h2>
     <p class="sub">Open a page for details on each appliance, or tap below for common problems.</p>
     <div class="svc-btns"><a href="refrigerator-repair-williamsburg-va.html"><span class="ic">🧊</span><span>Refrigerator repair</span></a><a href="washer-repair-williamsburg-va.html"><span class="ic">👕</span><span>Washer repair</span></a><a href="dryer-repair-williamsburg-va.html"><span class="ic">🌀</span><span>Dryer repair</span></a><a href="dishwasher-repair-williamsburg-va.html"><span class="ic">🍽</span><span>Dishwasher repair</span></a><a href="oven-stove-repair-williamsburg-va.html"><span class="ic">🔥</span><span>Oven and stove repair</span></a><a href="freezer-repair-williamsburg-va.html"><span class="ic">❄️</span><span>Freezer repair</span></a></div>
 
