@@ -156,8 +156,8 @@ redirect_from:
   --navy:   #0d1b2a;
   --panel:  #14263a;
   --line:   #25405c;
-  --orange: #f97316;
-  --orange-dark: #c2410c;
+  --orange: #e21b23;
+  --orange-dark: #b5121a;
   --text:   #f4f7fa;
   --muted:  #a9b8c9;
   --green:  #4ade80;
@@ -358,6 +358,31 @@ footer .links a { padding: 8px 0; }
   .svc-btns a { padding: 18px; }
 }
 
+
+/* Refined mobile-first styling; existing content and links preserved */
+.topbar { box-shadow: 0 3px 18px rgba(0,0,0,.16); }
+.brand { line-height: 1.1; }
+.hero { position: relative; }
+.hero h1 { text-wrap: balance; }
+.btn, .top-call { transition: background-color .2s ease, transform .2s ease; }
+.btn:hover, .top-call:hover { background: #ff4047; }
+.svc-btns a { transition: border-color .2s ease, transform .2s ease; }
+.svc-btns a:hover { transform: translateY(-2px); }
+@media (max-width: 480px) {
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .topbar .wrap { min-height: 66px; height: auto; gap: 10px; }
+  .brand { font-size: 1.12rem; max-width: 62%; }
+  .top-call { flex: none; min-height: 44px; display: inline-flex; align-items: center; }
+  .hero { padding-top: 28px; }
+  .hero h1 { font-size: clamp(2.35rem, 10.5vw, 3.25rem); }
+  .price-box { padding: 19px 16px; }
+  .svc-btns { gap: 9px; }
+  .svc-btns a { padding: 12px 10px; font-size: .94rem; overflow-wrap: anywhere; }
+  .photos { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn, .top-call, .svc-btns a { transition: none; }
+}
 </style>
 </head>
 
@@ -482,7 +507,7 @@ footer .links a { padding: 8px 0; }
 
   <!-- BRANDS -->
   <section id="brands">
-    <h2>All major brands</h2>
+    <h2>Appliance brands listed on our website</h2>
     <div class="tags">
       <span>LG</span><span>Samsung</span><span>Whirlpool</span><span>GE</span><span>Bosch</span><span>Maytag</span>
       <span>Frigidaire</span><span>KitchenAid</span><span>Kenmore</span><span>Electrolux</span><span>Amana</span><span>and more</span>
