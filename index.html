@@ -383,15 +383,91 @@ footer .links a { padding: 8px 0; }
 @media (prefers-reduced-motion: reduce) {
   .btn, .top-call, .svc-btns a { transition: none; }
 }
+
+/* 2026 redesign: brand navy / red / white, responsive layout */
+:root { --navy:#102d58; --panel:#f3f6fa; --line:#dbe3ee; --orange:#e21b23; --orange-dark:#b5121a; --text:#102d58; --muted:#46566b; --green:#18844a; --red:#c51b2a; }
+body { background:#fff; color:var(--text); font-size:16px; padding-bottom:calc(82px + env(safe-area-inset-bottom,0px)); }
+.wrap { max-width:1180px; padding:0 22px; }
+.topbar { background:#fff; border-bottom:1px solid #e4e9f0; box-shadow:0 3px 12px #102d5812; }
+.topbar .wrap { height:82px; max-width:1400px; }
+.nav-inner { gap:24px; }
+.brand { color:#102d58; display:flex; align-items:center; gap:5px; font:800 1.2rem/0.86 Inter,Arial,sans-serif; letter-spacing:.02em; }
+.brand-name { display:block; }
+.brand-stripes { font-size:2.3rem; color:#e21b23; transform:rotate(-12deg); align-self:flex-start; }
+.main-nav { display:flex; gap:clamp(12px,2.3vw,34px); align-items:center; margin-left:auto; }
+.main-nav a { color:#102d58; text-decoration:none; font-weight:700; white-space:nowrap; }
+.main-nav a:hover,.main-nav a:focus-visible { color:#e21b23; }
+.top-call { background:#e21b23; color:#fff; white-space:nowrap; padding:13px 18px; }
+.mobile-menu { display:none; }
+.hero { position:relative; display:grid; grid-template-columns: 48% 52%; max-width:none; padding:0; min-height:540px; background:#102d58; color:white; margin:0 0 34px; border-radius:0 0 18px 18px; overflow:hidden; }
+.hero-copy { padding:44px 30px 105px 36px; position:relative; z-index:2; background:linear-gradient(90deg,#102d58 80%,#102d58df); }
+.hero h1 { color:white; font-size:clamp(2.4rem,4.2vw,4.4rem); max-width:600px; }
+.hero-points { list-style:none; display:grid; gap:12px; margin:18px 0 28px; }
+.hero-points li { position:relative; padding-left:30px; font-size:1.04rem; font-weight:600; }
+.hero-points li:before { content:"✓"; position:absolute; left:0; color:#ff4651; font-weight:900; }
+.hero .status { color:white; background:#ffffff1c; border-color:#ffffff33; }
+.hero .btn { max-width:340px; background:#e21b23; color:white; min-height:58px; font-size:1.08rem; }
+.secondary-btn { display:inline-flex; justify-content:center; align-items:center; min-height:50px; padding:10px 18px; border:2px solid #fff; border-radius:12px; margin-top:12px; text-decoration:none; font-weight:700; color:white; }
+.hero-photo { background:#e9eef3 url('/photo1.jpeg') center/cover no-repeat; min-height:420px; }
+.hero-info { position:absolute; bottom:18px; left:24px; right:24px; display:grid; grid-template-columns:1.4fr 1fr; gap:20px; z-index:3; background:#f3f6fa; color:#102d58; border-radius:16px; padding:18px 24px; box-shadow:0 6px 24px #0002; }
+.hero-info>div { display:grid; gap:4px; }
+.hero-info strong { font-size:1.18rem; }
+.hero-info span { font-size:.91rem; color:#46566b; }
+section { padding-top:40px; }
+h2 { color:#102d58; font-size:clamp(1.9rem,3vw,2.5rem); }
+.sub,.about p,.tz,.svc-list { color:#46566b; }
+.price-box,.steps li,.hours,.svc-btns a,details,.tags span,.photos figure,.final { background:#f3f6fa; color:#102d58; }
+.price-box li::after { border-color:#fff; }
+.svc-btns { grid-template-columns:repeat(3,1fr); }
+.svc-btns a { min-height:100px; background:#f6f8fb; border:1px solid #dbe3ee; font-weight:700; justify-content:center; flex-direction:column; text-align:center; }
+.svc-btns .ic { font-size:2rem; }
+.svc-btns a:hover { border-color:#e21b23; }
+.tags span { background:#f3f6fa; }
+.final { background:#f3f6fa; }
+.final .btn { color:white; }
+.callbar { background:#fff; border-top:1px solid #dbe3ee; }
+.callbar .btn { background:#e21b23; color:#fff; }
+footer { background:#102d58; color:white; margin-top:38px; padding:28px 0; }
+footer a { color:white; }
+@media(min-width:700px) { body {padding-bottom:0;} .hero { min-height:570px; } }
+@media(max-width:950px) { .main-nav {gap:12px;} .main-nav a {font-size:.85rem;} .top-call {font-size:.8rem;padding:12px;} .brand {font-size:1rem;} }
+@media(max-width:700px) {
+ .topbar .wrap {height:68px;gap:10px;} .brand {font-size:.98rem;max-width:none;}
+ .main-nav {display:none;} .top-call {margin-left:auto;font-size:.82rem;padding:10px;}
+ .mobile-menu {display:block; position:relative; background:transparent; margin:0; color:#102d58;}
+ .mobile-menu summary {padding:7px 8px; font-size:1.6rem; min-height:44px; display:flex;align-items:center;cursor:pointer;}
+ .mobile-menu summary::after {display:none;}
+ .mobile-menu nav {position:absolute;right:0;top:100%;width:210px;background:white;box-shadow:0 10px 24px #102d5833;border-radius:10px;display:grid;padding:8px;z-index:100;}
+ .mobile-menu nav a {padding:12px;color:#102d58;text-decoration:none;font-weight:700;}
+ .hero {display:flex;flex-direction:column;min-height:0;overflow:visible;margin:0 -22px 22px;border-radius:0;}
+ .hero-copy {padding:26px 22px 28px;background:#102d58;}
+ .hero h1 {font-size:clamp(2.35rem,10vw,3.5rem);}
+ .hero-photo {min-height:270px; background-position:center;}
+ .hero-info {position:static;display:grid;grid-template-columns:1fr;gap:12px;border-radius:0;padding:20px 22px;}
+ .hero .btn {max-width:none;} .secondary-btn {width:100%;}
+ .svc-btns {grid-template-columns:repeat(2,minmax(0,1fr));}
+ .svc-btns a {min-height:116px;padding:12px 7px;font-size:.92rem;}
+ .hero-points li {font-size:.97rem;}
+}
+@media(max-width:390px) { .brand {font-size:.8rem;} .brand-stripes {font-size:1.6rem;} .top-call {font-size:.75rem;padding:8px;} }
+
 </style>
 </head>
 
 <body>
 
 <div class="topbar">
-  <div class="wrap">
-    <a class="brand" href="index.html"><b>⚙</b> Zoltan Appliance Repair</a>
-    <a class="top-call" href="tel:+17578173934">Call</a>
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Zoltan Appliance Repair home"><span class="brand-name">ZOLTAN<br>APPLIANCES<br>REPAIR</span><span class="brand-stripes" aria-hidden="true">≋</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/" aria-current="page">Home</a>
+      <a href="#services">Services</a>
+      <a href="#areas">Service Areas</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="top-call" href="tel:+17578173934">☎ (757) 817-3934</a>
+    <details class="mobile-menu"><summary aria-label="Open navigation menu">☰</summary><nav aria-label="Mobile navigation"><a href="/">Home</a><a href="#services">Services</a><a href="#areas">Service Areas</a><a href="#about">About</a><a href="#contact">Contact</a></nav></details>
   </div>
 </div>
 
@@ -400,30 +476,17 @@ footer .links a { padding: 8px 0; }
 
   <!-- HERO -->
   <header class="hero">
-    <div class="status" id="status" role="status"><span class="dot"></span><span id="status-text">Williamsburg, VA</span></div>
-    <h1>Appliance Repair in Williamsburg, VA &amp; Nearby Areas</h1>
-    <p class="lead">Refrigerator, washer, dryer, dishwasher, oven and freezer repair. We come to your home.</p>
-
-    <a class="btn" href="tel:+17578173934">
-      <span>📞</span>
-      <span>Call (757) 817-3934</span>
-    </a>
-    <p class="btn-note">Call to schedule your visit.</p>
-
-    <!-- PRICE -->
-    <div class="price-box" id="price">
-      <div class="small">Service call and diagnostic fee</div>
-      <div class="price-line">
-        <span class="price-big">$120</span>
-        <span class="price-name">Service call</span>
-      </div>
-      <ul>
-        <li>We come to your home</li>
-        <li>We inspect your appliance</li>
-        <li>We identify the problem</li>
-        <li>You get a repair estimate for parts and labor</li>
-      </ul>
-      <p class="price-then"><strong>Parts and labor are quoted separately.</strong> We explain the repair and the price first. We do not start any work until you say yes.</p>
+    <div class="hero-copy">
+      <div class="status" id="status" role="status"><span class="dot"></span><span id="status-text">Williamsburg, VA</span></div>
+      <h1>Appliance Repair in Williamsburg, VA</h1>
+      <ul class="hero-points"><li>Refrigerator, washer, dryer, dishwasher, oven &amp; freezer repair</li><li>Experienced appliance repair service</li><li>We come to your home</li></ul>
+      <a class="btn" href="tel:+17578173934">☎ Call (757) 817-3934</a>
+      <a class="secondary-btn" href="tel:+17578173934">Schedule Service by Phone</a>
+    </div>
+    <div class="hero-photo" role="img" aria-label="Zoltan Appliance Repair service photograph"></div>
+    <div class="hero-info">
+      <div><strong>$120 Service Call &amp; Diagnosis</strong><span>Includes inspection and estimate. Parts and labor are separate.</span></div>
+      <div><strong>Business Hours</strong><span>Mon–Fri: 9 AM–6 PM · Weekends closed</span></div>
     </div>
   </header>
 
@@ -507,10 +570,10 @@ footer .links a { padding: 8px 0; }
 
   <!-- BRANDS -->
   <section id="brands">
-    <h2>Appliance brands listed on our website</h2>
+    <h2>Brands we service</h2>
     <div class="tags">
       <span>LG</span><span>Samsung</span><span>Whirlpool</span><span>GE</span><span>Bosch</span><span>Maytag</span>
-      <span>Frigidaire</span><span>KitchenAid</span><span>Kenmore</span><span>Electrolux</span><span>Amana</span><span>and more</span>
+      <span>Frigidaire</span><span>KitchenAid</span><span>Kenmore</span><span>Electrolux</span><span>Amana</span>
     </div>
   </section>
 
@@ -561,7 +624,7 @@ footer .links a { padding: 8px 0; }
   </section>
 
   <!-- FINAL CTA -->
-  <div class="final">
+  <div class="final" id="contact">
     <h2>Appliance not working?</h2>
     <a class="phone" href="tel:+17578173934">(757) 817-3934</a>
     <a class="btn" href="tel:+17578173934"><span>📞</span><span>Call now</span></a>
