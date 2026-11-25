@@ -493,13 +493,19 @@ footer a { color:white; }
 .mobile-menu nav a { display:block; }
 @media(max-width:700px) { .mobile-menu[open] nav { max-height:calc(100dvh - 85px); overflow-y:auto; } }
 </style>
+<style>
+.topbar .brand.original-brand{flex:0 1 150px;min-width:0;max-width:150px;display:block}
+.original-logo-frame{display:block;width:100%;aspect-ratio:1.78;position:relative;overflow:hidden}
+.original-logo-frame img{position:absolute;width:125%;max-width:none;height:auto;left:-12.5%;top:-49%;display:block}
+@media(max-width:700px){.topbar .brand.original-brand{flex-basis:108px;max-width:108px}}
+</style>
 </head>
 
 <body>
 
 <div class="topbar">
   <div class="wrap nav-inner">
-    <a class="brand" href="/" aria-label="Zoltan Appliance Repair home"><span class="brand-name">ZOLTAN<br>APPLIANCES<br>REPAIR</span><span class="brand-stripes" aria-hidden="true"><i></i><i></i><i></i></span></a>
+    <a class="brand original-brand" href="/" aria-label="Zoltan Appliance Repair home"><span class="original-logo-frame"><img src="/logo.jpeg" alt="Zoltan Appliances Repair — On spot, on time, on budget"></span></a>
     <nav class="main-nav" aria-label="Main navigation">
       <a href="/" aria-current="page">Home</a>
       <a href="#services">Services</a>
