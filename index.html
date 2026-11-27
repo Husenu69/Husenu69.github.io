@@ -492,6 +492,14 @@ footer a { color:white; }
 .mobile-menu { background:transparent; margin-bottom:0; border-radius:0; }
 .mobile-menu nav a { display:block; }
 @media(max-width:700px) { .mobile-menu[open] nav { max-height:calc(100dvh - 85px); overflow-y:auto; } }
+
+/* Gentle Google review button pulse */
+@keyframes googleReviewPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,.25); }
+  50% { box-shadow: 0 0 0 7px rgba(37,99,235,.35); }
+}
+#google-reviews .btn { animation: googleReviewPulse 2s ease-in-out 2; }
+@media (prefers-reduced-motion: reduce) { #google-reviews .btn { animation: none; } }
 </style>
 <style>
 .topbar .brand.original-brand{flex:0 1 150px;min-width:0;max-width:150px;display:block}
