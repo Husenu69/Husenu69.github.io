@@ -493,13 +493,19 @@ footer a { color:white; }
 .mobile-menu nav a { display:block; }
 @media(max-width:700px) { .mobile-menu[open] nav { max-height:calc(100dvh - 85px); overflow-y:auto; } }
 
-/* Gentle Google review button pulse */
+/* Google reviews: continuous soft pulse and periodic light sweep */
 @keyframes googleReviewPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,.25); }
-  50% { box-shadow: 0 0 0 7px rgba(37,99,235,.35); }
+  0%,100% { box-shadow: 0 0 0 0 rgba(226,27,35,.24); }
+  50% { box-shadow: 0 0 0 7px rgba(226,27,35,.16), 0 5px 16px rgba(226,27,35,.25); }
 }
-#google-reviews .btn { animation: googleReviewPulse 2.5s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { #google-reviews .btn { animation: none; } }
+@keyframes googleReviewShine {
+  0%,35% { transform: translateX(-180%) skewX(-20deg); }
+  70%,100% { transform: translateX(450%) skewX(-20deg); }
+}
+#google-reviews .btn { position:relative; overflow:hidden; isolation:isolate; animation:googleReviewPulse 2.8s ease-in-out infinite; }
+#google-reviews .btn::after { content:""; position:absolute; top:0; bottom:0; left:0; width:35%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent); pointer-events:none; animation:googleReviewShine 3.6s ease-in-out infinite; }
+#google-reviews .btn:focus-visible { outline:3px solid #2563eb; outline-offset:5px; }
+@media (prefers-reduced-motion: reduce) { #google-reviews .btn, #google-reviews .btn::after { animation:none; } #google-reviews .btn::after { display:none; } }
 </style>
 <style>
 .topbar .brand.original-brand{flex:0 1 150px;min-width:0;max-width:150px;display:block}
@@ -675,7 +681,7 @@ footer a { color:white; }
   <section id="google-reviews">
     <h2>View Google Reviews</h2>
     <p class="sub">Google rating: <strong>4.9 out of 5</strong> · 290 Google reviews.</p>
-    <a class="btn" href="https://www.google.com/search?q=Zoltan+llc+williamsburg&amp;sca_esv=455bd2007551d952&amp;biw=1597&amp;bih=843&amp;sxsrf=AKL5yDi5eTUmqva93DKvWGt1kbur7qY3Gg%3A1795796393604&amp;ei=qa0Ja9qzJM-gptQP4ebRkA8&amp;uact=5&amp;oq=Zoltan+llc+williamsburg&amp;gs_lp=Egxnd3Mtd2l6LXNlcnAiF1pvbHRhbiBsbGMgd2lsbGlhbXNidXJnMgcQIxiwAxgnMgcQIxiwAxgnMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADSMIFUABYAHABeAGQAQCYAQCgAQCqAQC4AQPIAQCYAgGgAgWYAwCIBgGQBgaSBwExoAcAsgcAuAcAwgcDMi0xyAcDgAgB&amp;sclient=gws-wiz-serp#lrd=0x89b08dd723ce05a1:0x64c0ac9f7a3a8b9a,1,,,," target="_blank" rel="noopener noreferrer">View Google Reviews</a>
+    <a class="btn" href="https://www.google.com/search?q=ZOLTAN+LLC&amp;sca_esv=91479c3355447007&amp;sxsrf=AKL5yDhJ9eTrdehAJ8WpxJND79Gcu5BLLg%3A1795801567659&amp;source=hp&amp;ei=38EJa7vEJcu5w8cPnPSNKQ&amp;iflsig=AHSINFcAAAAAawnP757eHG-5t-DbNbuujw8u--3XY2XN&amp;ved=2ahUKEwj7r5mU2qiYAxXL3PACHRx6IwUQ4dUDegQIABAo&amp;uact=5&amp;oq=ZOLTAN+LLC&amp;gs_lp=Egdnd3Mtd2l6IgpaT0xUQU4gTExDMgQQIxgnMgQQIxgnMgQQIxgnMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgUQABjvBTIIEAAYiQUYogQyBRAAGO8FMgUQABjvBUj3NlChGVixMnABeACQAQCYAZsBoAHdCqoBBDAuMTC4AQPIAQD4AQGYAgugApYLqAIKwgIHEC4Y6gIYJ8ICBxAjGOoCGCfCAhAQIxidBhjoBhjdBRjqAhgnwgINECMY8AUYyQIY6gIYJ8ICCxAuGIAEGIoFGJECwgILEAAYgAQYigUYkQLCAgoQLhiABBiKBRhDwgIREC4YgAQYigUYkQIYxwEY0QPCAgoQABiABBiKBRhDwgINEC4YgAQYigUYQxixA8ICDhAuGIAEGIoFGJECGLEDwgINEAAYgAQYigUYQxixA8ICDhAAGIAEGIoFGJECGLEDwgIIEC4YgAQYsQPCAgUQABiABMICBRAuGIAEwgILEC4YgAQYxwEYrwHCAgsQABiABBiKBRiGA5gDC_EFZga2rDwex-CSBwQxLjEwoAeMdLIHBDAuMTC4B4oLwgcHMC4zLjcuMcgHKIAIAQ&amp;sclient=gws-wiz#lrd=0x89b08dd723ce05a1:0x64c0ac9f7a3a8b9a,1,,,," target="_blank" rel="noopener noreferrer">View Google Reviews</a>
     <p class="btn-note">We welcome your honest feedback about our service.</p>
   </section>
 
@@ -718,7 +724,7 @@ footer a { color:white; }
   <div class="wrap">
     <div class="links">
       <a href="https://www.yelp.com/biz/zoltan-williamsburg" target="_blank" rel="noopener">Yelp</a>
-      <a href="https://www.google.com/search?q=Zoltan+llc+williamsburg&amp;sca_esv=455bd2007551d952&amp;biw=1597&amp;bih=843&amp;sxsrf=AKL5yDi5eTUmqva93DKvWGt1kbur7qY3Gg%3A1795796393604&amp;ei=qa0Ja9qzJM-gptQP4ebRkA8&amp;uact=5&amp;oq=Zoltan+llc+williamsburg&amp;gs_lp=Egxnd3Mtd2l6LXNlcnAiF1pvbHRhbiBsbGMgd2lsbGlhbXNidXJnMgcQIxiwAxgnMgcQIxiwAxgnMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADMgoQABhHGNYEGLADSMIFUABYAHABeAGQAQCYAQCgAQCqAQC4AQPIAQCYAgGgAgWYAwCIBgGQBgaSBwExoAcAsgcAuAcAwgcDMi0xyAcDgAgB&amp;sclient=gws-wiz-serp#lrd=0x89b08dd723ce05a1:0x64c0ac9f7a3a8b9a,1,,,," target="_blank" rel="noopener noreferrer">View Google Reviews</a>
+      <a href="https://www.google.com/search?q=ZOLTAN+LLC&amp;sca_esv=91479c3355447007&amp;sxsrf=AKL5yDhJ9eTrdehAJ8WpxJND79Gcu5BLLg%3A1795801567659&amp;source=hp&amp;ei=38EJa7vEJcu5w8cPnPSNKQ&amp;iflsig=AHSINFcAAAAAawnP757eHG-5t-DbNbuujw8u--3XY2XN&amp;ved=2ahUKEwj7r5mU2qiYAxXL3PACHRx6IwUQ4dUDegQIABAo&amp;uact=5&amp;oq=ZOLTAN+LLC&amp;gs_lp=Egdnd3Mtd2l6IgpaT0xUQU4gTExDMgQQIxgnMgQQIxgnMgQQIxgnMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgUQABjvBTIIEAAYiQUYogQyBRAAGO8FMgUQABjvBUj3NlChGVixMnABeACQAQCYAZsBoAHdCqoBBDAuMTC4AQPIAQD4AQGYAgugApYLqAIKwgIHEC4Y6gIYJ8ICBxAjGOoCGCfCAhAQIxidBhjoBhjdBRjqAhgnwgINECMY8AUYyQIY6gIYJ8ICCxAuGIAEGIoFGJECwgILEAAYgAQYigUYkQLCAgoQLhiABBiKBRhDwgIREC4YgAQYigUYkQIYxwEY0QPCAgoQABiABBiKBRhDwgINEC4YgAQYigUYQxixA8ICDhAuGIAEGIoFGJECGLEDwgINEAAYgAQYigUYQxixA8ICDhAAGIAEGIoFGJECGLEDwgIIEC4YgAQYsQPCAgUQABiABMICBRAuGIAEwgILEC4YgAQYxwEYrwHCAgsQABiABBiKBRiGA5gDC_EFZga2rDwex-CSBwQxLjEwoAeMdLIHBDAuMTC4B4oLwgcHMC4zLjcuMcgHKIAIAQ&amp;sclient=gws-wiz#lrd=0x89b08dd723ce05a1:0x64c0ac9f7a3a8b9a,1,,,," target="_blank" rel="noopener noreferrer">View Google Reviews</a>
       <a href="https://nextdoor.com/pages/zoltan-appliance-repair-williamsburg-va/" target="_blank" rel="noopener">Nextdoor</a>
       <a href="https://www.facebook.com/p/Zoltan-LLC-100031928273381/" target="_blank" rel="noopener">Facebook</a>
       <a href="privacy.html">Privacy</a>
